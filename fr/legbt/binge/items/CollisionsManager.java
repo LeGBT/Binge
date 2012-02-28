@@ -14,7 +14,7 @@ public class CollisionsManager {
 			int itemidx = this.itemlist.indexOf(item);
 			for (int i=0;i<=itemlist.size();i++){
 				if (itemidx != i){
-
+					//là
 				}
 			}
 		} catch(Exception e){
@@ -25,18 +25,18 @@ public class CollisionsManager {
 	}
 
 	public CollisionsManager(){
-		lesItems = new ArrayList<Item>();
+		itemlist = new ArrayList<Item>();
 	}
 
 
 	private void register(Item item){
-		this.lesItems.add(item);
+		this.itemlist.add(item);
 	}
 
 	public Boolean  testCollisions(){
 		Boolean test = new Boolean(false);
-		for (int i =0; i<lesItems.size(); i++){
-			ItemId theitemid = lesItems.get(i);
+		for (int i =0; i<itemlist.size(); i++){
+			ItemId theitemid = itemlist.get(i);
 		}
 		return true;
 	}
@@ -97,6 +97,6 @@ return test;
 }
 */
 public void clearMe(){
-	lesItems.clear();
+	itemlist.clear();
 }
 }

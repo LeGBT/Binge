@@ -14,7 +14,7 @@ public abstract class Item extends ItemId implements KeyListener{
 	protected void move(int newx, int newy){
 		this.cm.tryToMove(this,newx,newy);	
 	}
-	protected void setPostion(int newx, int newy){
+	protected void setPosition(int newx, int newy){
 		this.x = newx;
 		this.y = newy;
 	}
