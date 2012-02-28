@@ -11,6 +11,7 @@ public abstract class Item extends ItemId implements KeyListener{
 	private int x;
 	private int y;
 
+
 	protected void move(int newx, int newy){
 		this.cm.tryToMove(this,newx,newy);	
 	}
@@ -32,6 +33,7 @@ public abstract class Item extends ItemId implements KeyListener{
 	}
 	public void keyTyped(KeyEvent key){}
 
+	protected abstract void collide();
 	public abstract void traceMe();
 	public abstract void onKeyUp(int keycode);
 	public abstract void onKeyDown(int keycode);
