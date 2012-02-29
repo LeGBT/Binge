@@ -10,11 +10,28 @@ public class CollisionsManager {
 
 	public void tryToMove(Item item,int x,int y){
 		// Test every possible collisions	
+		Boolean test = false;
 		try{
 			int itemidx = this.itemlist.indexOf(item);
 			for (int i=0;i<=itemlist.size();i++){
 				if (itemidx != i){
+					Item otheritem = itemlist.get(i);
+					//Il manque les différents cas selon le type de item !!!!!
+					//Il faut peut être changer la forme des test voire de la classe Item
+					/*switch(otheritem.itemtype{
+					  case Item.PLAN:
+					  switch(otheritem.itemtype){
+					  case Item.XMIN: if(x<=otheritem.xyminmax){item.collide();test=true;} break;
+					  case Item.XMAX: if(x>=otheritem.xyminmax){item.collide();test=true;} break;
+					  case Item.YMIN: if(y<=otheritem.xyminmax){item.collide();test=true;} break;
+					  case Item.YMAX: if(y>=otheritem.xyminmax){item.collide();test=true;} break;
+
+					  case Item.BALL:
+					  int xc =	item.xcenter; 
+					  int yc =	item.ycenter; 
 					//là
+					  }
+					  } */
 				}
 			}
 		} catch(Exception e){
@@ -36,7 +53,7 @@ public class CollisionsManager {
 	public Boolean  testCollisions(){
 		Boolean test = new Boolean(false);
 		for (int i =0; i<itemlist.size(); i++){
-			ItemId theitemid = itemlist.get(i);
+			Item theitem = itemlist.get(i);
 		}
 		return true;
 	}

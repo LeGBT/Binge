@@ -5,25 +5,13 @@ import java.util.Stack;
 import java.util.ArrayList;
 import java.awt.event.*;
 
-public abstract class Item extends ItemId implements KeyListener{
+public abstract class Item implements KeyListener{
 	public CollisionsManager cm;
 	public Graphics g;
-	private int x;
-	private int y;
 
 
 	protected void move(int newx, int newy){
 		this.cm.tryToMove(this,newx,newy);	
-	}
-	protected void setPosition(int newx, int newy){
-		this.x = newx;
-		this.y = newy;
-	}
-	public int getX(){
-		return this.x;
-	}
-	public int getY(){
-		return this.x;
 	}
 	public void keyPressed(KeyEvent key){
 		onKeyDown(key.getKeyCode());
@@ -33,6 +21,8 @@ public abstract class Item extends ItemId implements KeyListener{
 	}
 	public void keyTyped(KeyEvent key){}
 
+	protected abstract void setPosition(int x, int y);
+		// il faut changer ça pour que la modif se fasse que quand tout les tests ont été fait puis peut être restester si c'est bon ?
 	protected abstract void collide();
 	public abstract void traceMe();
 	public abstract void onKeyUp(int keycode);

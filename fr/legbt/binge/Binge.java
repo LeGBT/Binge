@@ -19,12 +19,12 @@ public class Binge extends JPanel{
 		bounds = new Rectangle(0,0,1280,700);
 		frame = new JFrame("Mon vieux pong");
 		atimer = new BingeTask(this);
-		laballe = new Ball(40,7,7,70,70);
+	//	laballe = new Ball(40,7,7,70,70);
 		cm = new CollisionsManager();
 	}
 
 	public void timedActions(){
-		laballe.register(cm);
+	//	laballe.register(cm);
 		cm.testCollisions();
 		frame.repaint();
 	}
@@ -32,7 +32,7 @@ public class Binge extends JPanel{
 	public void paintComponent(Graphics g){
 		bounds = g.getClipBounds();
 		g.clearRect(screen.x,screen.y,screen.width,screen.height);
-		laballe.traceMe();
+	//	laballe.traceMe();
 	}
 
 	public static void main(String arg[]){
