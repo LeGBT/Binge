@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 public class CollisionsManager {
 	private	ArrayList<Item> itemlist;	
+	private	ArrayList<FixedItem> fixeditemlist;	
 
 	public void tryToMove(Item item,int x,int y){
 		// Test every possible collisions	
@@ -48,6 +49,9 @@ public class CollisionsManager {
 
 	protected void register(Item item){
 		this.itemlist.add(item);
+	}
+	protected void register(FixedItem item){
+		this.fixeditemlist.add(item);
 	}
 
 	public void testCollisions(){
@@ -112,5 +116,6 @@ return test;
 */
 public void clearMe(){
 	itemlist.clear();
+	fixeditemlist.clear();
 }
 }

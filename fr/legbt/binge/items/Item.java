@@ -1,8 +1,6 @@
 package fr.legbt.binge.items;
 
-import java.awt.*;
-//import java.util.Stack;
-//import java.util.ArrayList;
+//import java.awt.*;
 import java.awt.event.*;
 
 public abstract class Item implements KeyListener{
@@ -10,10 +8,13 @@ public abstract class Item implements KeyListener{
 	public Boolean collided;
 	public Boolean collide;
 	public Boolean wasneverfree;
+	protected int x;
+	protected int y;
 	//public Graphics graphics;
 
-
-	protected Item(CollisionsManager cm){
+	protected Item(CollisionsManager cm, int x, int y){
+		this.x = x;
+		this.y = y;
 		this.collisionsmanager = cm;
 		this.wasneverfree = true;
 		this.collided = true;
@@ -37,8 +38,10 @@ public abstract class Item implements KeyListener{
 			this.setXY(x,y);
 		}
 	}
-	// il faut changer ça pour que la modif se fasse que quand tout les tests ont été fait puis peut être restester si c'est bon ?
-	abstract void setXY(int x, int y);
+	void setXY(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
 	protected abstract void collide();
 	public abstract void traceMe();
 	protected abstract void onKeyUp(int keycode);
