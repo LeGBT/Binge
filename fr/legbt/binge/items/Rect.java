@@ -12,10 +12,17 @@ public abstract class Rect extends Item{
 	/**
 	 * Constructor for Rect defined by the top left point
 	 */
-	public Rect(int x, int y, int height, int width){
+	public Rect(CollisionsManager cm, int x, int y, int height, int width){
+		super(cm);
 		this.x = x;
 		this.y = y;
 		this.height = height;
 		this.width = width;
 	}
+
+	void setXY(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+
 }

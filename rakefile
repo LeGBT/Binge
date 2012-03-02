@@ -1,6 +1,6 @@
 require "rake/clean"
 desc "defaut task"
-task :default => ["buildall"] 
+task :default => ["binge"] 
 task :buildall => ["build_classes", "build_docs"]
 
 task :build_classes => ["items", "timers", "binge"]

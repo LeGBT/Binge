@@ -13,10 +13,16 @@ public abstract class Ball extends Item{
 	/**
 	 * Constructor for Ball defined by the top left coordinate point of the smallest square containing the ball. 
 	 */
-	public Ball(int x, int y, int radius){
+	public Ball(CollisionsManager cm, int x, int y, int radius){
+		super(cm);
 		this.xcenter = x + radius;
 		this.ycenter = y + radius;
 		this.radius = radius;
+		this.x = x;
+		this.y = y;
+	}
+
+	void setXY(int x, int y){
 		this.x = x;
 		this.y = y;
 	}

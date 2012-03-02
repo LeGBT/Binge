@@ -46,17 +46,14 @@ public class CollisionsManager {
 	}
 
 
-	private void register(Item item){
+	protected void register(Item item){
 		this.itemlist.add(item);
 	}
 
-	public Boolean  testCollisions(){
-		Boolean test = new Boolean(false);
-		for (int i =0; i<itemlist.size(); i++){
-			Item theitem = itemlist.get(i);
-		}
-		return true;
+	public void testCollisions(){
+		//test puis fait tout bouger si c'est bon
 	}
+
 	//int x = theitemid.;
 	//int y = entry.getValue()[1];
 	//int radius = entry.getValue()[2];
