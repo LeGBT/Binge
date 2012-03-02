@@ -16,7 +16,6 @@ public abstract class Plan extends Item{
 	 * minmax represent the plan coordinate, e.g. test=XMIN and minmax=5 represent the plan x<=5
 	 */
 	public Plan(int test, int minmax){
-		this.itemtype = PLAN;
 		this.xyminmax = minmax;
 	}
 }
