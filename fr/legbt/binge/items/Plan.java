@@ -1,4 +1,4 @@
-package fr.legbt.items;
+package fr.legbt.binge.items;
 
 /**
  * Plan describe a half plan item for simple bounding collisions.

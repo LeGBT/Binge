@@ -1,0 +1,21 @@
+require "rake/clean"
+desc "defaut task"
+task :default => ["buildall"] 
+task :buildall => ["build_classes", "build_docs"]
+
+task :build_classes => ["items"]
+task :build_docs do
+	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers}
+end
+
+
+task :items do
+	sh %{javac fr/legbt/binge/items/Item.java}
+	sh %{javac fr/legbt/binge/items/Ball.java}
+	sh %{javac fr/legbt/binge/items/Plan.java}
+	sh %{javac fr/legbt/binge/items/Rect.java}
+	sh %{javac fr/legbt/binge/items/CollisionsManager.java}
+end
+
+CLEAN.include("*.class")
+CLOBBER.include("*.class/",".html")
