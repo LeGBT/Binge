@@ -6,11 +6,11 @@ package fr.legbt.binge.items;
 public abstract class FixedItem {
 	public CollisionsManager collisionsmanager;
 
-
 	protected FixedItem(CollisionsManager cm){
 		this.collisionsmanager = cm;
 		this.collisionsmanager.register(this); 
 	}
 
 	public abstract void traceMe();
+	protected abstract Boolean collideWith(Item item);
 }

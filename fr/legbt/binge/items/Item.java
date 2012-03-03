@@ -10,21 +10,30 @@ public abstract class Item implements KeyListener{
 	public Boolean wasneverfree;
 	protected int x;
 	protected int y;
+	protected int xspeed;
+	protected int yspeed;
+	protected int xnext;
+	protected int ynext;
 	//public Graphics graphics;
 
 	protected Item(CollisionsManager cm, int x, int y){
 		this.x = x;
 		this.y = y;
+		this.xspeed = 0;
+		this.yspeed = 0;
+		this.xnext = x;
+		this.ynext = y;
 		this.collisionsmanager = cm;
 		this.wasneverfree = true;
 		this.collided = true;
 		this.collisionsmanager.register(this); 
 	}
 
-
-	protected void move(int newx, int newy){
-		this.collisionsmanager.tryToMove(this,newx,newy);	
+	final protected void move(int newx, int newy){
+		this.xnext = newx;
+		this.ynext = newy;
 	}
+
 	public void keyPressed(KeyEvent key){
 		onKeyDown(key.getKeyCode());
 	}
@@ -42,7 +51,7 @@ public abstract class Item implements KeyListener{
 		this.x = x;
 		this.y = y;
 	}
-	protected abstract void collide();
+	protected abstract Boolean collideWith(Item item);
 	public abstract void traceMe();
 	protected abstract void onKeyUp(int keycode);
 	protected abstract void onKeyDown(int keycode);
