@@ -2,6 +2,7 @@ package fr.legbt.binge.items;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import fr.legbt.binge.Binge;
 
 /**
  * Rect is a simple rectangular item
@@ -13,8 +14,8 @@ public abstract class Rect extends Item{
 	/**
 	 * Constructor for Rect defined by the top left point
 	 */
-	public Rect(CollisionsManager cm, int x, int y, int height, int width){
-		super(cm,x,y);
+	public Rect(Binge game, int x, int y, int height, int width){
+		super(game,x,y);
 		this.height = height;
 		this.width = width;
 	}

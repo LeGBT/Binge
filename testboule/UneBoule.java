@@ -1,6 +1,7 @@
 package testboule;
 
 import fr.legbt.binge.items.*;
+import fr.legbt.binge.*;
 import java.awt.geom.*;
 import java.awt.*;
 import javax.swing.*;
@@ -8,8 +9,8 @@ import javax.swing.*;
 
 public class UneBoule extends Ball{
 
-	public UneBoule(CollisionsManager cm, int x, int y, int radius){
-		super(cm,x,y,radius);	
+	public UneBoule(Binge game, int x, int y, int radius){
+		super(game,x,y,radius);	
 	}
 
 	public void onKeyDown(int key){}

@@ -2,10 +2,12 @@ package fr.legbt.binge.items;
 
 import java.awt.*;
 import java.awt.event.*;
+import fr.legbt.binge.Binge;
 
 
 public abstract class Item implements KeyListener{
 	public CollisionsManager collisionsmanager;
+	public PaintManager paintmanager;
 	public Boolean collided;
 	public Boolean collide;
 	public Boolean wasneverfree;
@@ -17,17 +19,19 @@ public abstract class Item implements KeyListener{
 	protected int ynext;
 	//public Graphics graphics;
 
-	protected Item(CollisionsManager cm, int x, int y){
+	protected Item(Binge game, int x, int y){
 		this.x = x;
 		this.y = y;
 		this.xspeed = 0;
 		this.yspeed = 0;
 		this.xnext = x;
 		this.ynext = y;
-		this.collisionsmanager = cm;
+		this.collisionsmanager = game.collisionsmanager;
+		this.paintmanager = game.paintmanager;
 		this.wasneverfree = true;
 		this.collided = true;
 		this.collisionsmanager.register(this); 
+		this.paintmanager.register(this); 
 	}
 
 	final protected void move(int newx, int newy){

@@ -10,12 +10,7 @@ public class Boule extends Binge{
 
 	public Boule(String name, int width, int height, int framerate){
 		super(name,width,height,framerate);
-		uneboule = new UneBoule(collisionsmanager,500,500,30);
-	}
-
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		this.uneboule.traceMe(g);
+		uneboule = new UneBoule(this,500,500,30);
 	}
 
 

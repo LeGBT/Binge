@@ -2,6 +2,7 @@ package fr.legbt.binge.items;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.*;
+import fr.legbt.binge.Binge;
 
 /**
  * Ball is a simple disc item.
@@ -15,8 +16,8 @@ public abstract class Ball extends Item{
 	/**
 	 * Constructor for Ball defined by the top left coordinate point of the smallest square containing the ball. 
 	 */
-	public Ball(CollisionsManager cm, int x, int y, int radius){
-		super(cm,x,y);
+	public Ball(Binge game, int x, int y, int radius){
+		super(game,x,y);
 		this.xcenter = x + radius;
 		this.ycenter = y + radius;
 		this.radius = radius;

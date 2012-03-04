@@ -12,6 +12,7 @@ public class Binge extends JPanel{
 	public JFrame frame;
 	public BingeTask atimer;
 	public CollisionsManager collisionsmanager;
+	public PaintManager paintmanager;
 	private ArrayList<Item> itemlist;
 	private ArrayList<FixedItem> fixeditemlist;
 
@@ -28,6 +29,7 @@ public class Binge extends JPanel{
 		this.frame.setFocusable(true);
 		this.frame.setSize(width,height);
 		this.collisionsmanager = new CollisionsManager();
+		this.paintmanager = new PaintManager(this);
 		this.frame.setContentPane(this);
 		this.frame.setVisible(true);
 		newtimer.schedule(this.atimer,0,framerate);
@@ -41,6 +43,7 @@ public class Binge extends JPanel{
 	public void paintComponent(Graphics g){
 		this.bounds = g.getClipBounds();
 		g.clearRect(screen.x,screen.y,screen.width,screen.height);
+		this.paintmanager.traceThemAll();
 	}
 
 	/*	public static void main(String arg[]){
