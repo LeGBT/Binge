@@ -44,8 +44,8 @@ public abstract class Ball extends Item{
 	protected Boolean collideWith(Item item){
 		if (item instanceof Ball){
 			Ball it = (Ball) item; 
-			Double dist = Math.pow((it.xnext-this.xnext +  it.diameter/2 +this.diameter/2),2) + Math.pow((it.ynext-this.ynext + it.diameter/2 - this.diameter/2),2);
-			if (dist <= ((it.diameter+this.diameter)*(it.diameter+this.diameter))){
+			Double dist = Math.pow((it.xnext-this.xnext +  it.diameter/2 - this.diameter/2),2) + Math.pow((it.ynext-this.ynext + it.diameter/2 - this.diameter/2),2);
+			if (dist <= ((it.diameter/2+this.diameter/2)*(it.diameter/2+this.diameter/2))){
 				return true;
 			}
 			return false;
