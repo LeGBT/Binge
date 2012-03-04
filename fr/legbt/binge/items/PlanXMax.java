@@ -1,17 +1,20 @@
 package fr.legbt.binge.items;
 
+import java.awt.geom.Rectangle2D;
+import java.awt.*;
+import fr.legbt.binge.*;
+
 /**
  * PlanXMax describe a right vertical half plan item for simple bounding collisions.
  */
-public abstract class PlanXMax extends Plan{
-
+public class PlanXMax extends Plan{
 	protected int x;
 
 	/**
 	 * Xmax Plan construction 
 	 */
-	public PlanXMax(CollisionsManager cm, int x){
-		super(cm);
+	public PlanXMax(Binge game, int x){
+		super(game);
 		this.x = x;
 	}
 
@@ -26,4 +29,8 @@ public abstract class PlanXMax extends Plan{
 		}	
 		return false;
 	}
+
+	public void traceMe(Graphics g){
+		g.fillRect(x,0,game.getWidth()-x,game.getWidth());
+	}	
 }

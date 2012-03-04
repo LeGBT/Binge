@@ -1,17 +1,20 @@
 package fr.legbt.binge.items;
 
+import java.awt.geom.Rectangle2D;
+import java.awt.*;
+import fr.legbt.binge.*;
+
 /**
  * PlanYMin describe a top horizontal half plan item for simple bounding collisions.
  */
-public abstract class PlanYMin extends Plan{
-
+public class PlanYMin extends Plan{
 	protected int y;
 
 	/**
 	 * Ymay Plan construction 
 	 */
-	public PlanYMin(CollisionsManager cm, int y){
-		super(cm);
+	public PlanYMin(Binge game, int y){
+		super(game);
 		this.y = y;
 	}
 
@@ -26,4 +29,10 @@ public abstract class PlanYMin extends Plan{
 		}	
 		return false;
 	}
+
+	public void traceMe(Graphics g){
+		g.fillRect(0,0,game.getWidth(),y);
+
+	}
+
 }

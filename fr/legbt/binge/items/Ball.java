@@ -25,6 +25,7 @@ public abstract class Ball extends Item{
 	}
 
 	public void traceMe(Graphics g){
+		theball.setFrame(x,y,radius,radius);
 		((Graphics2D)g).fill(theball);
 	}
 

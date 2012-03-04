@@ -13,6 +13,7 @@ public class Binge extends JPanel{
 	public BingeTask atimer;
 	public CollisionsManager collisionsmanager;
 	public PaintManager paintmanager;
+	public ActionsManager actionsmanager;
 	private ArrayList<Item> itemlist;
 	private ArrayList<FixedItem> fixeditemlist;
 
@@ -30,12 +31,14 @@ public class Binge extends JPanel{
 		this.frame.setSize(width,height);
 		this.collisionsmanager = new CollisionsManager();
 		this.paintmanager = new PaintManager(this);
+		this.actionsmanager = new ActionsManager();
 		this.frame.setContentPane(this);
 		this.frame.setVisible(true);
 		newtimer.schedule(this.atimer,0,framerate);
 	}
 
 	public void timedActions(){
+		this.actionsmanager.actionThemAll();
 		this.collisionsmanager.testCollisions();
 		this.frame.repaint();
 	}

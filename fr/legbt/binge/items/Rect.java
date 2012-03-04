@@ -3,11 +3,13 @@ package fr.legbt.binge.items;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import fr.legbt.binge.Binge;
+import java.awt.*;
 
 /**
  * Rect is a simple rectangular item
  */
 public abstract class Rect extends Item{
+	private Rectangle2D therect;
 	protected int height;
 	protected int width;
 
@@ -18,7 +20,15 @@ public abstract class Rect extends Item{
 		super(game,x,y);
 		this.height = height;
 		this.width = width;
+		this.therect = new Rectangle2D.Double(x,y,width,height);
 	}
+
+	public void traceMe(Graphics g){
+		therect.setFrame(x,y,width,height);
+		g.fillRect(x,y,width,height);
+	}
+
+
 	protected Boolean collideWith(Item item){
 		if (item instanceof Ball){
 			Ellipse2D.Double circle = new Ellipse2D.Double(item.x, item.y, ((Ball)item).radius, ((Ball)item).radius);
@@ -28,12 +38,13 @@ public abstract class Rect extends Item{
 			return false;
 		}
 		if (item instanceof Rect){
-			Rectangle2D.Double lerect = new Rectangle2D.Double(this.x,this.y,this.width,this.height);
-			if (lerect.intersects(item.x,item.y,((Rect)item).width,((Rect)item).height)){
+			if (therect.intersects(item.x,item.y,((Rect)item).width,((Rect)item).height)){
 				return true;
 			}
 			return false;
 		}
 		return false;
 	}
+
+
 }

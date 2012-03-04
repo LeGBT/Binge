@@ -20,7 +20,9 @@ public class CollisionsManager {
 						Item itemj = itemlist.get(j);
 						if (itemi.collideWith(itemj)){
 							itemi.xnext = itemi.x;
+							itemi.ynext = itemi.y;
 							itemj.xnext = itemj.x;
+							itemj.ynext = itemj.y;
 						}
 					}
 				}
@@ -28,10 +30,12 @@ public class CollisionsManager {
 					FixedItem itemj = fixeditemlist.get(j);
 					if (itemj.collideWith(itemi)){
 						itemi.xnext = itemi.x;
+						itemi.ynext = itemi.y;
 					}
 				}
+
 				//dépalcer les objets si tout est bon
-				itemi.move(itemi.xnext,itemi.ynext);
+				itemi.setPosition(itemi.xnext,itemi.ynext);
 			}
 		} catch(Exception e){
 			System.out.println("segfault ?" + e);
