@@ -9,20 +9,22 @@ import javax.swing.*;
 
 
 public class UneBoule extends Ball{
+	private int speed;
 
-	public UneBoule(Binge game, int x, int y, int radius){
+	public UneBoule(Binge game, int x, int y, int radius, int speed){
 		super(game,x,y,radius);	
 		xspeed = 0;
 		yspeed = 0;
+		this.speed = speed;
 		setListener();
 	}
 
 	public void onKeyDown(int key){
 		switch (key){
-			case KeyEvent.VK_LEFT:	xspeed = -4;break;
-			case KeyEvent.VK_RIGHT:	xspeed = +4;break;
-			case KeyEvent.VK_UP:	yspeed = -4;break;
-			case KeyEvent.VK_DOWN:	yspeed = +4;break;
+			case KeyEvent.VK_LEFT:	xspeed = -speed;break;
+			case KeyEvent.VK_RIGHT:	xspeed = +speed;break;
+			case KeyEvent.VK_UP:	yspeed = -speed;break;
+			case KeyEvent.VK_DOWN:	yspeed = +speed;break;
 		}	
 
 	}

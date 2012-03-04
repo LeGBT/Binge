@@ -15,7 +15,7 @@ public class Boule extends Binge{
 
 	public Boule(String name, int width, int height, int framerate){
 		super(name,width,height,framerate);
-		uneboule = new UneBoule(this,500,500,30);
+		uneboule = new UneBoule(this,500,500,70,10);
 		planxa = new PlanXMax(this,1000);
 		planxi = new PlanXMin(this,100);
 		planya = new PlanYMax(this,600);

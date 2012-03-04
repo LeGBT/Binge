@@ -11,7 +11,7 @@ public class CollisionsManager {
 
 	public void tryToMove(){
 		// Test every possible collisions	
-		Boolean test = false;
+		// Boolean test = false;
 		try{
 			for (int i=0;i<itemlist.size();i++){
 				Item itemi = itemlist.get(i);

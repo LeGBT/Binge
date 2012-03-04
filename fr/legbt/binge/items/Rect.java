@@ -9,7 +9,7 @@ import java.awt.*;
  * Rect is a simple rectangular item
  */
 public abstract class Rect extends Item{
-	private Rectangle2D therect;
+	private Rectangle2D.Double therect;
 	protected int height;
 	protected int width;
 
@@ -28,17 +28,23 @@ public abstract class Rect extends Item{
 		g.fillRect(x,y,width,height);
 	}
 
+	public Rectangle2D.Double getRect(){
+		return therect;
+	}
+
 
 	protected Boolean collideWith(Item item){
 		if (item instanceof Ball){
-			Ellipse2D.Double circle = new Ellipse2D.Double(item.x, item.y, ((Ball)item).diameter, ((Ball)item).diameter);
-			if (circle.intersects(this.x, this.y, this.width, this.height)){
+			//	Ellipse2D.Double circle = new Ellipse2D.Double(item.x, item.y, ((Ball)item).diameter, ((Ball)item).diameter);
+			Ellipse2D.Double circle = ((Ball)item).getDisc();
+			if (circle.intersects(this.xnext, this.ynext, this.width, this.height)){
 				return true;
 			}
 			return false;
 		}
 		if (item instanceof Rect){
-			if (therect.intersects(item.x,item.y,((Rect)item).width,((Rect)item).height)){
+			Rectangle2D.Double rect = ((Rect)item).getRect();
+			if (rect.intersects(this.xnext,this.ynext,this.width,this.height)){
 				return true;
 			}
 			return false;

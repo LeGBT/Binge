@@ -20,11 +20,11 @@ public class PlanXMin extends Plan{
 
 	protected Boolean collideWith(Item item){
 		if (item instanceof Rect){
-			if (item.x <= x){ return true;} else {
+			if (item.xnext <= x){ return true;} else {
 				return false;}
 		}
 		if (item instanceof Ball){
-			if (item.x <= x){ return true;} else {
+			if (item.xnext <= x){ return true;} else {
 				return false;}
 		}	
 		return false;

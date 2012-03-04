@@ -20,11 +20,11 @@ public class PlanXMax extends Plan{
 
 	protected Boolean collideWith(Item item){
 		if (item instanceof Rect){
-			if (item.x+((Rect)item).width >= x){ return true;} else {
+			if (item.xnext+((Rect)item).width >= x){ return true;} else {
 				return false;}
 		}
 		if (item instanceof Ball){
-			if (item.x+((Ball)item).diameter >= x){ return true;} else {
+			if (item.xnext+((Ball)item).diameter >= x){ return true;} else {
 				return false;}
 		}	
 		return false;

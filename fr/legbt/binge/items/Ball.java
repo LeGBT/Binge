@@ -29,10 +29,22 @@ public abstract class Ball extends Item{
 		((Graphics2D)g).fill(theball);
 	}
 
+	protected Ellipse2D.Double getDisc(){
+		return this.theball;
+	}
+
+	// add xcenter to setXY
+	void setXY(int x, int y){
+		this.x =x;
+		this.y =y;
+		this.xcenter = x + diameter/2;
+		this.ycenter = y + diameter/2;
+	}
+
 	protected Boolean collideWith(Item item){
 		if (item instanceof Ball){
 			Ball it = (Ball) item; 
-			int dist = (it.xcenter-this.xcenter)*(it.xcenter-this.xcenter) + (it.ycenter-this.ycenter)*(it.ycenter-this.ycenter);
+			Double dist = Math.pow((it.xnext-this.xnext +  it.diameter/2 +this.diameter/2),2) + Math.pow((it.ynext-this.ynext + it.diameter/2 - this.diameter/2),2);
 			if (dist <= ((it.diameter+this.diameter)*(it.diameter+this.diameter))){
 				return true;
 			}
@@ -40,8 +52,8 @@ public abstract class Ball extends Item{
 		}
 		if (item instanceof Rect){
 			Rect it = (Rect) item;
-			Ellipse2D.Double circle = new Ellipse2D.Double(this.x, this.y, this.diameter, this.diameter);
-			if (circle.intersects(it.x, it.y, it.width, it.height)){
+			Ellipse2D.Double circle = this.theball;
+			if (circle.intersects(it.xnext, it.ynext, it.width, it.height)){
 				return true;
 			}
 			return false;

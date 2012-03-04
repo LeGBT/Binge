@@ -20,11 +20,11 @@ public class PlanYMin extends Plan{
 
 	protected Boolean collideWith(Item item){
 		if (item instanceof Rect){
-			if (item.y <= y){ return true;} else {
+			if (item.ynext <= y){ return true;} else {
 				return false;}
 		}
 		if (item instanceof Ball){
-			if (item.y <= y){ return true;} else {
+			if (item.ynext <= y){ return true;} else {
 				return false;}
 		}	
 		return false;
