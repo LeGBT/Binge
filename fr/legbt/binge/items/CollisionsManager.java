@@ -13,9 +13,9 @@ public class CollisionsManager {
 		// Test every possible collisions	
 		Boolean test = false;
 		try{
-			for (int i=0;i<=itemlist.size();i++){
+			for (int i=0;i<itemlist.size();i++){
 				Item itemi = itemlist.get(i);
-				for (int j=0;j<=itemlist.size();j++){
+				for (int j=0;j<itemlist.size();j++){
 					if (j != i){
 						Item itemj = itemlist.get(j);
 						if (itemi.collideWith(itemj)){
@@ -24,7 +24,7 @@ public class CollisionsManager {
 						}
 					}
 				}
-				for (int j=0;j<=fixeditemlist.size();j++){
+				for (int j=0;j<fixeditemlist.size();j++){
 					FixedItem itemj = fixeditemlist.get(j);
 					if (itemj.collideWith(itemi)){
 						itemi.xnext = itemi.x;
@@ -34,12 +34,13 @@ public class CollisionsManager {
 				itemi.move(itemi.xnext,itemi.ynext);
 			}
 		} catch(Exception e){
-			System.out.println("segfault ?");
+			System.out.println("segfault ?" + e);
 		}
 	}
 
 	public CollisionsManager(){
 		itemlist = new ArrayList<Item>();
+		fixeditemlist = new ArrayList<FixedItem>();
 	}
 
 
@@ -51,7 +52,7 @@ public class CollisionsManager {
 	}
 
 	public void testCollisions(){
-		//test puis fait tout bouger si c'est bon
+		this.tryToMove();
 	}
 
 	public void clearMe(){

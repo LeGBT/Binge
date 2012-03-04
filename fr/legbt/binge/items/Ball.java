@@ -1,6 +1,7 @@
 package fr.legbt.binge.items;
 
 import java.awt.geom.Ellipse2D;
+import java.awt.*;
 
 /**
  * Ball is a simple disc item.
@@ -9,6 +10,7 @@ public abstract class Ball extends Item{
 	protected int xcenter;
 	protected int ycenter;
 	protected int radius;
+	private Ellipse2D.Double theball;
 
 	/**
 	 * Constructor for Ball defined by the top left coordinate point of the smallest square containing the ball. 
@@ -18,6 +20,11 @@ public abstract class Ball extends Item{
 		this.xcenter = x + radius;
 		this.ycenter = y + radius;
 		this.radius = radius;
+		this.theball = new Ellipse2D.Double(x,y,radius,radius);
+	}
+
+	public void traceMe(Graphics g){
+		((Graphics2D)g).fill(theball);
 	}
 
 	protected Boolean collideWith(Item item){

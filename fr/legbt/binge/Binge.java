@@ -12,16 +12,25 @@ public class Binge extends JPanel{
 	public JFrame frame;
 	public BingeTask atimer;
 	public CollisionsManager collisionsmanager;
+	private ArrayList<Item> itemlist;
+	private ArrayList<FixedItem> fixeditemlist;
 
 
 
-	public Binge(String name, int width, int height){
+	public Binge(String name, int width, int height, int framerate){
 		super();
 		this.screen = new Rectangle(0,0,width,height);
 		this.bounds = new Rectangle(0,0,width,height - 20);
 		this.frame = new JFrame(name);
 		this.atimer = new BingeTask(this);
+		java.util.Timer newtimer = new java.util.Timer();
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setFocusable(true);
+		this.frame.setSize(width,height);
 		this.collisionsmanager = new CollisionsManager();
+		this.frame.setContentPane(this);
+		this.frame.setVisible(true);
+		newtimer.schedule(this.atimer,0,framerate);
 	}
 
 	public void timedActions(){
@@ -29,12 +38,10 @@ public class Binge extends JPanel{
 		this.frame.repaint();
 	}
 
-
-//	public void paintComponent(Graphics g){
-//		this.bounds = g.getClipBounds();
-//		g.clearRect(screen.x,screen.y,screen.width,screen.height);
-//		//	laballe.traceMe();
-//	}
+	public void paintComponent(Graphics g){
+		this.bounds = g.getClipBounds();
+		g.clearRect(screen.x,screen.y,screen.width,screen.height);
+	}
 
 	/*	public static void main(String arg[]){
 		java.util.Timer montimer = new java.util.Timer();

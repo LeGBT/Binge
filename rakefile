@@ -46,5 +46,11 @@ task :items do
 	end
 end
 
+desc "les tests"
+task :test do
+	puts "tests builds"
+	sh %{javac testboule/*.java}
+end
+
 CLEAN.include(".DS_Store")
 CLOBBER.include("**/*.class", "**/*.css", "**/.DS_Store", "**/*.html")

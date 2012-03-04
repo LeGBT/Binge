@@ -1,7 +1,8 @@
 package fr.legbt.binge.items;
 
-//import java.awt.*;
+import java.awt.*;
 import java.awt.event.*;
+
 
 public abstract class Item implements KeyListener{
 	public CollisionsManager collisionsmanager;
@@ -52,7 +53,7 @@ public abstract class Item implements KeyListener{
 		this.y = y;
 	}
 	protected abstract Boolean collideWith(Item item);
-	public abstract void traceMe();
+	public abstract void traceMe(Graphics g);
 	protected abstract void onKeyUp(int keycode);
 	protected abstract void onKeyDown(int keycode);
 }
