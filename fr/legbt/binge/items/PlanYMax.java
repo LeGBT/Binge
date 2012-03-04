@@ -25,7 +25,7 @@ public class PlanYMax extends Plan{
 				return false;}
 		}
 		if (item instanceof Ball){
-			if (item.y+2*((Ball)item).radius >= y){ return true;} else {
+			if (item.y+((Ball)item).diameter >= y){ return true;} else {
 				return false;}
 		}	
 		return false;

@@ -24,7 +24,7 @@ public class PlanXMax extends Plan{
 				return false;}
 		}
 		if (item instanceof Ball){
-			if (item.x+2*((Ball)item).radius >= x){ return true;} else {
+			if (item.x+((Ball)item).diameter >= x){ return true;} else {
 				return false;}
 		}	
 		return false;

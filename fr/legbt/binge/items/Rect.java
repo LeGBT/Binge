@@ -31,7 +31,7 @@ public abstract class Rect extends Item{
 
 	protected Boolean collideWith(Item item){
 		if (item instanceof Ball){
-			Ellipse2D.Double circle = new Ellipse2D.Double(item.x, item.y, ((Ball)item).radius, ((Ball)item).radius);
+			Ellipse2D.Double circle = new Ellipse2D.Double(item.x, item.y, ((Ball)item).diameter, ((Ball)item).diameter);
 			if (circle.intersects(this.x, this.y, this.width, this.height)){
 				return true;
 			}
