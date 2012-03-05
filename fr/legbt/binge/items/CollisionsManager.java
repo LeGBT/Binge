@@ -19,6 +19,8 @@ public class CollisionsManager {
 					if (j != i){
 						Item itemj = itemlist.get(j);
 						if (itemi.collideWith(itemj)){
+							itemi.onCollide(itemj);
+							itemj.onCollide(itemi);
 							itemi.xnext = itemi.x;
 							itemi.ynext = itemi.y;
 							itemj.xnext = itemj.x;
@@ -29,12 +31,11 @@ public class CollisionsManager {
 				for (int j=0;j<fixeditemlist.size();j++){
 					FixedItem itemj = fixeditemlist.get(j);
 					if (itemj.collideWith(itemi)){
+						itemi.onCollide(itemj);
 						itemi.xnext = itemi.x;
 						itemi.ynext = itemi.y;
 					}
 				}
-
-				//dépalcer les objets si tout est bon
 				itemi.setPosition(itemi.xnext,itemi.ynext);
 			}
 		} catch(Exception e){

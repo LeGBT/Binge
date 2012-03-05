@@ -52,5 +52,4 @@ public abstract class Rect extends Item{
 		return false;
 	}
 
-
 }

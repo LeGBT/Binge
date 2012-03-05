@@ -17,8 +17,8 @@ public abstract class Item implements KeyListener{
 	protected int y;
 	protected int xspeed;
 	protected int yspeed;
-	protected int xnext;
-	protected int ynext;
+	public int xnext;
+	public int ynext;
 	//public Graphics graphics;
 
 	protected Item(Binge game, int x, int y){
@@ -45,6 +45,9 @@ public abstract class Item implements KeyListener{
 		this.ynext = newy;
 	}
 
+	public int getX(){return this.x;}
+	public int getY(){return this.y;}
+
 	protected void setListener(){
 		this.game.frame.addKeyListener(this);
 	}
@@ -68,6 +71,8 @@ public abstract class Item implements KeyListener{
 		this.y = y;
 	}
 	protected abstract Boolean collideWith(Item item);
+	protected abstract void onCollide(Item item);
+	protected abstract void onCollide(FixedItem fixeditem);
 	protected abstract void traceMe(Graphics g);
 	protected abstract void action();
 	protected abstract void onKeyUp(int keycode);
