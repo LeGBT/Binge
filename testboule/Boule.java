@@ -9,6 +9,7 @@ import fr.legbt.binge.items.*;
 public class Boule extends Binge{
 	UneBoule uneboule;
 	UneBoule unboule;
+	UneBoule boule3;
 	Plan planxa;
 	Plan planxi;
 	Plan planya;
@@ -16,8 +17,9 @@ public class Boule extends Binge{
 
 	public Boule(String name, int width, int height, int framerate){
 		super(name,width,height,framerate);
-		uneboule = new UneBoule(this,500,500,70,10);
-		unboule = new UneBoule(this,300,500,70,7);
+		uneboule = new UneBoule(this,500,500,70,8);
+		unboule = new UneBoule(this,300,500,70,5);
+	//	boule3 = new UneBoule(this,700,500,40,11);
 		planxa = new PlanXMax(this,1000);
 		planxi = new PlanXMin(this,100);
 		planya = new PlanYMax(this,600);

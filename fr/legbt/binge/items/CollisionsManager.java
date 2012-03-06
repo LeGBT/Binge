@@ -10,22 +10,20 @@ public class CollisionsManager {
 	private	ArrayList<FixedItem> fixeditemlist;	
 
 	public void tryToMove(){
-		// Test every possible collisions	
+		// Test only once each possible collisions	
 		// Boolean test = false;
 		try{
 			for (int i=0;i<itemlist.size();i++){
 				Item itemi = itemlist.get(i);
-				for (int j=0;j<itemlist.size();j++){
-					if (j != i){
+				for (int j=i+1;j<itemlist.size();j++){
 						Item itemj = itemlist.get(j);
 						if (itemi.collideWith(itemj)){
-							itemi.onCollide(itemj);
+						//	itemi.onCollide(itemj);
 							itemj.onCollide(itemi);
 							itemi.xnext = itemi.x;
 							itemi.ynext = itemi.y;
 							itemj.xnext = itemj.x;
 							itemj.ynext = itemj.y;
-						}
 					}
 				}
 				for (int j=0;j<fixeditemlist.size();j++){

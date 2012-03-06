@@ -29,6 +29,10 @@ public abstract class Ball extends Item{
 		((Graphics2D)g).fill(theball);
 	}
 
+	public int getDiameter(){
+		return this.diameter;
+	}
+
 	protected Ellipse2D.Double getDisc(){
 		return this.theball;
 	}

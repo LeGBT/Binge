@@ -9,18 +9,18 @@ import javax.swing.*;
 
 
 public class UneBoule extends Ball{
-	private int speed;
+	private double speed;
 
-	public UneBoule(Binge game, int x, int y, int radius, int speed){
-		super(game,x,y,radius);	
+	public UneBoule(Binge game, int x, int y, int diameter, double speed){
+		super(game,x,y,diameter);	
 		xspeed = speed;
-		yspeed = speed;
+		yspeed = speed + 3;
 		this.speed = speed;
 		setListener();
 	}
 
 	public void onKeyDown(int key){
-		System.out.println(key);
+		//System.out.println(key);
 		//		switch (key){
 		//			case KeyEvent.VK_LEFT:	xspeed = -speed;break;
 		//			case KeyEvent.VK_RIGHT:	xspeed = +speed;break;
@@ -48,18 +48,33 @@ public class UneBoule extends Ball{
 	protected void onCollide(Item item){
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons !
 		// il manque une normalisation !!!
-		Double theta = Math.atan(new Double(this.ynext-item.ynext)/(new Double(xnext-item.xnext)));
-		Double cos2theta = Math.cos(theta*2);
-		Double sin2thetaover2 = (Math.sin(theta*2))/2;
-		this.xspeed = (int)(-this.xspeed*cos2theta - this.yspeed*sin2thetaover2);
-		this.yspeed = (int)(-this.xspeed*sin2thetaover2 + this.yspeed*cos2theta);
-	//	System.out.println(this.xspeed);
-	//	System.out.println(this.yspeed);
-	//	System.out.println("+++++next///");
+		//  là !! mauvaise distance et j'ai pas pris les centres comme j'aurai du !!
+		double dist = Math.sqrt(Math.pow(item.getX()-))
+		double nx = 2d*(item.getX() - this.x)/((double)());
+		double ny = 2d*(item.getY() - this.y)/(((double)((Ball)item).getDiameter()+this.getDiameter()));
+		System.out.println("nx = " + nx);
+		System.out.println("ny = " + ny);
+		double gx = -ny;
+		double gy = nx;
+		double v1n = nx*this.getXSpeed() + ny*this.getYSpeed();
+		double v1g = gx*this.getXSpeed() + gy*this.getYSpeed();
+		double v2n = nx*item.getXSpeed() + ny*item.getYSpeed();
+		double v2g = gx*item.getXSpeed() + gy*item.getYSpeed();
+
+		this.xspeed = nx*v2n + gx*v1g;
+		this.yspeed = ny*v2n + gy*v1g;
+		item.setXSpeed(nx*v1n + gx*v2g);
+		item.setYSpeed(ny*v1n + gy*v2g);
+		System.out.println(this.xspeed);
+		System.out.println(this.yspeed);
+		System.out.println(item.getXSpeed());
+		System.out.println(item.getYSpeed());
+		System.out.println("+++++next///");
 	}
 
 	public void action(){
-		this.move(this.x+this.xspeed,this.y+this.yspeed);
+		this.move((int)(this.x+Math.round(this.xspeed)),(int)(this.y+Math.round(this.yspeed)));
+
 	}
 
 }

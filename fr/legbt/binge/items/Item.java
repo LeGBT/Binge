@@ -15,8 +15,8 @@ public abstract class Item implements KeyListener{
 	public Boolean wasneverfree;
 	protected int x;
 	protected int y;
-	protected int xspeed;
-	protected int yspeed;
+	protected double xspeed;
+	protected double yspeed;
 	public int xnext;
 	public int ynext;
 	//public Graphics graphics;
@@ -25,8 +25,8 @@ public abstract class Item implements KeyListener{
 		this.game = game;
 		this.x = x;
 		this.y = y;
-		this.xspeed = 0;
-		this.yspeed = 0;
+		this.xspeed = 0d;
+		this.yspeed = 0d;
 		this.xnext = x;
 		this.ynext = y;
 		this.collisionsmanager = game.collisionsmanager;
@@ -47,6 +47,10 @@ public abstract class Item implements KeyListener{
 
 	public int getX(){return this.x;}
 	public int getY(){return this.y;}
+	public double getXSpeed(){return this.xspeed;}
+	public double getYSpeed(){return this.yspeed;}
+	public void setXSpeed(double nxs){ this.xspeed = nxs;}
+	public void setYSpeed(double nys){ this.yspeed = nys;}
 
 	protected void setListener(){
 		this.game.frame.addKeyListener(this);
