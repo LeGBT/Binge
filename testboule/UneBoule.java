@@ -50,11 +50,9 @@ public class UneBoule extends Ball{
 		// il manque une normalisation !!!
 		//  là !! mauvaise distance et j'ai pas pris les centres comme j'aurai du !!
 		double dist = Math.sqrt(Math.pow(item.getX()-this.getX() + ((Ball)item).getDiameter() - this.getDiameter(),2) + Math.pow(item.getY()-this.getY()+((Ball)item).getDiameter() - this.getDiameter(),2));
-		System.out.println("dist = " + dist);
+		//System.out.println("dist = " + dist);
 		double nx = (item.getX() - this.x + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
 		double ny = (item.getY() - this.y + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
-		System.out.println("nx = " + nx);
-		System.out.println("ny = " + ny);
 		double gx = -ny;
 		double gy = nx;
 		double v1n = nx*this.getXSpeed() + ny*this.getYSpeed();
@@ -66,11 +64,8 @@ public class UneBoule extends Ball{
 		this.yspeed = ny*v2n + gy*v1g;
 		item.setXSpeed(nx*v1n + gx*v2g);
 		item.setYSpeed(ny*v1n + gy*v2g);
-		System.out.println(this.xspeed);
-		System.out.println(this.yspeed);
-		System.out.println(item.getXSpeed());
-		System.out.println(item.getYSpeed());
-		System.out.println("+++++next///");
+		//	System.out.println(Math.abs(this.xspeed + item.getXSpeed()) + Math.abs(this.yspeed + item.getYSpeed()) );
+		//	System.out.println("+++++next///");
 	}
 
 	public void action(){
