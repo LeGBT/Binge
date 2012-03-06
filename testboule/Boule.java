@@ -7,8 +7,8 @@ import fr.legbt.binge.items.*;
 //import fr.legbt.binge.*.*;
 
 public class Boule extends Binge{
-	UneBoule uneboule;
-	UneBoule unboule;
+	UneBoule boule1;
+	UneBoule boule2;
 	UneBoule boule3;
 	UneBoule boule4;
 	UneBoule boule5;
@@ -29,21 +29,21 @@ public class Boule extends Binge{
 
 	public Boule(String name, int width, int height, int framerate){
 		super(name,width,height,framerate);
-		uneboule = new UneBoule(this,500,500,70,8);
-		unboule = new UneBoule(this,300,500,70,5);
-		boule3 = new UneBoule(this,700,500,40,11);
-		boule4 = new UneBoule(this,200,400,60,4);
-		boule5 = new UneBoule(this,100,100,50,6);
-		boule6 = new UneBoule(this,200,600,60,2);
-		boule7 = new UneBoule(this,600,400,60,4);
-		boule8 = new UneBoule(this,500,300,60,4);
-		boule9 = new UneBoule(this,500,200,60,4);
-		boule10 = new UneBoule(this,500,100,40,4);
-		boule11 = new UneBoule(this,550,100,40,4);
-		boule12 = new UneBoule(this,600,100,40,4);
-		boule13 = new UneBoule(this,650,100,40,4);
-		boule14 = new UneBoule(this,750,100,40,4);
-		boule15 = new UneBoule(this,800,100,40,4);
+		boule1 = new UneBoule(this,500,500,30,8);
+		boule2 = new UneBoule(this,300,500,30,5);
+		boule3 = new UneBoule(this,700,500,30,11);
+		boule4 = new UneBoule(this,200,400,30,4);
+		boule5 = new UneBoule(this,100,100,30,6);
+		boule6 = new UneBoule(this,200,600,30,2);
+		boule7 = new UneBoule(this,600,400,30,4);
+		boule8 = new UneBoule(this,500,300,30,4);
+		boule9 = new UneBoule(this,500,200,30,4);
+		boule10 = new UneBoule(this,500,100,30,4);
+		boule11 = new UneBoule(this,550,100,30,4);
+		boule12 = new UneBoule(this,600,100,30,4);
+		boule13 = new UneBoule(this,650,100,30,4);
+		boule14 = new UneBoule(this,750,100,30,4);
+		boule15 = new UneBoule(this,800,100,30,4);
 		planxa = new PlanXMax(this,1000);
 		planxi = new PlanXMin(this,100);
 		planya = new PlanYMax(this,600);

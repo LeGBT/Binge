@@ -68,9 +68,14 @@ public class UneBoule extends Ball{
 		//	System.out.println("+++++next///");
 	}
 
+	public void traceMe(Graphics g){
+		Font f = new Font("Dialog", Font.PLAIN, 22);
+		g.setFont(f);
+		g.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y);
+	}
+
 	public void action(){
 		this.move((int)(this.x+Math.round(this.xspeed)),(int)(this.y+Math.round(this.yspeed)));
-
 	}
 
 }
