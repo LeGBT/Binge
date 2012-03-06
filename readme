@@ -1,0 +1,11 @@
+  ____  _                  
+ |  _ \(_)                 
+ | |_) |_ _ __   __ _  ___ 
+ |  _ <| | '_ \ / _` |/ _ \
+ | |_) | | | | | (_| |  __/
+ |____/|_|_| |_|\__, |\___|
+                 __/ |     
+                |___/  
+ Binge  Is  No  Game  Engine.
+
+It's a small package with usefull methods to implements small graphical object with keyboard actions and collisions gestion.
