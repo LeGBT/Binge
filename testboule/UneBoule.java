@@ -49,9 +49,10 @@ public class UneBoule extends Ball{
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons !
 		// il manque une normalisation !!!
 		//  là !! mauvaise distance et j'ai pas pris les centres comme j'aurai du !!
-		double dist = Math.sqrt(Math.pow(item.getX()-))
-		double nx = 2d*(item.getX() - this.x)/((double)());
-		double ny = 2d*(item.getY() - this.y)/(((double)((Ball)item).getDiameter()+this.getDiameter()));
+		double dist = Math.sqrt(Math.pow(item.getX()-this.getX() + ((Ball)item).getDiameter() - this.getDiameter(),2) + Math.pow(item.getY()-this.getY()+((Ball)item).getDiameter() - this.getDiameter(),2));
+		System.out.println("dist = " + dist);
+		double nx = (item.getX() - this.x + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
+		double ny = (item.getY() - this.y + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
 		System.out.println("nx = " + nx);
 		System.out.println("ny = " + ny);
 		double gx = -ny;
