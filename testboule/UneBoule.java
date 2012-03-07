@@ -46,15 +46,17 @@ public class UneBoule extends Ball{
 	}
 
 	protected void onCollide(Item item){
-		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons !
-		// il manque une normalisation !!!
-		//  là !! mauvaise distance et j'ai pas pris les centres comme j'aurai du !!
+		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons autre que leurs distances !
+		// calcul de la distance entre les centres :
 		double dist = Math.sqrt(Math.pow(item.getX()-this.getX() + ((Ball)item).getDiameter() - this.getDiameter(),2) + Math.pow(item.getY()-this.getY()+((Ball)item).getDiameter() - this.getDiameter(),2));
 		//System.out.println("dist = " + dist);
+		//vecteurs normaux à la collision :
 		double nx = (item.getX() - this.x + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
 		double ny = (item.getY() - this.y + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
+		//vecteurs tangents :
 		double gx = -ny;
 		double gy = nx;
+
 		double v1n = nx*this.getXSpeed() + ny*this.getYSpeed();
 		double v1g = gx*this.getXSpeed() + gy*this.getYSpeed();
 		double v2n = nx*item.getXSpeed() + ny*item.getYSpeed();
@@ -69,7 +71,7 @@ public class UneBoule extends Ball{
 	}
 
 	public void traceMe(Graphics g){
-		Font f = new Font("Dialog", Font.PLAIN, 22);
+		Font f = new Font("Casual", Font.PLAIN, 32);
 		g.setFont(f);
 		g.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y);
 	}

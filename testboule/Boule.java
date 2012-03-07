@@ -34,7 +34,7 @@ public class Boule extends Binge{
 		boule3 = new UneBoule(this,700,500,30,11);
 		boule4 = new UneBoule(this,200,400,30,4);
 		boule5 = new UneBoule(this,100,100,30,6);
-		boule6 = new UneBoule(this,200,600,30,2);
+		boule6 = new UneBoule(this,200,550,30,2);
 		boule7 = new UneBoule(this,600,400,30,4);
 		boule8 = new UneBoule(this,500,300,30,4);
 		boule9 = new UneBoule(this,500,200,30,4);
@@ -49,10 +49,7 @@ public class Boule extends Binge{
 		planya = new PlanYMax(this,600);
 		planyi = new PlanYMin(this,100);
 	}
-
-
 	public static void main(String arg[]){
 		Boule jeux = new Boule("jeux de boules",1280,720,20);
 	}
-
 }
