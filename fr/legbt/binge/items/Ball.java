@@ -7,7 +7,7 @@ import fr.legbt.binge.Binge;
 /**
  * Ball is a simple disc item.
  */
-public abstract class Ball extends Item{
+public abstract class Ball extends MovableItem{
 	protected int xcenter;
 	protected int ycenter;
 	protected int diameter;
@@ -45,17 +45,17 @@ public abstract class Ball extends Item{
 		this.ycenter = y + diameter/2;
 	}
 
-	protected Boolean collideWith(Item item){
-		if (item instanceof Ball){
-			Ball it = (Ball) item; 
+	protected Boolean collideWith(MovableItem mitem){
+		if (mitem instanceof Ball){
+			Ball it = (Ball) mitem; 
 			Double dist = Math.pow((it.xnext-this.xnext +  it.diameter/2 - this.diameter/2),2) + Math.pow((it.ynext-this.ynext + it.diameter/2 - this.diameter/2),2);
 			if (dist <= ((it.diameter/2+this.diameter/2)*(it.diameter/2+this.diameter/2))){
 				return true;
 			}
 			return false;
 		}
-		if (item instanceof Rect){
-			Rect it = (Rect) item;
+		if (mitem instanceof Rect){
+			Rect it = (Rect) mitem;
 			Ellipse2D.Double circle = this.theball;
 			if (circle.intersects(it.xnext, it.ynext, it.width, it.height)){
 				return true;

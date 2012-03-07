@@ -10,9 +10,9 @@ public class ActionsManager extends Manager {
 
 	public void actionThemAll(){
 		try{
-			for(int i=0;i<itemlist.size();i++){
-				Item item = itemlist.get(i);
-				item.action();
+			for(int i=0;i<movableitemlist.size();i++){
+				MovableItem mitem = movableitemlist.get(i);
+				mitem.action();
 			}
 
 		}catch(Exception e){

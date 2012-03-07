@@ -13,9 +13,9 @@ public class PaintManager extends Manager {
 
 	public void traceThemAll(){
 		try{
-			for(int i=0;i<itemlist.size();i++){
-				Item item = itemlist.get(i);
-				item.traceMe(game.getGraphics());
+			for(int i=0;i<movableitemlist.size();i++){
+				MovableItem mitem = movableitemlist.get(i);
+				mitem.traceMe(game.getGraphics());
 			}
 			for(int i=0;i<fixeditemlist.size();i++){
 				FixedItem item = fixeditemlist.get(i);

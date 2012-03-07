@@ -11,10 +11,10 @@ public class CollisionsManager extends Manager {
 		// Test only once each possible collisions	
 		// Boolean test = false;
 		try{
-			for (int i=0;i<itemlist.size();i++){
-				Item itemi = itemlist.get(i);
-				for (int j=i+1;j<itemlist.size();j++){
-						Item itemj = itemlist.get(j);
+			for (int i=0;i<movableitemlist.size();i++){
+				MovableItem itemi = movableitemlist.get(i);
+				for (int j=i+1;j<movableitemlist.size();j++){
+						MovableItem itemj = movableitemlist.get(j);
 						if (itemi.collideWith(itemj)){
 							itemj.onCollide(itemi);
 							itemi.xnext = itemi.x;

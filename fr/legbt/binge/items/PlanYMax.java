@@ -19,13 +19,13 @@ public class PlanYMax extends Plan{
 		this.y = y;
 	}
 
-	protected Boolean collideWith(Item item){
-		if (item instanceof Rect){
-			if (item.ynext + ((Rect)item).height >= y){ return true;} else {
+	protected Boolean collideWith(MovableItem mitem){
+		if (mitem instanceof Rect){
+			if (mitem.ynext + ((Rect)mitem).height >= y){ return true;} else {
 				return false;}
 		}
-		if (item instanceof Ball){
-			if (item.ynext+((Ball)item).diameter >= y){ return true;} else {
+		if (mitem instanceof Ball){
+			if (mitem.ynext+((Ball)mitem).diameter >= y){ return true;} else {
 				return false;}
 		}	
 		return false;

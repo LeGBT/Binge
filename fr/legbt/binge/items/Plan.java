@@ -23,7 +23,7 @@ public abstract class Plan extends FixedItem{
 		this.lerect = new Rectangle2D.Double(0,0,0,0);
 	}
 
-	abstract protected Boolean collideWith(Item item);
 	public abstract void traceMe(Graphics g);
+	protected void action(){}
 	
 }

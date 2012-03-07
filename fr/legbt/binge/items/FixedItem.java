@@ -4,19 +4,13 @@ import java.awt.*;
 //import java.awt.event.*;
 import fr.legbt.binge.Binge;
 
-public abstract class FixedItem {
-	protected Binge game;
-	public CollisionsManager collisionsmanager;
-	public PaintManager paintmanager;
+public abstract class FixedItem  extends Item{
 
 	protected FixedItem(Binge game){
-		this.game = game;
-		this.collisionsmanager = game.collisionsmanager;
-		this.paintmanager = game.paintmanager;
-		this.collisionsmanager.register(this); 
-		this.paintmanager.register(this); 
+		super(game,0,0);
 	}
-
-	public abstract void traceMe(Graphics g);
-	protected abstract Boolean collideWith(Item item);
+	
+	protected void registerThis(Manager manager){
+		manager.register(this);
+	}
 }

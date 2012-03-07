@@ -18,13 +18,13 @@ public class PlanYMin extends Plan{
 		this.y = y;
 	}
 
-	protected Boolean collideWith(Item item){
-		if (item instanceof Rect){
-			if (item.ynext <= y){ return true;} else {
+	protected Boolean collideWith(MovableItem mitem){
+		if (mitem instanceof Rect){
+			if (mitem.ynext <= y){ return true;} else {
 				return false;}
 		}
-		if (item instanceof Ball){
-			if (item.ynext <= y){ return true;} else {
+		if (mitem instanceof Ball){
+			if (mitem.ynext <= y){ return true;} else {
 				return false;}
 		}	
 		return false;

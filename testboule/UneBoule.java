@@ -39,35 +39,35 @@ public class UneBoule extends Ball{
 		//		}	
 	}
 
-	protected void onCollide(FixedItem item){
-		if (item instanceof PlanYMax){yspeed = -yspeed;}
-		if (item instanceof PlanYMin){yspeed = -yspeed;}
-		if (item instanceof PlanXMax){xspeed = -xspeed;}
-		if (item instanceof PlanXMin){xspeed = -xspeed;}
+	protected void onCollide(FixedItem fitem){
+		if (fitem instanceof PlanYMax){yspeed = -yspeed;}
+		if (fitem instanceof PlanYMin){yspeed = -yspeed;}
+		if (fitem instanceof PlanXMax){xspeed = -xspeed;}
+		if (fitem instanceof PlanXMin){xspeed = -xspeed;}
 	}
 
-	protected void onCollide(Item item){
+	protected void onCollide(MovableItem mitem){
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons autre que leurs distances !
 		// calcul de la distance entre les centres :
-		double dist = Math.sqrt(Math.pow(item.getX()-this.getX() + ((Ball)item).getDiameter() - this.getDiameter(),2) + Math.pow(item.getY()-this.getY()+((Ball)item).getDiameter() - this.getDiameter(),2));
+		double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
 		//System.out.println("dist = " + dist);
 		//vecteurs normaux à la collision :
-		double nx = (item.getX() - this.x + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
-		double ny = (item.getY() - this.y + ((Ball)item).getDiameter() - this.getDiameter())/((double)(dist));
+		double nx = (mitem.getX() - this.x + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
+		double ny = (mitem.getY() - this.y + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
 		//vecteurs tangents :
 		double gx = -ny;
 		double gy = nx;
 
 		double v1n = nx*this.getXSpeed() + ny*this.getYSpeed();
 		double v1g = gx*this.getXSpeed() + gy*this.getYSpeed();
-		double v2n = nx*item.getXSpeed() + ny*item.getYSpeed();
-		double v2g = gx*item.getXSpeed() + gy*item.getYSpeed();
+		double v2n = nx*mitem.getXSpeed() + ny*mitem.getYSpeed();
+		double v2g = gx*mitem.getXSpeed() + gy*mitem.getYSpeed();
 
 		this.xspeed = nx*v2n + gx*v1g;
 		this.yspeed = ny*v2n + gy*v1g;
-		item.setXSpeed(nx*v1n + gx*v2g);
-		item.setYSpeed(ny*v1n + gy*v2g);
-		//	System.out.println(Math.abs(this.xspeed + item.getXSpeed()) + Math.abs(this.yspeed + item.getYSpeed()) );
+		mitem.setXSpeed(nx*v1n + gx*v2g);
+		mitem.setYSpeed(ny*v1n + gy*v2g);
+		//	System.out.println(Math.abs(this.xspeed + mitem.getXSpeed()) + Math.abs(this.yspeed + mitem.getYSpeed()) );
 		//	System.out.println("+++++next///");
 	}
 
