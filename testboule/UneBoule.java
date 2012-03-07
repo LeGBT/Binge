@@ -10,6 +10,7 @@ import javax.swing.*;
 
 public class UneBoule extends Ball{
 	private double speed;
+ 
 
 	public UneBoule(Binge game, int x, int y, int diameter, double speed){
 		super(game,x,y,diameter);	

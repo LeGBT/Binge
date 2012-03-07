@@ -5,9 +5,7 @@ import java.util.Map.*;
 import java.awt.Rectangle;
 
 
-public class CollisionsManager {
-	private	ArrayList<Item> itemlist;	
-	private	ArrayList<FixedItem> fixeditemlist;	
+public class CollisionsManager extends Manager {
 
 	public void tryToMove(){
 		// Test only once each possible collisions	
@@ -18,7 +16,6 @@ public class CollisionsManager {
 				for (int j=i+1;j<itemlist.size();j++){
 						Item itemj = itemlist.get(j);
 						if (itemi.collideWith(itemj)){
-						//	itemi.onCollide(itemj);
 							itemj.onCollide(itemi);
 							itemi.xnext = itemi.x;
 							itemi.ynext = itemi.y;
@@ -42,24 +39,10 @@ public class CollisionsManager {
 	}
 
 	public CollisionsManager(){
-		itemlist = new ArrayList<Item>();
-		fixeditemlist = new ArrayList<FixedItem>();
-	}
-
-
-	protected void register(Item item){
-		this.itemlist.add(item);
-	}
-	protected void register(FixedItem item){
-		this.fixeditemlist.add(item);
+		super();
 	}
 
 	public void testCollisions(){
 		this.tryToMove();
-	}
-
-	public void clearMe(){
-		itemlist.clear();
-		fixeditemlist.clear();
 	}
 }
