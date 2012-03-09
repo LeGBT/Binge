@@ -40,8 +40,8 @@ public class Binge {
 
 	public JFrame getFrame(){return	this.gw.getFrame();}
 	public Level getLvl(){return this.lvl;}
-	public int getWidth(){return this.gw.getWidth();}
-	public int getHeight(){return this.gw.getHeight();}
+	public int getWidth(){return this.gw.getFrame().getWidth();}
+	public int getHeight(){return this.gw.getFrame().getHeight();}
 
 	public void loadLvl(String lvlfile){
 		try{
