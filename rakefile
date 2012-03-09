@@ -1,4 +1,9 @@
 require "rake/clean"
+
+def options
+	"-Xlint:-serial,unchecked"
+end
+
 desc "defaut task"
 task :default => ["build_classes"] 
 task :buildall => ["build_classes", "build_docs"]
@@ -20,7 +25,7 @@ desc "fr.legbt.binge.timers package build"
 task :timers do
 	puts "build binge.timers"
 	verbose(false) do
-		sh %{javac fr/legbt/binge/timers/*.java}
+		sh %{javac #{options} fr/legbt/binge/timers/*.java}
 	end
 
 end
@@ -29,7 +34,7 @@ desc "fr.legbt.binge.data package build"
 task :data do
 	puts "build binge.data"
 	verbose(false) do
-		sh %{javac fr/legbt/binge/data/*.java}
+		sh %{javac #{options} fr/legbt/binge/data/*.java}
 	end
 
 end
@@ -38,7 +43,7 @@ desc "fr.legbt.binge main package build"
 task :binge do
 	puts "build binge main classes"
 	verbose(false) do
-		sh %{javac fr/legbt/binge/*.java}
+		sh %{javac #{options} fr/legbt/binge/*.java}
 	end
 end
 
@@ -46,7 +51,7 @@ desc "fr.legbt.items package build"
 task :items do
 	puts "build binge.items ..."
 	verbose(false) do
-		sh %{javac fr/legbt/binge/items/*.java}
+		sh %{javac #{options} fr/legbt/binge/items/*.java}
 		#sh %{javac fr/legbt/binge/items/Item.java}
 		#sh %{javac fr/legbt/binge/items/Ball.java}
 		#sh %{javac fr/legbt/binge/items/Plan.java}
@@ -58,7 +63,7 @@ end
 desc "les tests"
 task :test do
 	puts "tests builds"
-	sh %{javac testboule/*.java}
+	sh %{javac #{options} testboule/*.java}
 end
 
 CLEAN.include(".DS_Store","*.tmp")

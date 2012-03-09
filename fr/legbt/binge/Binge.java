@@ -16,23 +16,26 @@ public class Binge extends JPanel{
 	public PaintManager paintmanager;
 	public ActionsManager actionsmanager;
 	private ArrayList<Item> itemlist;
-	private ArrayList<FixedItem> fixeditemlist;
+	private String lvlfile;
+	private Level lvl;
 
 
 
-	public Binge(String name, int width, int height, int framerate){
+	public Binge(String name,String lvlfile, int width, int height, int framerate){
 		super();
 		// test !!
-		try{
-			Level lvl = new Level(16,9);
-			int[] aline = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,16};
-			lvl.setLine(2,aline);
-			IOManager.storeLevel(lvl);
-		} catch(Exception e){
-			System.out.println(" binge segfault :" + e);
-			e.printStackTrace();
-		}
+		//		try{
+		//			this.lvl = new Level(16,9);
+		//			int[] aline = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,16};
+		//			lvl.setLine(2,aline);
+		//		IOManager.storeLevel(lvl);
+		//		lvl = IOManager.readLevel();
+		//		} catch(Exception e){
+		//			System.out.println(" binge segfault :" + e);
+		//			e.printStackTrace();
+		//		}
 		// fin test !!
+		//	Level lvl = IOManager.readLevel();
 		this.screen = new Rectangle(0,0,width,height);
 		this.bounds = new Rectangle(0,0,width,height - 20);
 		this.frame = new JFrame(name);
@@ -44,10 +47,13 @@ public class Binge extends JPanel{
 		this.collisionsmanager = new CollisionsManager();
 		this.paintmanager = new PaintManager(this);
 		this.actionsmanager = new ActionsManager();
+		this.lvlfile = lvlfile;
+		loadLvl(lvlfile);
 		this.frame.setContentPane(this);
 		this.frame.setVisible(true);
 		newtimer.schedule(this.atimer,0,framerate);
 	}
+
 
 	public void timedActions(){
 		this.actionsmanager.actionThemAll();
@@ -61,18 +67,20 @@ public class Binge extends JPanel{
 		this.paintmanager.traceThemAll();
 	}
 
-	/*	public static void main(String arg[]){
-		java.util.Timer montimer = new java.util.Timer();
-		Binge panel = new Binge();
-
-		panel.frame.setSize(1280,720);
-		panel.frame.setMinimumSize(new Dimension(800,600));
-		panel.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // app exit when window close.
-		panel.frame.setFocusable(true);
-	//panel.frame.addKeyListener(panel.lepad);
-	panel.frame.setContentPane(panel);
-	panel.frame.setVisible(true);
-	montimer.schedule(panel.atimer,0,20);
+	public Level getLvl(){
+		return this.lvl;
 	}
-	*/
+
+	public void loadLvl(String lvlfile){
+		try{
+			this.lvl = IOManager.readLevel();
+		} catch(Exception e){
+			System.out.println(" binge segfault :" + e);
+			e.printStackTrace();
+		}
+		this.itemlist =	this.lvl.getItemList();
+		for(int i=0; i<itemlist.size(); i++){
+			this.itemlist.get(i).setGame(this);
+		}
+	}
 }
