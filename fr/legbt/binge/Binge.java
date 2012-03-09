@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.timers.*;
+import fr.legbt.binge.data.*;
 
 public class Binge extends JPanel{
 	private static final long serialVersionUID = 3l; //serialisation warnings
@@ -21,6 +22,17 @@ public class Binge extends JPanel{
 
 	public Binge(String name, int width, int height, int framerate){
 		super();
+		// test !!
+		try{
+			Level lvl = new Level(16,9);
+			int[] aline = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,16};
+			lvl.setLine(2,aline);
+			IOManager.storeLevel(lvl);
+		} catch(Exception e){
+			System.out.println(" binge segfault :" + e);
+			e.printStackTrace();
+		}
+		// fin test !!
 		this.screen = new Rectangle(0,0,width,height);
 		this.bounds = new Rectangle(0,0,width,height - 20);
 		this.frame = new JFrame(name);

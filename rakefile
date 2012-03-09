@@ -1,9 +1,9 @@
 require "rake/clean"
 desc "defaut task"
-task :default => ["buildall"] 
+task :default => ["build_classes"] 
 task :buildall => ["build_classes", "build_docs"]
 
-task :build_classes => ["items", "timers", "binge"]
+task :build_classes => ["items", "timers","data", "binge"]
 
 task :doc => ["build_docs"] do
 verbose(false){sh %{open index.html}}
@@ -21,6 +21,15 @@ task :timers do
 	puts "build binge.timers"
 	verbose(false) do
 		sh %{javac fr/legbt/binge/timers/*.java}
+	end
+
+end
+
+desc "fr.legbt.binge.data package build"
+task :data do
+	puts "build binge.data"
+	verbose(false) do
+		sh %{javac fr/legbt/binge/data/*.java}
 	end
 
 end
@@ -52,5 +61,5 @@ task :test do
 	sh %{javac testboule/*.java}
 end
 
-CLEAN.include(".DS_Store")
-CLOBBER.include("**/*.class", "**/*.css", "**/.DS_Store", "**/*.html")
+CLEAN.include(".DS_Store","*.tmp")
+CLOBBER.include("**/*.class", "**/*.css", "**/.DS_Store", "**/*.html","*.tmp")
