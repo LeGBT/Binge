@@ -74,7 +74,10 @@ public class UneBoule extends Ball{
 	public void traceMe(Graphics g){
 		Font f = new Font("Casual", Font.PLAIN, 32);
 		g.setFont(f);
-		g.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y);
+		((Graphics2D)g).setColor(Color.GREEN);	
+		((Graphics2D)g).fill(this.getDisc());
+		((Graphics2D)g).setColor(Color.BLACK);	
+		g.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y+this.getDiameter());
 	}
 
 	public void action(){

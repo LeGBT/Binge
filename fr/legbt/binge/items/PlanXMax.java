@@ -31,6 +31,6 @@ public class PlanXMax extends Plan{
 	}
 
 	public void traceMe(Graphics g){
-		g.fillRect(x,0,game.getWidth()-x,game.getWidth());
+		g.fillRect(x,0,game.getWidth()-x,game.getHeight());
 	}	
 }

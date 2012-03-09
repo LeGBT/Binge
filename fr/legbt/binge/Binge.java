@@ -7,10 +7,7 @@ import fr.legbt.binge.items.*;
 import fr.legbt.binge.timers.*;
 import fr.legbt.binge.data.*;
 
-public class Binge extends JPanel{
-	private static final long serialVersionUID = 3l; //serialisation warnings
-	public Rectangle screen, bounds;
-	public JFrame frame;
+public class Binge {
 	public BingeTask atimer;
 	public CollisionsManager collisionsmanager;
 	public PaintManager paintmanager;
@@ -18,26 +15,19 @@ public class Binge extends JPanel{
 	private ArrayList<Item> itemlist;
 	private String lvlfile;
 	private Level lvl;
+	private GraphicWindow gw;
 
 
 
 	public Binge(String name,String lvlfile, int width, int height, int framerate){
-		super();
-		this.screen = new Rectangle(0,0,width,height);
-		this.bounds = new Rectangle(0,0,width,height - 20);
-		this.frame = new JFrame(name);
+		this.gw = new GraphicWindow(this,name,width,height);
 		this.atimer = new BingeTask(this);
 		java.util.Timer newtimer = new java.util.Timer();
-		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setFocusable(true);
-		this.frame.setSize(width,height);
 		this.collisionsmanager = new CollisionsManager();
 		this.paintmanager = new PaintManager(this);
 		this.actionsmanager = new ActionsManager();
 		this.lvlfile = lvlfile;
 		loadLvl(lvlfile);
-		this.frame.setContentPane(this);
-		this.frame.setVisible(true);
 		newtimer.schedule(this.atimer,0,framerate);
 	}
 
@@ -45,18 +35,13 @@ public class Binge extends JPanel{
 	public void timedActions(){
 		this.actionsmanager.actionThemAll();
 		this.collisionsmanager.testCollisions();
-		this.frame.repaint();
+		this.gw.getFrame().repaint();
 	}
 
-	public void paintComponent(Graphics g){
-		this.bounds = g.getClipBounds();
-		g.clearRect(screen.x,screen.y,screen.width,screen.height);
-		this.paintmanager.traceThemAll();
-	}
-
-	public Level getLvl(){
-		return this.lvl;
-	}
+	public JFrame getFrame(){return	this.gw.getFrame();}
+	public Level getLvl(){return this.lvl;}
+	public int getWidth(){return this.gw.getWidth();}
+	public int getHeight(){return this.gw.getHeight();}
 
 	public void loadLvl(String lvlfile){
 		try{

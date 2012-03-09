@@ -15,11 +15,11 @@ public class PaintManager extends Manager {
 		try{
 			for(int i=0;i<movableitemlist.size();i++){
 				MovableItem mitem = movableitemlist.get(i);
-				mitem.traceMe(game.getGraphics());
+				mitem.traceMe(game.getFrame().getGraphics());
 			}
 			for(int i=0;i<fixeditemlist.size();i++){
 				FixedItem item = fixeditemlist.get(i);
-				item.traceMe(game.getGraphics());
+				item.traceMe(game.getFrame().getGraphics());
 			}
 		}catch(Exception e){
 			System.out.println("paintmanager segfault ? " + e);

@@ -40,10 +40,10 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public void setYSpeed(double nys){ this.yspeed = nys;}
 
 	protected void setListener(){
-		this.game.frame.addKeyListener(this);
+		this.game.getFrame().addKeyListener(this);
 	}
 	protected void unSetListener(){
-		this.game.frame.removeKeyListener(this);
+		this.game.getFrame().removeKeyListener(this);
 	}
 
 	public void keyPressed(KeyEvent key){

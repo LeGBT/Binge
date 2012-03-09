@@ -34,6 +34,7 @@ public abstract class Ball extends MovableItem{
 	}
 
 	protected Ellipse2D.Double getDisc(){
+		theball.setFrame(x,y,diameter,diameter);
 		return this.theball;
 	}
 
