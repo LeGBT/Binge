@@ -23,19 +23,6 @@ public class Binge extends JPanel{
 
 	public Binge(String name,String lvlfile, int width, int height, int framerate){
 		super();
-		// test !!
-		//		try{
-		//			this.lvl = new Level(16,9);
-		//			int[] aline = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,16};
-		//			lvl.setLine(2,aline);
-		//		IOManager.storeLevel(lvl);
-		//		lvl = IOManager.readLevel();
-		//		} catch(Exception e){
-		//			System.out.println(" binge segfault :" + e);
-		//			e.printStackTrace();
-		//		}
-		// fin test !!
-		//	Level lvl = IOManager.readLevel();
 		this.screen = new Rectangle(0,0,width,height);
 		this.bounds = new Rectangle(0,0,width,height - 20);
 		this.frame = new JFrame(name);
