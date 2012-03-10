@@ -14,11 +14,13 @@ public abstract class Item implements Serializable {
 	public transient ActionsManager actionsmanager;
 	protected int x;
 	protected int y;
+	private transient int uniqueid;
 
 	protected Item(int x, int y){
 		this.x = x;
 		this.y = y;
 	}
+
 
 	protected Item(Binge game, int x, int y){
 		this.game = game;
@@ -30,9 +32,12 @@ public abstract class Item implements Serializable {
 		this.registerThis(this.actionsmanager);
 		this.registerThis(this.collisionsmanager);
 		this.registerThis(this.paintmanager);
+		this.uniqueid = 0;
 		game.getLvl().addItem(this);	
 	}
 
+	public void setID(int i){ this.uniqueid = i;}
+	public int getID(){return uniqueid;}
 	public int getX(){return this.x;}
 	public int getY(){return this.y;}
 
@@ -44,6 +49,10 @@ public abstract class Item implements Serializable {
 		this.registerThis(game.actionsmanager);
 		this.registerThis(game.collisionsmanager);
 		this.registerThis(game.paintmanager);
+	}
+
+	public void printNFO(){
+		System.out.println("Item n°"+ uniqueid + " is a" + this.getClass().getName());
 	}
 
 	protected abstract Boolean collideWith(MovableItem mitem);

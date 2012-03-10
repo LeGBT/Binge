@@ -17,25 +17,35 @@ public class Binge {
 	private String lvlfile;
 	private Level lvl;
 	private BingePanel bpanel;
+	private int framerate;
+	private java.util.Timer timer;
 
 
 	public Binge(String name,String lvlfile, int width, int height, int framerate){
+		this.framerate = framerate;
 		this.bpanel = new BingePanel(this,name,width,height);
 		this.atimer = new BingeTask(this);
-		java.util.Timer newtimer = new java.util.Timer();
+		this.timer = new java.util.Timer();
 		this.collisionsmanager = new CollisionsManager();
 		this.paintmanager = new PaintManager(this);
 		this.actionsmanager = new ActionsManager();
 		this.lvlfile = lvlfile;
-		loadLvl(lvlfile);
-		newtimer.schedule(this.atimer,0,framerate);
+		this.lvl = new Level(0,0);
+		//timer.schedule(this.atimer,0,this.framerate);
 	}
 
+	public void load(String lvlfile){
+		this.lvl = Level.loadLvl(lvlfile,this);
+		timer.schedule(this.atimer,0,this.framerate);
+	}
+	public void load(){
+		timer.schedule(this.atimer,0,this.framerate);
+	}
 
 	public void timedActions(){
 		this.actionsmanager.actionThemAll();
 		this.collisionsmanager.testCollisions();
-		this.bpanel.moveZone();
+		//		this.bpanel.moveZone();
 		this.bpanel.getFrame().repaint();
 	}
 
@@ -46,17 +56,4 @@ public class Binge {
 	public Level getLvl(){return this.lvl;}
 	public int getWidth(){return this.bpanel.getFrame().getWidth();}
 	public int getHeight(){return this.bpanel.getFrame().getHeight();}
-
-	public void loadLvl(String lvlfile){
-		try{
-			this.lvl = IOManager.readLevel();
-		} catch(Exception e){
-			System.out.println(" binge segfault :" + e);
-			e.printStackTrace();
-		}
-		this.itemlist =	this.lvl.getItemList();
-		for(int i=0; i<itemlist.size(); i++){
-			this.itemlist.get(i).setGame(this);
-		}
-	}
 }

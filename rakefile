@@ -11,19 +11,19 @@ task :buildall => ["build_classes", "build_docs"]
 task :build_classes => ["items", "timers","data", "binge"]
 
 task :doc => ["build_docs"] do
-verbose(false){sh %{open index.html}}
+	verbose(false){sh %{open index.html}}
 end
 
 desc "Docs generation..."
 task :build_docs  do
-	puts "Docs generation..."
+#	puts "Docs generation..."
 	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers > doclog.tmp}}
 end
 
 
 desc "fr.legbt.binge.timers package build"
 task :timers do
-	puts "build binge.timers"
+#	puts "build binge.timers"
 	verbose(false) do
 		sh %{javac #{options} fr/legbt/binge/timers/*.java}
 	end
@@ -32,16 +32,25 @@ end
 
 desc "fr.legbt.binge.data package build"
 task :data do
-	puts "build binge.data"
+#	puts "build binge.data"
 	verbose(false) do
 		sh %{javac #{options} fr/legbt/binge/data/*.java}
 	end
 
 end
 
+desc "fr.legbt.binge.graphics package build"
+task :data do
+#	puts "build binge.graphics"
+	verbose(false) do
+		sh %{javac #{options} fr/legbt/binge/graphics/*.java}
+	end
+
+end
+
 desc "fr.legbt.binge main package build"
 task :binge do
-	puts "build binge main classes"
+#	puts "build binge main classes"
 	verbose(false) do
 		sh %{javac #{options} fr/legbt/binge/*.java}
 	end
@@ -49,21 +58,18 @@ end
 
 desc "fr.legbt.items package build"
 task :items do
-	puts "build binge.items ..."
+#	puts "build binge.items ..."
 	verbose(false) do
 		sh %{javac #{options} fr/legbt/binge/items/*.java}
-		#sh %{javac fr/legbt/binge/items/Item.java}
-		#sh %{javac fr/legbt/binge/items/Ball.java}
-		#sh %{javac fr/legbt/binge/items/Plan.java}
-		#sh %{javac fr/legbt/binge/items/Rect.java}
-		#sh %{javac fr/legbt/binge/items/CollisionsManager.java}
 	end
 end
 
-desc "les tests"
-task :test do
-	puts "tests builds"
-	sh %{javac #{options} testboule/*.java}
+desc "les exemples"
+task :ex do
+#	puts "examples builds"
+	verbose(false) do
+		sh %{javac #{options} examples/*/*.java}
+	end
 end
 
 CLEAN.include(".DS_Store","*.tmp")

@@ -1,4 +1,4 @@
-package testboule;
+package examples.bouncing_balls;
 
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
@@ -8,16 +8,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class UneBoule extends Ball{
+public class Balls extends Ball{
 	private double speed;
  
 
-	public UneBoule(Binge game, int x, int y, int diameter, double speed){
+	public Balls(Binge game, int x, int y, int diameter, double speed){
 		super(game,x,y,diameter);	
 		xspeed = speed;
 		yspeed = speed + 3;
 		this.speed = speed;
-		setListener();
+	//	setListener();
 	}
 
 	public void onKeyDown(int key){
