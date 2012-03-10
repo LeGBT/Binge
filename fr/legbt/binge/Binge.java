@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.timers.*;
 import fr.legbt.binge.data.*;
+import fr.legbt.binge.graphics.*;
 
 public class Binge {
 	public BingeTask atimer;
@@ -15,12 +16,11 @@ public class Binge {
 	private ArrayList<Item> itemlist;
 	private String lvlfile;
 	private Level lvl;
-	private GraphicWindow gw;
-
+	private BingePanel bpanel;
 
 
 	public Binge(String name,String lvlfile, int width, int height, int framerate){
-		this.gw = new GraphicWindow(this,name,width,height);
+		this.bpanel = new BingePanel(this,name,width,height);
 		this.atimer = new BingeTask(this);
 		java.util.Timer newtimer = new java.util.Timer();
 		this.collisionsmanager = new CollisionsManager();
@@ -35,13 +35,17 @@ public class Binge {
 	public void timedActions(){
 		this.actionsmanager.actionThemAll();
 		this.collisionsmanager.testCollisions();
-		this.gw.getFrame().repaint();
+		this.bpanel.moveZone();
+		this.bpanel.getFrame().repaint();
 	}
 
-	public JFrame getFrame(){return	this.gw.getFrame();}
+	public DrawZone getDZ(){
+		return this.bpanel.getDZ();
+	}
+	public JFrame getFrame(){return	this.bpanel.getFrame();}
 	public Level getLvl(){return this.lvl;}
-	public int getWidth(){return this.gw.getFrame().getWidth();}
-	public int getHeight(){return this.gw.getFrame().getHeight();}
+	public int getWidth(){return this.bpanel.getFrame().getWidth();}
+	public int getHeight(){return this.bpanel.getFrame().getHeight();}
 
 	public void loadLvl(String lvlfile){
 		try{
