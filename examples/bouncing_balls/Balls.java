@@ -57,26 +57,37 @@ public class Balls extends Ball{
 		game.upScore();
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons autre que leurs distances !
 		// calcul de la distance entre les centres :
-		double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
-		//System.out.println("dist = " + dist);
-		//vecteurs normaux à la collision :
-		double nx = (mitem.getX() - this.x + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
-		double ny = (mitem.getY() - this.y + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
-		//vecteurs tangents :
-		double gx = -ny;
-		double gy = nx;
+		if (mitem instanceof Balls){
+			double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
+			//System.out.println("dist = " + dist);
+			//vecteurs normaux à la collision :
+			double nx = (mitem.getX() - this.x + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
+			double ny = (mitem.getY() - this.y + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
+			//vecteurs tangents :
+			double gx = -ny;
+			double gy = nx;
 
-		double v1n = nx*this.getXSpeed() + ny*this.getYSpeed();
-		double v1g = gx*this.getXSpeed() + gy*this.getYSpeed();
-		double v2n = nx*mitem.getXSpeed() + ny*mitem.getYSpeed();
-		double v2g = gx*mitem.getXSpeed() + gy*mitem.getYSpeed();
+			double v1n = nx*this.getXSpeed() + ny*this.getYSpeed();
+			double v1g = gx*this.getXSpeed() + gy*this.getYSpeed();
+			double v2n = nx*mitem.getXSpeed() + ny*mitem.getYSpeed();
+			double v2g = gx*mitem.getXSpeed() + gy*mitem.getYSpeed();
 
-		this.xspeed = nx*v2n + gx*v1g;
-		this.yspeed = ny*v2n + gy*v1g;
-		mitem.setXSpeed(nx*v1n + gx*v2g);
-		mitem.setYSpeed(ny*v1n + gy*v2g);
-		//	System.out.println(Math.abs(this.xspeed + mitem.getXSpeed()) + Math.abs(this.yspeed + mitem.getYSpeed()) );
-		//	System.out.println("+++++next///");
+			this.xspeed = nx*v2n + gx*v1g;
+			this.yspeed = ny*v2n + gy*v1g;
+			mitem.setXSpeed(nx*v1n + gx*v2g);
+			mitem.setYSpeed(ny*v1n + gy*v2g);
+		}else{
+			System.out.println("xnext:" + this.xnext + " x:"+this.x);
+			if (!mitem.collided){
+				if(this.x>20){
+					this.xspeed = -xspeed;
+					this.x += xspeed;
+				}
+			}else{
+				this.yspeed = -yspeed;
+				this.y += yspeed;
+			}
+		}
 	}
 
 	public void traceMe(Graphics g){
@@ -92,5 +103,4 @@ public class Balls extends Ball{
 	public void action(){
 		this.move((int)(this.x+Math.round(this.xspeed)),(int)(this.y+Math.round(this.yspeed)));
 	}
-
 }

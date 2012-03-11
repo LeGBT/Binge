@@ -23,7 +23,7 @@ public abstract class MovableItem extends Item implements KeyListener {
 		this.xnext = x;
 		this.ynext = y;
 		this.wasneverfree = true;
-		this.collided = true;
+		this.collided = false;
 		this.collide = false;
 	}
 

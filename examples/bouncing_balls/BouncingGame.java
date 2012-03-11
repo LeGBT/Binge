@@ -17,6 +17,7 @@ public class BouncingGame extends Binge{
 		score = new Counter(jeux,0,30,30);
 		if((arg.length != 0)){
 			System.out.println("reloaded");
+			Pad lepad = new Pad(jeux,20);
 			Balls	boule1 = new Balls(jeux,500,500,30,8);
 			Balls	boule2 = new Balls(jeux,300,500,30,5);
 			Balls	boule3 = new Balls(jeux,700,500,30,11);
@@ -32,7 +33,7 @@ public class BouncingGame extends Binge{
 			Balls	boule13 = new Balls(jeux,650,100,30,4);
 			Balls	boule14 = new Balls(jeux,750,100,30,4);
 			Balls	boule15 = new Balls(jeux,800,100,30,4);
-			Borders borders = new Borders(jeux, 1200,50,700,50);
+			Borders borders = new Borders(jeux, 1200,0,700,50);
 			LevelEditor le = new LevelEditor(jeux,"level");
 			//	jeux.load();
 		}else{
