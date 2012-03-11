@@ -59,5 +59,6 @@ public abstract class Item implements Serializable {
 	protected abstract void traceMe(Graphics g);
 	protected abstract void action();
 	protected abstract void registerThis(Manager manager);
+	public abstract void onLoaded(Binge game);
 
 }

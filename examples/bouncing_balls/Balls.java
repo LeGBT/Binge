@@ -10,14 +10,16 @@ import javax.swing.*;
 
 public class Balls extends Ball{
 	private double speed;
- 
+	private transient BouncingGame game;
+
 
 	public Balls(Binge game, int x, int y, int diameter, double speed){
 		super(game,x,y,diameter);	
+		this.game = (BouncingGame) game;
 		xspeed = speed;
 		yspeed = speed + 3;
 		this.speed = speed;
-	//	setListener();
+		//	setListener();
 	}
 
 	public void onKeyDown(int key){
@@ -39,7 +41,12 @@ public class Balls extends Ball{
 		//		}	
 	}
 
+	public void onLoaded(Binge game){
+		this.game = (BouncingGame) game;
+	}
+
 	protected void onCollide(FixedItem fitem){
+		game.upScore();
 		if (fitem instanceof PlanYMax){yspeed = -yspeed;}
 		if (fitem instanceof PlanYMin){yspeed = -yspeed;}
 		if (fitem instanceof PlanXMax){xspeed = -xspeed;}
@@ -47,6 +54,7 @@ public class Balls extends Ball{
 	}
 
 	protected void onCollide(MovableItem mitem){
+		game.upScore();
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons autre que leurs distances !
 		// calcul de la distance entre les centres :
 		double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
@@ -72,12 +80,13 @@ public class Balls extends Ball{
 	}
 
 	public void traceMe(Graphics g){
+		Graphics2D g2d = (Graphics2D) g;	
 		Font f = new Font("Casual", Font.PLAIN, 32);
-		g.setFont(f);
-		((Graphics2D)g).setColor(Color.GREEN);	
-		((Graphics2D)g).fill(this.getDisc());
-		((Graphics2D)g).setColor(Color.BLACK);	
-		g.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y+this.getDiameter());
+		g2d.setFont(f);
+		g2d.setColor(Color.GREEN);	
+		g2d.fill(this.getDisc());
+		g2d.setColor(Color.BLACK);	
+		g2d.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y+this.getDiameter());
 	}
 
 	public void action(){

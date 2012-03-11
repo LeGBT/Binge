@@ -25,5 +25,6 @@ public abstract class Plan extends FixedItem{
 
 	public abstract void traceMe(Graphics g);
 	protected void action(){}
+	public void onLoaded(Binge game){}
 	
 }
