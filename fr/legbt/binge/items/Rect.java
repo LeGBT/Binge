@@ -35,8 +35,8 @@ public abstract class Rect extends MovableItem{
 
 	protected Boolean collideWith(MovableItem mitem){
 		if (mitem instanceof Ball){
-			//	Ellipse2D.Double circle = new Ellipse2D.Double(mitem.x, mitem.y, ((Ball)mitem).diameter, ((Ball)mitem).diameter);
-			Ellipse2D.Double circle = ((Ball)mitem).getDisc();
+				Ellipse2D.Double circle = new Ellipse2D.Double(mitem.xnext, mitem.ynext, ((Ball)mitem).diameter, ((Ball)mitem).diameter);
+		//	Ellipse2D.Double circle = ((Ball)mitem).getDisc();
 			if (circle.intersects(this.xnext, this.ynext, this.width, this.height)){
 				return true;
 			}

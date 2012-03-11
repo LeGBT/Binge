@@ -77,15 +77,13 @@ public class Balls extends Ball{
 			mitem.setXSpeed(nx*v1n + gx*v2g);
 			mitem.setYSpeed(ny*v1n + gy*v2g);
 		}else{
-			System.out.println("xnext:" + this.xnext + " x:"+this.x);
 			if (!mitem.collided){
-				if(this.x>20){
+				if(this.x>50){
 					this.xspeed = -xspeed;
-					this.x += xspeed;
+
+				}else{
+					this.yspeed = -yspeed;
 				}
-			}else{
-				this.yspeed = -yspeed;
-				this.y += yspeed;
 			}
 		}
 	}

@@ -57,10 +57,13 @@ public abstract class Ball extends MovableItem{
 		}
 		if (mitem instanceof Rect){
 			Rect it = (Rect) mitem;
+			theball.setFrame(xnext,ynext,diameter,diameter);
 			Ellipse2D.Double circle = this.theball;
 			if (circle.intersects(it.xnext, it.ynext, it.width, it.height)){
+				theball.setFrame(x,y,diameter,diameter);
 				return true;
 			}
+			theball.setFrame(x,y,diameter,diameter);
 			return false;
 		}
 		return false;

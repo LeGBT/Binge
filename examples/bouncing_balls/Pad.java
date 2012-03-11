@@ -19,15 +19,7 @@ public class Pad extends Rect{
 	}
 
 	public void onCollide(FixedItem fitem){}
-	public void onCollide(MovableItem mitem){
-		if (!this.collided){
-			if(mitem.x>20){
-				mitem.setXSpeed(mitem.getXspeed);
-			}
-		}else{
-				mitem.setYSpeed(mitem.getYspeed);
-		}
-	}
+	public void onCollide(MovableItem mitem){}
 	public void onLoaded(Binge game){}
 	public void action(){}
 
