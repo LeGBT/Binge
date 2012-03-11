@@ -26,9 +26,9 @@ public class DrawZone extends JComponent{
 
 	public void paintComponent(Graphics g){
 	//	this.bounds = g.getClipBounds();
-		g.clearRect(screen.x,screen.y,screen.width,screen.height);
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, getWidth(), getHeight());
+	//	g.clearRect(screen.x,screen.y,screen.width,screen.height);
+	//	g.setColor(Color.WHITE);
+	//	g.fillRect(0, 0, getWidth(), getHeight());
 		this.bpanel.game.paintmanager.traceThemAll();
 	}
 }

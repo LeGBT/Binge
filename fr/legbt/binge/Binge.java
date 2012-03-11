@@ -49,9 +49,8 @@ public class Binge {
 		this.bpanel.getFrame().repaint();
 	}
 
-	public DrawZone getDZ(){
-		return this.bpanel.getDZ();
-	}
+	public Graphics getItemDrawZoneGraphics(){return this.bpanel.getItemDrawZoneGraphics();}
+	public Graphics getUIGraphics(){return this.bpanel.getUIGraphics();}
 	public JFrame getFrame(){return	this.bpanel.getFrame();}
 	public Level getLvl(){return this.lvl;}
 	public int getWidth(){return this.bpanel.getFrame().getWidth();}

@@ -9,6 +9,7 @@ public class BingePanel extends JPanel{
 	private Rectangle screen, bounds;
 	private JFrame frame;
 	private DrawZone drawzone;
+	private UI ui;
 	Binge game;
 
 	public BingePanel(Binge game,String name, int width, int height){
@@ -18,8 +19,13 @@ public class BingePanel extends JPanel{
 		this.screen = new Rectangle(0,0,width,height);
 		this.bounds = new Rectangle(0,0,width,height);
 		this.drawzone = new DrawZone(this,width,height);
+		this.ui = new UI(this,width,height);
 		this.add(drawzone);
+		this.add(ui);
 		drawzone.setSize(width,height);
+		drawzone.setOpaque(false);
+		ui.setSize(width,height);
+		ui.setOpaque(false);
 		this.frame = new JFrame(name);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.setFocusable(true);
@@ -28,18 +34,14 @@ public class BingePanel extends JPanel{
 		this.frame.setVisible(true);
 	}
 
-	public boolean isOpaque(){
-		return true;
-	}
-
 	public void paintComponent(Graphics g){
 		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, getWidth(), getHeight());
 	}
-	public DrawZone getDZ(){
-		return this.drawzone;
-	}
-	public JFrame getFrame(){
-		return this.frame;
-	}
+
+	public boolean isOpaque(){return true;}
+	public Graphics getItemDrawZoneGraphics(){return this.drawzone.getGraphics();}
+	public Graphics getUIGraphics(){return this.ui.getGraphics();}
+	public JFrame getFrame(){return this.frame;}
 	//	drawzone.setLocation(drawzone.zoneoff,0);
 }
