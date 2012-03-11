@@ -29,9 +29,7 @@ public class Pad extends Rect{
 
 	public void onLoaded(Binge game){setListener();}
 	public void onCollide(FixedItem fitem){}
-	public void onCollide(MovableItem mitem){
-		this.collided = true;
-	}
+	public void onCollide(MovableItem mitem){}
 	public void action(){
 		this.move(x,y+(int)yspeed);
 	}

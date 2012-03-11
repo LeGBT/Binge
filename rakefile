@@ -6,7 +6,7 @@ end
 
 desc "defaut task"
 task :default => ["build_modified"] 
-task :buildall => ["build_classes", "build_docs"]
+task :build_all => ["build_classes", "build_docs"]
 
 task :build_classes => ["items", "timers","data", "binge"]
 
