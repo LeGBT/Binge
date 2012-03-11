@@ -20,6 +20,9 @@ public class Manager{
 	public void register(MovableItem mitem){this.movableitemlist.add(mitem);}
 	public void register(FixedItem fitem){this.fixeditemlist.add(fitem);}
 	public void register(StaticInfo sti){this.staticinfolist.add(sti);}
+	public void unRegister(MovableItem mitem){
+		this.movableitemlist.remove(movableitemlist.indexOf(mitem));
+	}
 
 	public void clearMe(){
 		movableitemlist.clear();

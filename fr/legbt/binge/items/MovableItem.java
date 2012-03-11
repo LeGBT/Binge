@@ -31,7 +31,11 @@ public abstract class MovableItem extends Item implements KeyListener {
 		this.xnext = newx;
 		this.ynext = newy;
 	}
-
+	public void unRegister(){
+		collisionsmanager.unRegister(this);
+		paintmanager.unRegister(this);
+		actionsmanager.unRegister(this);
+	}
 	public int getX(){return this.x;}
 	public int getY(){return this.y;}
 	public double getXSpeed(){return this.xspeed;}

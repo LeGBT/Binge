@@ -65,7 +65,7 @@ public class Level implements LevelModel, Serializable{
 		try{
 			alvl =  IOManager.readLevel(lvlfile);
 		} catch(Exception e){
-			System.out.println(" binge segfault :" + e);
+			System.out.println("level segfault :" + e);
 			e.printStackTrace();
 		}
 		for(int i=0; i<alvl.itemlist.size(); i++){

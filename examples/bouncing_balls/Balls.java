@@ -11,6 +11,7 @@ import javax.swing.*;
 public class Balls extends Ball{
 	private double speed;
 	private transient BouncingGame game;
+	private Color color;
 
 
 	public Balls(Binge game, int x, int y, int diameter, double speed){
@@ -19,6 +20,7 @@ public class Balls extends Ball{
 		xspeed = speed;
 		yspeed = speed + 3;
 		this.speed = speed;
+		this.color = Color.GREEN;
 		//	setListener();
 	}
 
@@ -50,7 +52,7 @@ public class Balls extends Ball{
 		if (fitem instanceof PlanYMax){yspeed = -yspeed;}
 		if (fitem instanceof PlanYMin){yspeed = -yspeed;}
 		if (fitem instanceof PlanXMax){xspeed = -xspeed;}
-		if (fitem instanceof PlanXMin){xspeed = -xspeed;}
+		if (fitem instanceof PlanXMin){this.unRegister();}
 	}
 
 	protected void onCollide(MovableItem mitem){
@@ -78,10 +80,11 @@ public class Balls extends Ball{
 			mitem.setYSpeed(ny*v1n + gy*v2g);
 		}else{
 			if (!mitem.collided){
-				if(this.x>50){
+				if(this.x>40){
 					this.xspeed = -xspeed;
 
 				}else{
+					this.xspeed = -xspeed;
 					this.yspeed = -yspeed;
 				}
 			}
@@ -92,7 +95,7 @@ public class Balls extends Ball{
 		Graphics2D g2d = (Graphics2D) g;	
 		Font f = new Font("Casual", Font.PLAIN, 32);
 		g2d.setFont(f);
-		g2d.setColor(Color.GREEN);	
+		g2d.setColor(this.color);	
 		g2d.fill(this.getDisc());
 		g2d.setColor(Color.BLACK);	
 		g2d.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y+this.getDiameter());
@@ -100,5 +103,8 @@ public class Balls extends Ball{
 
 	public void action(){
 		this.move((int)(this.x+Math.round(this.xspeed)),(int)(this.y+Math.round(this.yspeed)));
+		if(this.x<60){
+			this.color = Color.RED;
+		}
 	}
 }
