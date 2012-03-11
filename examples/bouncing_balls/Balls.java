@@ -103,8 +103,11 @@ public class Balls extends Ball{
 
 	public void action(){
 		this.move((int)(this.x+Math.round(this.xspeed)),(int)(this.y+Math.round(this.yspeed)));
-		if(this.x<60){
+		if(this.x<50){
 			this.color = Color.RED;
+		}
+		if(this.x>50){
+			this.color = Color.GREEN;
 		}
 	}
 }
