@@ -23,7 +23,9 @@ public abstract class Ball extends MovableItem{
 		this.diameter = diameter;
 		this.theball = new Ellipse2D.Double(x,y,diameter,diameter);
 	}
-
+/** 
+ * Trace this ball in graphics g
+ */
 	public void traceMe(Graphics g){
 		theball.setFrame(x,y,diameter,diameter);
 		((Graphics2D)g).fill(theball);
@@ -32,20 +34,24 @@ public abstract class Ball extends MovableItem{
 	public int getDiameter(){
 		return this.diameter;
 	}
-
+/**
+ * Return the actual graphic disc.
+ */
 	protected Ellipse2D.Double getDisc(){
 		theball.setFrame(x,y,diameter,diameter);
 		return this.theball;
 	}
 
-	// add xcenter to setXY
-	void setXY(int x, int y){
-		this.x =x;
-		this.y =y;
-		this.xcenter = x + diameter/2;
-		this.ycenter = y + diameter/2;
-	}
+//	void setXY(int x, int y){
+//		this.x =x;
+//		this.y =y;
+//		this.xcenter = x + diameter/2;
+//		this.ycenter = y + diameter/2;
+//	}
 
+/**
+ * Implement simple collisions with either Rect items or other Balls.
+ */
 	protected Boolean collideWith(MovableItem mitem){
 		if (mitem instanceof Ball){
 			Ball it = (Ball) mitem; 

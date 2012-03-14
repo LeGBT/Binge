@@ -23,23 +23,25 @@ public class IOManager {
 				zout.close();
 				out.close();
 			}
+
 		}
 	}
+		//small test
 
-	public static Level readLevel(String lvlfile) throws Exception {
-		int w;
-		int h;
-		FileInputStream input = new FileInputStream(lvlfile+".bgcd"); 
-		GZIPInputStream zinput = new GZIPInputStream(input);
-		ObjectInputStream ois = new ObjectInputStream(zinput);
-		try {
-			return (Level) ois.readObject();
-		} finally {
-			if (input != null){
-				ois.close();
-				zinput.close();
-				input.close();
+		public static Level readLevel(String lvlfile) throws Exception {
+			int w;
+			int h;
+			FileInputStream input = new FileInputStream(lvlfile+".bgcd"); 
+			GZIPInputStream zinput = new GZIPInputStream(input);
+			ObjectInputStream ois = new ObjectInputStream(zinput);
+			try {
+				return (Level) ois.readObject();
+			} finally {
+				if (input != null){
+					ois.close();
+					zinput.close();
+					input.close();
+				}
 			}
 		}
 	}
-}

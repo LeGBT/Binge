@@ -3,7 +3,7 @@ package fr.legbt.binge.graphics;
 import java.awt.*;
 import javax.swing.*;
 
-public class DrawZone extends JComponent{
+class DrawZone extends JComponent{
 	private static final long serialVersionUID = 3l; //serialisation warnings
 	private BingePanel bpanel;
 	private Rectangle screen, bounds;
@@ -18,13 +18,13 @@ public class DrawZone extends JComponent{
 		//this.bounds = new Rectangle(0,0,width,height);
 	}
 
-	public void moveZone(){
+	 void moveZone(){
 		//	if (zoneoff > screen.width-800){this.way = -10;} 
 		//	if (zoneoff < -200){this.way = 10;} 
 		//	this.zoneoff += way;
 	}
 
-	public void paintComponent(Graphics g){
+	 protected void paintComponent(Graphics g){
 	//	this.bounds = g.getClipBounds();
 	//	g.clearRect(screen.x,screen.y,screen.width,screen.height);
 	//	g.setColor(Color.WHITE);
