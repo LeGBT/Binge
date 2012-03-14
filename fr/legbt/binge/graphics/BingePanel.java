@@ -4,6 +4,10 @@ import java.awt.*;
 import javax.swing.*;
 import fr.legbt.binge.Binge;
 
+/**
+ * BingePanel is a class only use by Binge
+ * Dont extend it.
+ */
 public class BingePanel extends JPanel{
 	private static final long serialVersionUID = 3l; //serialisation warnings
 	private Rectangle screen, bounds;
@@ -34,7 +38,7 @@ public class BingePanel extends JPanel{
 		this.frame.setVisible(true);
 	}
 
-	public void paintComponent(Graphics g){
+	protected void paintComponent(Graphics g){
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 	}

@@ -27,7 +27,7 @@ end
 desc "Docs generation..."
 task :build_docs  do
 	#	puts "Docs generation..."
-	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers > doclog.tmp}}
+	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers:fr.legbt.binge.data:fr.legbt.binge.graphics:fr.legbt.binge.ui > doclog.tmp}}
 end
 
 

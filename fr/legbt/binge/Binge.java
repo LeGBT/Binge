@@ -20,7 +20,6 @@ public class Binge {
 	private int framerate;
 	private java.util.Timer timer;
 
-
 	public Binge(String name,String lvlfile, int width, int height, int framerate){
 		this.framerate = framerate;
 		this.bpanel = new BingePanel(this,name,width,height);
