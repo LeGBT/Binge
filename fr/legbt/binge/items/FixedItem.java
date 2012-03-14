@@ -9,8 +9,9 @@ public abstract class FixedItem  extends Item{
 	protected FixedItem(Binge game){
 		super(game,0,0);
 	}
-	
-	protected void registerThis(Manager manager){
-		manager.register(this);
+
+	public void setGame(Binge game){
+		game.registerItem(this);
 	}
+
 }

@@ -30,7 +30,7 @@ public class PlanXMax extends Plan{
 		return false;
 	}
 
-	public void traceMe(Graphics g){
-		g.fillRect(x,0,game.getWidth()-x,game.getHeight());
+	public void traceMe(Binge game){
+		game.getItemDrawZoneGraphics().fillRect(x,0,game.getWidth()-x,game.getHeight());
 	}	
 }

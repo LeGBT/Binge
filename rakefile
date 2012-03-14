@@ -1,7 +1,7 @@
 require "rake/clean"
 
 def options
-	"-Xlint:-serial,unchecked"
+	"-Xlint:-serial,unchecked,deprecation"
 end
 
 desc "defaut task"

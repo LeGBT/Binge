@@ -52,7 +52,7 @@ public class Balls extends Ball{
 		if (fitem instanceof PlanYMax){yspeed = -yspeed;}
 		if (fitem instanceof PlanYMin){yspeed = -yspeed;}
 		if (fitem instanceof PlanXMax){xspeed = -xspeed;}
-		if (fitem instanceof PlanXMin){this.unRegister();}
+		if (fitem instanceof PlanXMin){this.unRegister(game);}
 	}
 
 	protected void onCollide(MovableItem mitem){
@@ -91,8 +91,8 @@ public class Balls extends Ball{
 		}
 	}
 
-	public void traceMe(Graphics g){
-		Graphics2D g2d = (Graphics2D) g;	
+	public void traceMe(Binge game){
+		Graphics2D g2d = (Graphics2D) game.getGraphics();	
 		Font f = new Font("Casual", Font.PLAIN, 32);
 		g2d.setFont(f);
 		g2d.setColor(this.color);	

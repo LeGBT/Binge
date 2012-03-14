@@ -23,7 +23,7 @@ public abstract class Plan extends FixedItem{
 		this.lerect = new Rectangle2D.Double(0,0,0,0);
 	}
 
-	public abstract void traceMe(Graphics g);
+	public abstract void traceMe(Binge game);
 	protected void action(){}
 	public void onLoaded(Binge game){}
 	

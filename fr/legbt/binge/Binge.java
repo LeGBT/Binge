@@ -48,7 +48,33 @@ public class Binge {
 		this.bpanel.getFrame().repaint();
 	}
 
-	public Graphics getItemDrawZoneGraphics(){return this.bpanel.getItemDrawZoneGraphics();}
+	public void registerItem(MovableItem item){
+		collisionsmanager.register(item);
+		paintmanager.register(item);
+		actionsmanager.register(item);
+	}
+	public void unRegisterItem(MovableItem item){
+		collisionsmanager.unRegister(item);
+		paintmanager.unRegister(item);
+		actionsmanager.unRegister(item);
+	}
+	public void registerItem(FixedItem item){
+		collisionsmanager.register(item);
+		paintmanager.register(item);
+		actionsmanager.register(item);
+	}
+	public void unRegisterItem(FixedItem item){
+		collisionsmanager.unRegister(item);
+		paintmanager.unRegister(item);
+		actionsmanager.unRegister(item);
+	}
+
+	/**
+	 * @deprecated Will be soon replaced by {@link #getItemDrawZoneGraphics}
+	 */
+	@Deprecated
+		public Graphics getItemDrawZoneGraphics(){return this.bpanel.getItemDrawZoneGraphics();}
+	public Graphics getGraphics(){return this.bpanel.getItemDrawZoneGraphics();}
 	public Graphics getUIGraphics(){return this.bpanel.getUIGraphics();}
 	public JFrame getFrame(){return	this.bpanel.getFrame();}
 	public Level getLvl(){return this.lvl;}

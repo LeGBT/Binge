@@ -13,7 +13,7 @@ public class Pad extends Rect{
 		super(game,x,300,200,30);
 		this.xpos = x;
 		speedi = 20;
-		setListener();
+		setListener(game);
 	}
 
 	public void onKeyDown(int key){
@@ -27,7 +27,7 @@ public class Pad extends Rect{
 		 yspeed = 0;
 	}
 
-	public void onLoaded(Binge game){setListener();}
+	public void onLoaded(Binge game){setListener(game);}
 	public void onCollide(FixedItem fitem){}
 	public void onCollide(MovableItem mitem){}
 	public void action(){

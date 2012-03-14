@@ -21,8 +21,8 @@ public class Counter extends StaticInfo{
 	}
 
 
-	public void traceMe(Graphics g){
-		Graphics2D g2d = (Graphics2D) g;	
+	public void traceMe(Binge game){
+		Graphics2D g2d = (Graphics2D) game.getGraphics();	
 		Font f = new Font("Casual",Font.PLAIN, 40);
 		g2d.setFont(f);
 		g2d.setColor(Color.RED);	

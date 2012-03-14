@@ -29,8 +29,8 @@ public class PlanXMin extends Plan{
 		}	
 		return false;
 	}
-	public void traceMe(Graphics g){
-		g.fillRect(0,0,x,game.getHeight());
+	public void traceMe(Binge game){
+		game.getItemDrawZoneGraphics().fillRect(0,0,x,game.getHeight());
 	}
 
 }

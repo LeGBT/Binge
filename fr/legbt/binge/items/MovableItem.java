@@ -14,7 +14,6 @@ public abstract class MovableItem extends Item implements KeyListener {
 	protected double yspeed;
 	public int xnext;
 	public int ynext;
-	//public Graphics graphics;
 
 	protected MovableItem(Binge game, int x, int y){
 		super(game,x,y);
@@ -31,10 +30,12 @@ public abstract class MovableItem extends Item implements KeyListener {
 		this.xnext = newx;
 		this.ynext = newy;
 	}
-	public void unRegister(){
-		collisionsmanager.unRegister(this);
-		paintmanager.unRegister(this);
-		actionsmanager.unRegister(this);
+
+	public void setGame(Binge game){
+		game.registerItem(this);
+	}
+	public void unRegister(Binge game){
+		game.unRegisterItem(this);
 	}
 	public int getX(){return this.x;}
 	public int getY(){return this.y;}
@@ -43,11 +44,11 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public void setXSpeed(double nxs){ this.xspeed = nxs;}
 	public void setYSpeed(double nys){ this.yspeed = nys;}
 
-	protected void setListener(){
-		this.game.getFrame().addKeyListener(this);
+	protected void setListener(Binge game){
+		game.getFrame().addKeyListener(this);
 	}
-	protected void unSetListener(){
-		this.game.getFrame().removeKeyListener(this);
+	protected void unSetListener(Binge game){
+		game.getFrame().removeKeyListener(this);
 	}
 
 	public void keyPressed(KeyEvent key){
@@ -59,15 +60,8 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public void keyTyped(KeyEvent key){}
 
 	void setPosition(int x, int y){
-		this.setXY(x,y);
-	}
-	void setXY(int x, int y){
 		this.x = x;
 		this.y = y;
-	}
-
-	protected void registerThis(Manager manager){
-		manager.register(this);
 	}
 
 	protected abstract void onCollide(MovableItem mitem);

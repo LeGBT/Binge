@@ -26,9 +26,9 @@ public abstract class Ball extends MovableItem{
 /** 
  * Trace this ball in graphics g
  */
-	public void traceMe(Graphics g){
+	public void traceMe(Binge game){
 		theball.setFrame(x,y,diameter,diameter);
-		((Graphics2D)g).fill(theball);
+		((Graphics2D)game.getItemDrawZoneGraphics()).fill(theball);
 	}
 
 	public int getDiameter(){
@@ -41,13 +41,6 @@ public abstract class Ball extends MovableItem{
 		theball.setFrame(x,y,diameter,diameter);
 		return this.theball;
 	}
-
-//	void setXY(int x, int y){
-//		this.x =x;
-//		this.y =y;
-//		this.xcenter = x + diameter/2;
-//		this.ycenter = y + diameter/2;
-//	}
 
 /**
  * Implement simple collisions with either Rect items or other Balls.

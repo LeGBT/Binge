@@ -13,5 +13,5 @@ public abstract class StaticInfo{
 		paintmanager.register(this);
 	}
 
-	public abstract void traceMe(Graphics g);
+	public abstract void traceMe(Binge game);
 }

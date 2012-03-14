@@ -14,15 +14,12 @@ public class Manager{
 		staticinfolist = new ArrayList<StaticInfo>();
 	}
 
-	//void registerToFixed(FixedItem fitem){this.fixeditemlist.add(fitem);}
-	//void registerToMovable(MovableItem mitem){this.movableitemlist.add(mitem);}
-
 	public void register(MovableItem mitem){this.movableitemlist.add(mitem);}
 	public void register(FixedItem fitem){this.fixeditemlist.add(fitem);}
 	public void register(StaticInfo sti){this.staticinfolist.add(sti);}
-	public void unRegister(MovableItem mitem){
-		this.movableitemlist.remove(movableitemlist.indexOf(mitem));
-	}
+	public void unRegister(MovableItem mitem){this.movableitemlist.remove(movableitemlist.indexOf(mitem));}
+	public void unRegister(FixedItem fitem){this.movableitemlist.remove(movableitemlist.indexOf(fitem));}
+	public void unRegister(StaticInfo sti){this.movableitemlist.remove(movableitemlist.indexOf(sti));}
 
 	public void clearMe(){
 		movableitemlist.clear();
