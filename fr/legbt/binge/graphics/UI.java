@@ -14,6 +14,6 @@ public class UI extends JComponent{
 	}
 
 	public void paintComponent(Graphics g){
-		this.bpanel.game.paintmanager.traceThemAll();
+		this.bpanel.game.traceThemAll();
 	}
 }

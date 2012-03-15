@@ -7,15 +7,10 @@ class DrawZone extends JComponent{
 	private static final long serialVersionUID = 3l; //serialisation warnings
 	private BingePanel bpanel;
 	private Rectangle screen, bounds;
-	//	public int zoneoff;
-	//	public int way;
 
-	public DrawZone(BingePanel bpanel,int width, int height){
-		//	this.zoneoff = 0;
-		//	this.way = 10;
+	DrawZone(BingePanel bpanel,int width, int height){
 		this.bpanel = bpanel;
 		this.screen = new Rectangle(0,0,width,height);
-		//this.bounds = new Rectangle(0,0,width,height);
 	}
 
 	 void moveZone(){
@@ -25,10 +20,6 @@ class DrawZone extends JComponent{
 	}
 
 	 protected void paintComponent(Graphics g){
-	//	this.bounds = g.getClipBounds();
-	//	g.clearRect(screen.x,screen.y,screen.width,screen.height);
-	//	g.setColor(Color.WHITE);
-	//	g.fillRect(0, 0, getWidth(), getHeight());
-		this.bpanel.game.paintmanager.traceThemAll();
+		this.bpanel.game.traceThemAll();
 	}
 }
