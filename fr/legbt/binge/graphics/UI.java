@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class UI extends JComponent{
-	private static final long serialVersionUID = 3l; //serialisation warnings
+	private static final long serialVersionUID = 0l; 
 	private BingePanel bpanel;
 	private Rectangle screen; //bounds;
 

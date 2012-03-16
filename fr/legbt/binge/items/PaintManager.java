@@ -9,14 +9,14 @@ public class PaintManager extends Manager {
 
 	public PaintManager(Binge agame){
 		super();
-		game = agame;
+		this.game = agame;
 	}
 
 	public void traceThemAll(){
 		try{
 			for(int i=0;i<movableitemlist.size();i++){
 				MovableItem mitem = movableitemlist.get(i);
-				mitem.traceMe(game);
+				mitem.traceMe(this.game);
 			}
 			for(int i=0;i<fixeditemlist.size();i++){
 				FixedItem item = fixeditemlist.get(i);

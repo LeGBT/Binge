@@ -6,7 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Pad extends Rect{
-private static final long serialVersionUID = 0l;
+	private static final long serialVersionUID = 0l;
 	private int xpos;
 	private int speedi;
 
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0l;
 	}
 
 	public void onKeyUp(int key){
-		 yspeed = 0;
+		yspeed = 0;
 	}
 
 	public void onLoaded(Binge game){setListener(game);}

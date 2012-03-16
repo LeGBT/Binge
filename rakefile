@@ -6,18 +6,21 @@ def options
 end
 
 desc "defaut task"
-task :default => ["build_modified"] 
-task :build_all => ["build_classes", "build_docs","ex"]
+task :default => ["modified"] 
+desc "build EVERYTHING"
+task :all => ["classes", "doc","ex"]
 
-task :build_classes => ["items", "timers","data", "binge", "ui"]
-task :build_nodoc => ["items", "timers","data", "binge", "ui","ex"]
+desc "build the main classes"
+task :classes => ["items", "timers","data", "binge", "ui"]
+desc "everything (including ex) without the docs"
+task :nodoc => ["items", "timers","data", "binge", "ui","ex"]
 
 task :doc => ["build_docs"] do
 	verbose(false){sh %{open index.html}}
 end
 
 
-task :build_modified do
+task :modified do
 	verbose(false){
 		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
 		puts line
@@ -28,7 +31,7 @@ end
 
 
 desc "Docs generation..."
-task :build_docs  do
+task :doc  do
 	#	puts "Docs generation..."
 	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers:fr.legbt.binge.data:fr.legbt.binge.graphics:fr.legbt.binge.ui > doclog.tmp}}
 end

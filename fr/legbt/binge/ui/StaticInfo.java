@@ -5,9 +5,12 @@ import fr.legbt.binge.Binge;
 import fr.legbt.binge.items.PaintManager;
 
 public abstract class StaticInfo{
-	//Binge game;
+	Binge game;
 
-	public StaticInfo(Binge game){}
+	public StaticInfo(Binge game){
+		this.game = game;	
+		this.game.registerUI(this);
+	}
 
 	public abstract void traceMe(Binge game);
 }

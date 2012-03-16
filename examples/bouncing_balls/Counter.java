@@ -20,7 +20,6 @@ public class Counter extends StaticInfo{
 		this.count += 1;
 	}
 
-
 	public void traceMe(Binge game){
 		Graphics2D g2d = (Graphics2D) game.getGraphics();	
 		Font f = new Font("Casual",Font.PLAIN, 40);

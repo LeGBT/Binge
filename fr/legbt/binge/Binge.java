@@ -3,6 +3,7 @@ package fr.legbt.binge;
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
+import fr.legbt.binge.ui.*;
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.timers.*;
 import fr.legbt.binge.data.*;
@@ -76,6 +77,8 @@ public class Binge {
 		paintmanager.unRegister(item);
 		actionsmanager.unRegister(item);
 	}
+	public void registerUI(StaticInfo sti){paintmanager.register(sti);}
+	public void unRegisterUI(StaticInfo sti){paintmanager.unRegister(sti);}
 
 
 	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
