@@ -17,8 +17,8 @@ public class Binge {
 	private PaintManager paintmanager;
 	private ActionsManager actionsmanager;
 	private BingeTask atimer;
-	private ArrayList<Item> itemlist;
-	private String lvlfile;
+	//private ArrayList<Item> itemlist;
+	//private String lvlfile;
 	private Level lvl;
 	private BingePanel bpanel;
 	private int framerate;
@@ -33,7 +33,7 @@ public class Binge {
 		this.collisionsmanager = new CollisionsManager();
 		this.paintmanager = new PaintManager(this);
 		this.actionsmanager = new ActionsManager();
-		this.lvlfile = lvlfile;
+		//this.lvlfile = lvlfile;
 		this.lvl = new Level(0,0);
 	}
 

@@ -1,14 +1,16 @@
 require "rake/clean"
 
 def options
-	"-Xlint:-serial,unchecked,deprecation"
+	#" -g -Xlint:-serial,unchecked,deprecation"
+	" -g -Xlint:all"
 end
 
 desc "defaut task"
 task :default => ["build_modified"] 
-task :build_all => ["build_classes", "build_docs"]
+task :build_all => ["build_classes", "build_docs","ex"]
 
-task :build_classes => ["items", "timers","data", "binge"]
+task :build_classes => ["items", "timers","data", "binge", "ui"]
+task :build_nodoc => ["items", "timers","data", "binge", "ui","ex"]
 
 task :doc => ["build_docs"] do
 	verbose(false){sh %{open index.html}}
@@ -19,7 +21,7 @@ task :build_modified do
 	verbose(false){
 		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
 		puts line
-		sh %{javac #{line}}
+		sh %{javac #{options} #{line}}
 	}
 	}
 end
@@ -67,11 +69,19 @@ task :binge do
 	end
 end
 
-desc "fr.legbt.items package build"
+desc "fr.legbt.binge.items package build"
 task :items do
 	#	puts "build binge.items ..."
 	verbose(false) do
 		sh %{javac #{options} fr/legbt/binge/items/*.java}
+	end
+end
+
+desc "fr.legbt.binge.ui package build"
+task :ui do
+	#	puts "build binge.ui ..."
+	verbose(false) do
+		sh %{javac #{options} fr/legbt/binge/ui/*.java}
 	end
 end
 

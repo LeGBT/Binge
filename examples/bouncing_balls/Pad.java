@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Pad extends Rect{
+private static final long serialVersionUID = 0l;
 	private int xpos;
 	private int speedi;
 

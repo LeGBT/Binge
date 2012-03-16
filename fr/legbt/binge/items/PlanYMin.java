@@ -8,6 +8,7 @@ import fr.legbt.binge.*;
  * PlanYMin describe a top horizontal half plan item for simple bounding collisions.
  */
 public class PlanYMin extends Plan{
+	private static final long serialVersionUID = 1l;
 	protected int y;
 
 	/**

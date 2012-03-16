@@ -9,39 +9,23 @@ import javax.swing.*;
 
 
 public class Balls extends Ball{
+	private static final long serialVersionUID = 1l;
 	private double speed;
 	private transient BouncingGame game;
 	private Color color;
 
 
-	public Balls(Binge game, int x, int y, int diameter, double speed){
+	public Balls(BouncingGame game, int x, int y, int diameter, double speed){
 		super(game,x,y,diameter);	
-		this.game = (BouncingGame) game;
+		this.game = game;
 		xspeed = speed;
 		yspeed = speed + 3;
 		this.speed = speed;
 		this.color = Color.GREEN;
-		//	setListener();
 	}
 
-	public void onKeyDown(int key){
-		//System.out.println(key);
-		//		switch (key){
-		//			case KeyEvent.VK_LEFT:	xspeed = -speed;break;
-		//			case KeyEvent.VK_RIGHT:	xspeed = +speed;break;
-		//			case KeyEvent.VK_UP:	yspeed = -speed;break;
-		//			case KeyEvent.VK_DOWN:	yspeed = +speed;break;
-		//		}	
-
-	}
-	public void onKeyUp(int key){
-		//		switch (key){
-		//			case KeyEvent.VK_LEFT:	xspeed = 0;break;
-		//			case KeyEvent.VK_RIGHT:	xspeed = 0;break;
-		//			case KeyEvent.VK_UP:	yspeed = 0;break;
-		//			case KeyEvent.VK_DOWN:	yspeed = 0;break;
-		//		}	
-	}
+	public void onKeyDown(int key){}
+	public void onKeyUp(int key){}
 
 	public void onLoaded(Binge game){
 		this.game = (BouncingGame) game;
@@ -63,8 +47,8 @@ public class Balls extends Ball{
 			double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
 			//System.out.println("dist = " + dist);
 			//vecteurs normaux à la collision :
-			double nx = (mitem.getX() - this.x + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
-			double ny = (mitem.getY() - this.y + ((Ball)mitem).getDiameter() - this.getDiameter())/((double)(dist));
+			double nx = (mitem.getX() - this.x + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
+			double ny = (mitem.getY() - this.y + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
 			//vecteurs tangents :
 			double gx = -ny;
 			double gy = nx;

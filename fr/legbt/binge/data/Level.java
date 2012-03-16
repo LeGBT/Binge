@@ -6,6 +6,7 @@ import fr.legbt.binge.*;
 import java.util.ArrayList;
 
 public class Level implements LevelModel, Serializable{
+	private static final long serialVersionUID = 1l;
 	private int lwidth;
 	private int lheight;
 	private int[][] lvl;

@@ -5,13 +5,9 @@ import fr.legbt.binge.Binge;
 import fr.legbt.binge.items.PaintManager;
 
 public abstract class StaticInfo{
-	Binge game;
-	public PaintManager paintmanager;
+	//Binge game;
 
-	public StaticInfo(Binge game){
-		this.paintmanager = game.paintmanager;
-		paintmanager.register(this);
-	}
+	public StaticInfo(Binge game){}
 
 	public abstract void traceMe(Binge game);
 }

@@ -18,8 +18,8 @@ public class Manager{
 	public void register(FixedItem fitem){this.fixeditemlist.add(fitem);}
 	public void register(StaticInfo sti){this.staticinfolist.add(sti);}
 	public void unRegister(MovableItem mitem){this.movableitemlist.remove(movableitemlist.indexOf(mitem));}
-	public void unRegister(FixedItem fitem){this.movableitemlist.remove(movableitemlist.indexOf(fitem));}
-	public void unRegister(StaticInfo sti){this.movableitemlist.remove(movableitemlist.indexOf(sti));}
+	public void unRegister(FixedItem fitem){this.fixeditemlist.remove(fixeditemlist.indexOf(fitem));}
+	public void unRegister(StaticInfo sti){this.staticinfolist.remove(staticinfolist.indexOf(sti));}
 
 	public void clearMe(){
 		movableitemlist.clear();

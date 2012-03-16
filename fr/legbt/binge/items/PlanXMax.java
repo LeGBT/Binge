@@ -8,6 +8,7 @@ import fr.legbt.binge.*;
  * PlanXMax describe a right vertical half plan item for simple bounding collisions.
  */
 public class PlanXMax extends Plan{
+	private static final long serialVersionUID = 1l; //serialisation warnings
 	protected int x;
 
 	/**
