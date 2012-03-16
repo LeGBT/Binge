@@ -2,7 +2,8 @@ package fr.legbt.binge.graphics;
 
 import java.awt.*;
 import javax.swing.*;
-import fr.legbt.binge.Binge;
+//import fr.legbt.binge.Binge;
+import fr.legbt.binge.thread.DrawThread;
 
 /**
  * BingePanel is a class only use by Binge
@@ -14,12 +15,14 @@ public class BingePanel extends JPanel{
 	private JFrame frame;
 	private DrawZone drawzone;
 	private UI ui;
-	Binge game;
+	//Binge game;
+	public DrawThread dt;
 
-	public BingePanel(Binge game,String name, int width, int height){
+	public BingePanel(DrawThread dt,String name, int width, int height){
 		super();
 		this.setLayout(null);
-		this.game = game;
+		//this.game = game;
+		this.dt = dt;
 		this.screen = new Rectangle(0,0,width,height);
 		this.bounds = new Rectangle(0,0,width,height);
 		this.drawzone = new DrawZone(this,width,height);

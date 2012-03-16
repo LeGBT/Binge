@@ -20,6 +20,6 @@ class DrawZone extends JComponent{
 	}
 
 	 protected void paintComponent(Graphics g){
-		this.bpanel.game.traceThemAll();
+		this.bpanel.dt.traceThemAll();
 	}
 }
