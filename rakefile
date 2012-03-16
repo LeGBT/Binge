@@ -18,6 +18,7 @@ end
 task :build_modified do
 	verbose(false){
 		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
+		puts line
 		sh %{javac #{line}}
 	}
 	}

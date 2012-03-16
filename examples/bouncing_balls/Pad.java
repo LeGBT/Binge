@@ -33,6 +33,5 @@ public class Pad extends Rect{
 	public void action(){
 		this.move(x,y+(int)yspeed);
 	}
-
 }
 

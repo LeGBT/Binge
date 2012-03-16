@@ -10,9 +10,7 @@ public class ActionsManager extends Manager {
 	public ActionsManager(){
 		super();
 	}
-/**
- * Call the action method of every registered item.
- */
+	/** Call the action method of every registered item.*/
 	public void actionThemAll(){
 		try{
 			for(int i=0;i<movableitemlist.size();i++){

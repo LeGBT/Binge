@@ -31,7 +31,7 @@ public class PlanYMin extends Plan{
 	}
 
 	public void traceMe(Binge game){
-		game.getItemDrawZoneGraphics().fillRect(0,0,game.getWidth(),y);
+		game.getGraphics().fillRect(0,0,game.getWidth(),y);
 
 	}
 

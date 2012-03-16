@@ -32,6 +32,6 @@ public class PlanYMax extends Plan{
 	}
 
 	public void traceMe(Binge game){
-		game.getItemDrawZoneGraphics().fillRect(0,y,game.getWidth(),game.getHeight()-y);
+		game.getGraphics().fillRect(0,y,game.getWidth(),game.getHeight()-y);
 	}
 }
