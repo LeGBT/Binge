@@ -1,4 +1,4 @@
-package examples.bouncing_balls;
+package examples.bounce;
 
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
