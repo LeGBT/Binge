@@ -29,7 +29,8 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 				game.testCollisions();
 	//			publish(framenb);
 				Thread.currentThread();
-				this.bpanel.getFrame().repaint();
+				this.bpanel.getDrawZone().repaint(this.bpanel.getDrawZone().getRect());
+				this.bpanel.getUIShow().repaint(this.bpanel.getUIShow().getRect());
 				Thread.sleep(framerate);
 			}catch(Exception e){
 				System.out.println("interruption !");

@@ -1,5 +1,6 @@
 package fr.legbt.binge.items;
 
+import java.awt.Rectangle;
 import java.awt.event.*;
 import fr.legbt.binge.Binge;
 
@@ -58,6 +59,10 @@ public abstract class MovableItem extends Item implements KeyListener {
 		this.onKeyUp(key.getKeyCode());
 	}
 	public void keyTyped(KeyEvent key){}
+
+	public void setRenderZone(Rectangle rect){
+		super.game.getDrawZone().addRect(rect);
+	}
 
 	void setPosition(int x, int y){
 		this.setX(x);

@@ -4,15 +4,15 @@ import java.awt.*;
 import javax.swing.*;
 
 
-class DrawZone extends JComponent{
-	private static final long serialVersionUID = 3l; //serialisation warnings
+public class DrawZone extends JComponent{
+	private static final long serialVersionUID = 4l;
 	private BingePanel bpanel;
-	//	private Rectangle screen, bounds;
+	private Rectangle bounds;
 
-	DrawZone(BingePanel bpanel,int width, int height){
+	public	DrawZone(BingePanel bpanel,int width, int height){
 		this.bpanel = bpanel;
 		this.setDoubleBuffered(true);
-		//		this.screen = new Rectangle(0,0,width,height);
+		this.bounds = new Rectangle(0,0,0,0);
 	}
 
 	void moveZone(){
@@ -21,7 +21,22 @@ class DrawZone extends JComponent{
 		//	this.zoneoff += way;
 	}
 
+	public Rectangle getRect(){
+		return bounds;
+	}
+
+	public void resetRect(){
+		this.bounds = new Rectangle(0,0,0,0);
+	}
+
+	public void addRect(Rectangle rect){
+		this.bounds = bounds.union(rect);
+	}
+
 	protected void paintComponent(Graphics g){
+		System.out.println(this.bounds.getHeight() + " et w : " + bounds.getWidth());
+		super.paintComponent(g);
+		this.resetRect();
 		this.bpanel.getDT().traceItems(g);
 	}
 }

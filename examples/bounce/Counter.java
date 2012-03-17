@@ -14,6 +14,7 @@ public class Counter extends StaticInfo{
 		this.count = count;
 		this.xpos = x;
 		this.ypos = y;
+		this.setRenderZone(new Rectangle(x,y,100,20));
 	}
 
 	public void addCount(){

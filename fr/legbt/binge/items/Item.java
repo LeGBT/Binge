@@ -15,6 +15,7 @@ public abstract class Item implements Serializable {
 	private int x;
 	private int y;
 	private transient UUID uniqueid;
+	protected transient Binge game;
 	private ReentrantLock lock;
 
 	/** Init an Item with coordinates x,y.*/
@@ -28,6 +29,7 @@ public abstract class Item implements Serializable {
 	/** Init an Item with coordinates x,y and registered for paint and collisions.*/
 	protected Item(Binge game, int x, int y){
 		lock = new ReentrantLock();
+		this.game = game;
 		this.x = x;
 		this.y = y;
 		this.uniqueid = UUID.randomUUID();
