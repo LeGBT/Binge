@@ -1,8 +1,11 @@
 package fr.legbt.binge;
 
-import fr.legbt.binge.items.*;
-import fr.legbt.binge.data.*;
-import fr.legbt.binge.ui.*;
+import fr.legbt.binge.items.ActionsManager;
+import fr.legbt.binge.items.CollisionsManager;
+import fr.legbt.binge.items.FixedItem;
+import fr.legbt.binge.items.MovableItem;
+import fr.legbt.binge.items.PaintManager;
+import fr.legbt.binge.ui.StaticInfo;
 
 abstract class Manager{
 	private CollisionsManager collisionsmanager;

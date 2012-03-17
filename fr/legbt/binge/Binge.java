@@ -2,26 +2,24 @@ package fr.legbt.binge;
 
 import java.awt.*;
 import javax.swing.*;
-//import java.beans.PropertyChangeListener;
-//import java.beans.PropertyChangeEvent;
-import java.util.ArrayList;
-import fr.legbt.binge.ui.*;
-import fr.legbt.binge.items.*;
-import fr.legbt.binge.timers.*;
 import fr.legbt.binge.data.*;
-import fr.legbt.binge.graphics.*;
+import fr.legbt.binge.items.*;
 import fr.legbt.binge.thread.*;
+import fr.legbt.binge.timers.*;
 
 /** 
  * Main class of binge;
  * Just instantiate one and let the magic free !
  */ 
 public class Binge  extends Manager{
+	@SuppressWarnings("unused")
 	private BingeTask atimer;
 	private Level lvl;
 	//	private BingePanel bpanel;
 	private DrawThread dt;
+	@SuppressWarnings("unused")
 	private int framerate;
+	@SuppressWarnings("unused")
 	private java.util.Timer timer;
 
 	/**Create a new game.*/
@@ -46,7 +44,6 @@ public class Binge  extends Manager{
 		//run thread !
 		dt.execute();
 	}
-
 	/** 
 	 * This method is called at each ticks
 	 * It's not advised to override it.
@@ -56,7 +53,6 @@ public class Binge  extends Manager{
 		//	this.collisionsmanager.testCollisions();
 		//this.bpanel.getFrame().repaint();
 	}
-
 	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
 	@Deprecated
 		public Graphics getItemDrawZoneGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}

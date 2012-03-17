@@ -25,7 +25,8 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 				game.actionThemAll();
 				game.testCollisions();
 				publish(framenb);
-				Thread.currentThread().sleep(framerate);
+				Thread.currentThread();
+				Thread.sleep(framerate);
 			}catch(Exception e){
 				System.out.println("interruption !");
 				e.printStackTrace();

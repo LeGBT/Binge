@@ -2,11 +2,10 @@ package examples.bouncing_balls;
 
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
-import java.awt.*;
-import javax.swing.*;
 
 public class Pad extends Rect{
 	private static final long serialVersionUID = 0l;
+	@SuppressWarnings("unused")
 	private int xpos;
 	private int speedi;
 

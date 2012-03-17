@@ -5,89 +5,55 @@ def options
 	" -g -Xlint:all"
 end
 
+def prfx
+	"fr/legbt/binge"
+end
+
+def build(file)
+	puts file
+	verbose(false) do
+		sh %{javac #{options} #{file}}
+	end
+end
+
+SRC = FileList['**/*.java']
+OBJ = SRC.ext('class')
+
+rule '.class' => '.java' do |t|
+	#puts t.source
+	build(t.source)
+end
+
+task :binge => ["#{prfx}/Binge.class"]
+task :examples => ["examples/bouncing_balls/BouncingGame.class"]
+
+
 desc "defaut task"
-task :default => ["modified"] 
-desc "build EVERYTHING"
-task :all => ["classes", "doc","ex"]
-
-desc "build the main classes"
-task :classes => ["items", "timers","data", "binge", "ui"]
-desc "everything (including ex) without the docs"
-task :nodoc => ["items", "timers","data", "binge", "ui","ex"]
-
+task :default => :modified 
 task :doc => ["build_docs"] do
 	verbose(false){sh %{open index.html}}
 end
-
-
 task :modified do
 	verbose(false){
 		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
-		puts line
-		sh %{javac #{options} #{line}}
+	puts line.gsub(/\.java\Z/, ".class")
 	}
+	:binge
+	:examples
 	}
 end
 
+
+desc "rebuild everything"
+task :rebuild => :clean do
+	SRC.each{|f| build(f)}
+end
 
 desc "Docs generation..."
 task :doc  do
 	#	puts "Docs generation..."
 	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers:fr.legbt.binge.data:fr.legbt.binge.graphics:fr.legbt.binge.ui > doclog.tmp}}
 end
-
-
-desc "fr.legbt.binge.timers package build"
-task :timers do
-	#	puts "build binge.timers"
-	verbose(false) do
-		sh %{javac #{options} fr/legbt/binge/timers/*.java}
-	end
-
-end
-
-desc "fr.legbt.binge.data package build"
-task :data do
-	#	puts "build binge.data"
-	verbose(false) do
-		sh %{javac #{options} fr/legbt/binge/data/*.java}
-	end
-
-end
-
-desc "fr.legbt.binge.graphics package build"
-task :data do
-	#	puts "build binge.graphics"
-	verbose(false) do
-		sh %{javac #{options} fr/legbt/binge/graphics/*.java}
-	end
-
-end
-
-desc "fr.legbt.binge main package build"
-task :binge do
-	#	puts "build binge main classes"
-	verbose(false) do
-		sh %{javac #{options} fr/legbt/binge/*.java}
-	end
-end
-
-desc "fr.legbt.binge.items package build"
-task :items do
-	#	puts "build binge.items ..."
-	verbose(false) do
-		sh %{javac #{options} fr/legbt/binge/items/*.java}
-	end
-end
-
-desc "fr.legbt.binge.ui package build"
-task :ui do
-	#	puts "build binge.ui ..."
-	verbose(false) do
-		sh %{javac #{options} fr/legbt/binge/ui/*.java}
-	end
-end
-
 desc "les exemples"
 task :ex do
 	#	puts "examples builds"
@@ -96,5 +62,5 @@ task :ex do
 	end
 end
 
-CLEAN.include(".DS_Store","*.tmp")
-CLOBBER.include("**/*.class", "**/*.css", "**/.DS_Store", "**/*.html","*.tmp")
+CLEAN.include(".DS_Store","*.tmp","**/*.class")
+CLOBBER.include("**/*.css", "**/*.html")

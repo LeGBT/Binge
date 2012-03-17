@@ -1,10 +1,8 @@
 package examples.bouncing_balls;
 
-import fr.legbt.binge.*;
-import javax.swing.*;
-import java.awt.*;
-import fr.legbt.binge.items.*;
-import fr.legbt.binge.data.*;
+import fr.legbt.binge.Binge;
+import fr.legbt.binge.LevelEditor;
+import fr.legbt.binge.items.Borders;
 
 public class BouncingGame extends Binge{
 	private static Counter score;
@@ -41,6 +39,7 @@ public class BouncingGame extends Binge{
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	public void upScore(){
 		this.score.addCount();
 	}

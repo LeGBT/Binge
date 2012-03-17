@@ -2,14 +2,12 @@ package examples.bouncing_balls;
 
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
-import java.awt.geom.*;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 
 public class Balls extends Ball{
 	private static final long serialVersionUID = 1l;
+	@SuppressWarnings("unused")
 	private double speed;
 	private transient BouncingGame game;
 	private Color color;
