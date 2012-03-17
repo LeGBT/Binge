@@ -1,19 +1,24 @@
 require "rake/clean"
+require "pathname"
 
-def options
-	#" -g -Xlint:-serial,unchecked,deprecation"
-	" -g -Xlint:all"
+def options 
+" -g -Xlint:all"
 end
 
-def prfx
-	"fr/legbt/binge"
+def prfx 
+"fr/legbt/binge"
 end
 
-
+CLEAN.include(".DS_Store","*.tmp","**/*.class")
+CLOBBER.include("**/*.css", "**/*.html")
 desc "defaut task"
 task :default => ["modified"] 
-desc "build EVERYTHING"
-task :all => ["classes", "doc","ex"]
+SRC = FileList['**/*.java']
+OBJ = SRC.ext('class')
+desc "build main classes"
+task :binge => ["#{prfx}/Binge.class"]
+desc "build examples"
+task :examples => ["examples/bounce/BouncingGame.class"]
 
 def build(file)
 	puts file
@@ -22,16 +27,11 @@ def build(file)
 	end
 end
 
-SRC = FileList['**/*.java']
-OBJ = SRC.ext('class')
 
 rule '.class' => '.java' do |t|
-	#puts t.source
 	build(t.source)
 end
 
-task :binge => ["#{prfx}/Binge.class"]
-task :examples => ["examples/bouncing_balls/BouncingGame.class"]
 
 
 desc "defaut task"
@@ -42,13 +42,13 @@ end
 
 desc "build modified files"
 task :modified do
-	verbose(true){
-		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
-	rm line.gsub(/\.java\Z/, ".class")
-	}
+	#verbose(true){
+	#		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
+	#		rm line.gsub(/\.java\Z/, '.class')
+	#	}
 	:binge
 	:examples
-	}
+	#	}
 end
 
 
@@ -64,5 +64,3 @@ task :doc  do
 	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers:fr.legbt.binge.data:fr.legbt.binge.graphics:fr.legbt.binge.ui > doclog.tmp}}
 end
 
-CLEAN.include(".DS_Store","*.tmp","**/*.class")
-CLOBBER.include("**/*.css", "**/*.html")

@@ -44,6 +44,7 @@ public class Binge  extends Manager{
 		//run thread !
 		dt.execute();
 	}
+
 	/** 
 	 * This method is called at each ticks
 	 * It's not advised to override it.
