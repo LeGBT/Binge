@@ -1,8 +1,10 @@
 package fr.legbt.binge;
 
-import java.awt.*;
+//import java.awt.*;
 import javax.swing.*;
 import fr.legbt.binge.data.*;
+import fr.legbt.binge.graphics.DrawZone;
+import fr.legbt.binge.graphics.UIShow;
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.thread.*;
 import fr.legbt.binge.timers.*;
@@ -55,15 +57,12 @@ public class Binge  extends Manager{
 		//	this.collisionsmanager.testCollisions();
 		//this.bpanel.getFrame().repaint();
 	}
-	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
-	@Deprecated
-		public Graphics getItemDrawZoneGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
-	public Graphics getGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
-	public Graphics getUIGraphics(){return dt.getPanel().getUIGraphics();}
+//	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
+//	@Deprecated
+	//	public Graphics getItemDrawZoneGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
+//	public Graphics getGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
+	public UIShow getUIShow(){return dt.getPanel().getUIShow();}
+	public DrawZone getDrawZone(){return dt.getPanel().getDrawZone();}
 	public JFrame getFrame(){return	dt.getPanel().getFrame();}
 	public Level getLvl(){return this.lvl;}
-	/**Return the width of the scene.*/
-	public int getWidth(){return dt.getPanel().getFrame().getWidth();}
-	/**Return the height of the scene.*/
-	public int getHeight(){return dt.getPanel().getFrame().getHeight();}
 }

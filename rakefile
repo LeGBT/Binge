@@ -2,7 +2,7 @@ require "rake/clean"
 require "pathname"
 
 def options 
-" -g -Xlint:all"
+"-g -Xlint:all "
 end
 
 def prfx 
@@ -42,10 +42,13 @@ end
 
 desc "build modified files"
 task :modified do
-	#verbose(true){
-	#		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
-	#		rm line.gsub(/\.java\Z/, '.class')
-	#	}
+	verbose(false){
+			`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
+		sh %{rm #{line.gsub(/\.java\Z/, '.class')}} do |ok,res|
+		end
+		build(line);
+	}
+	}
 	build("#{prfx}/Binge.java")
 	build("examples/bounce/BouncingGame.java")
 end

@@ -7,14 +7,14 @@ import fr.legbt.binge.ui.*;
 
 
 public class PaintManager extends Manager {
-	private Binge game;
+//	private Binge game;
 
 	public PaintManager(Binge agame){
 		super();
-		this.game = agame;
+//		this.game = agame;
 	}
 
-	public void traceThemAll(Graphics g){
+	public void traceItems(Graphics g){
 		try{
 			for(int i=0;i<movableitemlist.size();i++){
 				MovableItem mitem = movableitemlist.get(i);
@@ -29,7 +29,19 @@ public class PaintManager extends Manager {
 				sti.traceMe(g);
 			}
 		}catch(Exception e){
-			System.out.println("paintmanager segfault ? " + e);
+			System.out.println("paintmanager segfault  1 ? " + e);
+			e.printStackTrace();
+		}
+	}
+
+	public void traceUI(Graphics g){
+		try{
+			for(int i=0;i<staticinfolist.size();i++){
+				StaticInfo sti = staticinfolist.get(i);
+				sti.traceMe(g);
+			}
+		}catch(Exception e){
+			System.out.println("paintmanager segfault  2 ? " + e);
 			e.printStackTrace();
 		}
 	}

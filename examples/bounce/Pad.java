@@ -1,5 +1,7 @@
 package examples.bounce;
 
+import java.awt.Rectangle;
+
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
 
@@ -13,7 +15,7 @@ public class Pad extends Rect{
 	public Pad(Binge game,int x){
 		super(game,x,300,200,30);
 		this.xpos = x;
-		speedi = 20;
+		speedi = 15;
 		setListener(game);
 	}
 
@@ -32,6 +34,7 @@ public class Pad extends Rect{
 	public void onCollide(FixedItem fitem){}
 	public void onCollide(MovableItem mitem){}
 	public void action(){
+		this.setRenderZone(new Rectangle(this.getX(),this.getY(),this.getWidth(),this.getHeight()));
 		this.move(this.getX(),this.getY()+(int)yspeed);
 	}
 }

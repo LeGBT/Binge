@@ -54,4 +54,24 @@ public abstract class Rect extends MovableItem{
 		return false;
 	}
 
+	/**
+	 * Gets the height for this instance.
+	 *
+	 * @return The height.
+	 */
+	public int getHeight()
+	{
+		return this.height;
+	}
+
+	/**
+	 * Gets the width for this instance.
+	 *
+	 * @return The width.
+	 */
+	public int getWidth()
+	{
+		return this.width;
+	}
+
 }
