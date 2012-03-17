@@ -3,6 +3,7 @@ package fr.legbt.binge.items;
 import java.util.ArrayList;
 import fr.legbt.binge.ui.*;
 
+
 public class Manager{
 	protected ArrayList<MovableItem> movableitemlist;
 	protected ArrayList<FixedItem> fixeditemlist;

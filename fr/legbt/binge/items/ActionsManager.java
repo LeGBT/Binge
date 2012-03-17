@@ -1,6 +1,5 @@
 package fr.legbt.binge.items;
 
-import java.util.ArrayList;
 
 /**
  * Manage all "normal" actions, i.e. all actions to items whose are not in collisions.

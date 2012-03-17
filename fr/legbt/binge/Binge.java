@@ -7,6 +7,7 @@ import fr.legbt.binge.items.*;
 import fr.legbt.binge.thread.*;
 import fr.legbt.binge.timers.*;
 
+
 /** 
  * Main class of binge;
  * Just instantiate one and let the magic free !

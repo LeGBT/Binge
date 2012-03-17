@@ -1,13 +1,15 @@
 package fr.legbt.binge.items;
 
+import java.awt.Graphics;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import fr.legbt.binge.Binge;
-import java.awt.*;
+
 
 /**
  * Rect is a simple rectangular item
  */
+@SuppressWarnings("serial")
 public abstract class Rect extends MovableItem{
 	private Rectangle2D.Double therect;
 	protected int height;
@@ -23,9 +25,9 @@ public abstract class Rect extends MovableItem{
 		this.therect = new Rectangle2D.Double(x,y,width,height);
 	}
 
-	public void traceMe(Binge game){
+	public void traceMe(Graphics g){
 		therect.setFrame(this.getX(),this.getY(),width,height);
-		game.getGraphics().fillRect(this.getX(),this.getY(),width,height);
+		g.fillRect(this.getX(),this.getY(),width,height);
 	}
 
 	public Rectangle2D.Double getRect(){

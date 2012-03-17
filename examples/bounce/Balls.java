@@ -73,8 +73,8 @@ public class Balls extends Ball{
 		}
 	}
 
-	public void traceMe(Binge game){
-		Graphics2D g2d = (Graphics2D) game.getGraphics();	
+	public void traceMe(Graphics g){
+		Graphics2D g2d = (Graphics2D) g;	
 		Font f = new Font("Casual", Font.PLAIN, 32);
 		g2d.setFont(f);
 		g2d.setColor(this.color);	

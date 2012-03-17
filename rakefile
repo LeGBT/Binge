@@ -21,7 +21,7 @@ desc "build examples"
 task :examples => ["examples/bounce/BouncingGame.class"]
 
 def build(file)
-	puts file
+	#puts file
 	verbose(false) do
 		sh %{javac #{options} #{file}}
 	end
@@ -46,9 +46,8 @@ task :modified do
 	#		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
 	#		rm line.gsub(/\.java\Z/, '.class')
 	#	}
-	:binge
-	:examples
-	#	}
+	build("#{prfx}/Binge.java")
+	build("examples/bounce/BouncingGame.java")
 end
 
 

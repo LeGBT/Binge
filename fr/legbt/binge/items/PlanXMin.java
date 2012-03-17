@@ -1,8 +1,9 @@
 package fr.legbt.binge.items;
 
-import java.awt.geom.Rectangle2D;
-import java.awt.*;
+import java.awt.Graphics;
+
 import fr.legbt.binge.*;
+
 
 /**
  * Plan describe a right vertical half plan item for simple bounding collisions.
@@ -30,8 +31,8 @@ public class PlanXMin extends Plan{
 		}	
 		return false;
 	}
-	public void traceMe(Binge game){
-		game.getGraphics().fillRect(0,0,x,game.getHeight());
+	public void traceMe(Graphics g){
+		g.fillRect(0,0,x,(int)g.getClipBounds().getHeight());
 	}
 
 }

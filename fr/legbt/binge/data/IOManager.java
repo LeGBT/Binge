@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.IOException;
 import java.util.zip.*;
+
 
 public class IOManager {
 	public static void writeLvl(Level lvl,String lvlfile) throws Exception  {
@@ -29,8 +29,6 @@ public class IOManager {
 		//small test
 
 		public static Level readLevel(String lvlfile) throws Exception {
-			int w;
-			int h;
 			FileInputStream input = new FileInputStream(lvlfile+".bgcd"); 
 			GZIPInputStream zinput = new GZIPInputStream(input);
 			ObjectInputStream ois = new ObjectInputStream(zinput);

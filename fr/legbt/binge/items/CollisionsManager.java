@@ -1,9 +1,5 @@
 package fr.legbt.binge.items;
 
-import java.util.*;
-import java.util.Map.*;
-import java.awt.Rectangle;
-
 
 public class CollisionsManager extends Manager {
 

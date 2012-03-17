@@ -3,7 +3,10 @@ package fr.legbt.binge.thread;
 import fr.legbt.binge.*;
 import fr.legbt.binge.graphics.*;
 import javax.swing.*;
+
+import java.awt.Graphics;
 import java.util.List;
+
 
 public class DrawThread extends SwingWorker<Void,Integer> {
 	private BingePanel bpanel; 
@@ -26,6 +29,7 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 				game.testCollisions();
 				publish(framenb);
 				Thread.currentThread();
+				this.bpanel.getFrame().repaint();
 				Thread.sleep(framerate);
 			}catch(Exception e){
 				System.out.println("interruption !");
@@ -38,9 +42,9 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	protected void process(List<Integer> ints){
 		//		System.out.println("repaint ?");
 		//game.traceThemAll();
-	//	System.out.println(ints);
-		this.bpanel.getFrame().repaint();
-	//	this.bpanel.getFrame().validate();
+		//	System.out.println(ints);
+	//	this.bpanel.getFrame().repaint();
+		//	this.bpanel.getFrame().validate();
 	}
 
 	//public void run(){  
@@ -53,6 +57,6 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	//}
 
 	public BingePanel getPanel(){return this.bpanel;}
-	public void traceThemAll(){game.traceThemAll();}
+	public void traceThemAll(Graphics g){game.traceThemAll(g);}
 
 }

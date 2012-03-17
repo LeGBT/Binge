@@ -1,12 +1,14 @@
 package fr.legbt.binge.items;
 
+import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
-import java.awt.*;
 import fr.legbt.binge.*;
+
 
 /**
  * Plan describe a half plan item for simple bounding collisions.
  */
+@SuppressWarnings("serial")
 public abstract class Plan extends FixedItem{
 	private Rectangle2D lerect;
 	//final static int XMAX = 3;
@@ -22,9 +24,17 @@ public abstract class Plan extends FixedItem{
 		super(game);
 		this.lerect = new Rectangle2D.Double(0,0,0,0);
 	}
-
-	public abstract void traceMe(Binge game);
+	public abstract void traceMe(Graphics g);
 	protected void action(){}
 	public void onLoaded(Binge game){}
+	/**
+	 * Gets the lerect for this instance.
+	 *
+	 * @return The lerect.
+	 */
+	public Rectangle2D getLerect()
+	{
+		return this.lerect;
+	}
 	
 }

@@ -1,8 +1,8 @@
 package fr.legbt.binge.ui;
 
-import java.awt.*;
+import java.awt.Graphics;
 import fr.legbt.binge.Binge;
-import fr.legbt.binge.items.PaintManager;
+
 
 public abstract class StaticInfo{
 	Binge game;
@@ -11,6 +11,5 @@ public abstract class StaticInfo{
 		this.game = game;	
 		this.game.registerUI(this);
 	}
-
-	public abstract void traceMe(Binge game);
+	public abstract void traceMe(Graphics g);
 }

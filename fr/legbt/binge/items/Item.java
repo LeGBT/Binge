@@ -1,16 +1,16 @@
 package fr.legbt.binge.items;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.UUID;
 import java.util.concurrent.locks.*;
 import fr.legbt.binge.Binge;
-import fr.legbt.binge.data.*;
+
 
 /**
  * Item is representing any drawable object with collisions capability.
  */
+@SuppressWarnings("serial")
 public abstract class Item implements Serializable {
 	private int x;
 	private int y;
@@ -78,7 +78,7 @@ public abstract class Item implements Serializable {
 	/** This method is called whenever a collition betwin this item and mitem is detected.*/
 	protected abstract Boolean collideWith(MovableItem mitem);
 	/** traceMe must define the way the item is drawn.*/
-	protected abstract void traceMe(Binge game);
+	protected abstract void traceMe(Graphics g);
 	/** action is called at each frame ticks, use it to define the way you want your item to move.*/
 	protected abstract void action();
 	public abstract void onLoaded(Binge game);

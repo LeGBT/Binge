@@ -1,11 +1,12 @@
 package fr.legbt.binge.items;
 
-import java.awt.*;
 import fr.legbt.binge.Binge;
+
 
 /**
  * Implement a FixedItem to represent any non movable object with collisions and graphic gestion.
  */
+@SuppressWarnings("serial")
 public abstract class FixedItem  extends Item{
 
 	protected FixedItem(Binge game){

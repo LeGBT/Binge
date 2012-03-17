@@ -4,9 +4,11 @@ import java.awt.geom.Ellipse2D;
 import java.awt.*;
 import fr.legbt.binge.Binge;
 
+
 /**
  * Ball is a simple disc item.
  */
+@SuppressWarnings("serial")
 public abstract class Ball extends MovableItem{
 	protected int xcenter;
 	protected int ycenter;

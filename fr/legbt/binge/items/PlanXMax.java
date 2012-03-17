@@ -1,8 +1,9 @@
 package fr.legbt.binge.items;
 
-import java.awt.geom.Rectangle2D;
-import java.awt.*;
+import java.awt.Graphics;
+
 import fr.legbt.binge.*;
+
 
 /**
  * PlanXMax describe a right vertical half plan item for simple bounding collisions.
@@ -31,7 +32,7 @@ public class PlanXMax extends Plan{
 		return false;
 	}
 
-	public void traceMe(Binge game){
-		game.getGraphics().fillRect(x,0,game.getWidth()-x,game.getHeight());
+	public void traceMe(Graphics g){
+		g.fillRect(x,0,(int)g.getClipBounds().getWidth()-x,(int)g.getClipBounds().getHeight());
 	}	
 }

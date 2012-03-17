@@ -1,11 +1,11 @@
-
 package fr.legbt.binge.items;
 
-import java.awt.*;
 import java.awt.event.*;
 import fr.legbt.binge.Binge;
 
 
+
+@SuppressWarnings("serial")
 public abstract class MovableItem extends Item implements KeyListener {
 	public Boolean collided;
 	public Boolean collide;

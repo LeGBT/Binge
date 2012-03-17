@@ -9,6 +9,7 @@ public class Pad extends Rect{
 	private int xpos;
 	private int speedi;
 
+
 	public Pad(Binge game,int x){
 		super(game,x,300,200,30);
 		this.xpos = x;

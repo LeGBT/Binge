@@ -2,7 +2,6 @@ package fr.legbt.binge.graphics;
 
 import java.awt.*;
 import javax.swing.*;
-//import fr.legbt.binge.Binge;
 import fr.legbt.binge.thread.DrawThread;
 
 /**
@@ -11,20 +10,21 @@ import fr.legbt.binge.thread.DrawThread;
  */
 public class BingePanel extends JPanel{
 	private static final long serialVersionUID = 3l; //serialisation warnings
-	private Rectangle screen, bounds;
+	//	private Rectangle bounds;
 	private JFrame frame;
 	private DrawZone drawzone;
 	private UI ui;
 	//Binge game;
 	public DrawThread dt;
 
+
 	public BingePanel(DrawThread dt,String name, int width, int height){
 		super();
 		this.setLayout(null);
 		//this.game = game;
 		this.dt = dt;
-		this.screen = new Rectangle(0,0,width,height);
-		this.bounds = new Rectangle(0,0,width,height);
+		//		this.screen = new Rectangle(0,0,width,height);
+		//		this.bounds = new Rectangle(0,0,width,height);
 		this.drawzone = new DrawZone(this,width,height);
 		this.ui = new UI(this,width,height);
 		this.add(drawzone);
@@ -42,9 +42,6 @@ public class BingePanel extends JPanel{
 	}
 
 	protected void paintComponent(Graphics g){
-		//g.setColor(Color.WHITE);
-		//g.fillRect(0, 0, getWidth(), getHeight());
-		this.dt.traceThemAll();
 	}
 
 	public boolean isOpaque(){return true;}
@@ -52,4 +49,14 @@ public class BingePanel extends JPanel{
 	public Graphics getUIGraphics(){return this.ui.getGraphics();}
 	public JFrame getFrame(){return this.frame;}
 	//	drawzone.setLocation(drawzone.zoneoff,0);
+
+	/**
+	 * Gets the dt for this instance.
+	 *
+	 * @return The dt.
+	 */
+	public DrawThread getDT()
+	{
+		return this.dt;
+	}
 }

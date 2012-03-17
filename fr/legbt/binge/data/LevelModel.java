@@ -3,6 +3,7 @@ package fr.legbt.binge.data;
 import fr.legbt.binge.items.*;
 import java.util.ArrayList;
 
+
 public interface LevelModel {
 	public int[] getLine(int aline);
 	public void setLine(int aline,int[] line);
