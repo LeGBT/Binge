@@ -9,6 +9,12 @@ def prfx
 	"fr/legbt/binge"
 end
 
+
+desc "defaut task"
+task :default => ["modified"] 
+desc "build EVERYTHING"
+task :all => ["classes", "doc","ex"]
+
 def build(file)
 	puts file
 	verbose(false) do
@@ -33,10 +39,12 @@ task :default => :modified
 task :doc => ["build_docs"] do
 	verbose(false){sh %{open index.html}}
 end
+
+desc "build modified files"
 task :modified do
-	verbose(false){
+	verbose(true){
 		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
-	puts line.gsub(/\.java\Z/, ".class")
+	rm line.gsub(/\.java\Z/, ".class")
 	}
 	:binge
 	:examples
@@ -46,20 +54,14 @@ end
 
 desc "rebuild everything"
 task :rebuild => :clean do
-	SRC.each{|f| build(f)}
+	:binge
+	:examples
 end
 
 desc "Docs generation..."
 task :doc  do
 	#	puts "Docs generation..."
 	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers:fr.legbt.binge.data:fr.legbt.binge.graphics:fr.legbt.binge.ui > doclog.tmp}}
-end
-desc "les exemples"
-task :ex do
-	#	puts "examples builds"
-	verbose(false) do
-		sh %{javac #{options} examples/*/*.java}
-	end
 end
 
 CLEAN.include(".DS_Store","*.tmp","**/*.class")
