@@ -71,7 +71,7 @@ public class Level implements LevelModel, Serializable{
 		}
 		for(int i=0; i<alvl.itemlist.size(); i++){
 			alvl.itemlist.get(i).setGame(game);
-			alvl.itemlist.get(i).setID(i);
+			alvl.itemlist.get(i).newID();
 			alvl.itemlist.get(i).onLoaded(game);
 		}
 		return alvl;

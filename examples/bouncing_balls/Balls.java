@@ -47,8 +47,8 @@ public class Balls extends Ball{
 			double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
 			//System.out.println("dist = " + dist);
 			//vecteurs normaux à la collision :
-			double nx = (mitem.getX() - this.x + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
-			double ny = (mitem.getY() - this.y + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
+			double nx = (mitem.getX() - this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
+			double ny = (mitem.getY() - this.getY() + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
 			//vecteurs tangents :
 			double gx = -ny;
 			double gy = nx;
@@ -64,7 +64,7 @@ public class Balls extends Ball{
 			mitem.setYSpeed(ny*v1n + gy*v2g);
 		}else{
 			if (!mitem.collided){
-				if(this.x>40){
+				if(this.getX()>40){
 					this.xspeed = -xspeed;
 
 				}else{
@@ -82,15 +82,15 @@ public class Balls extends Ball{
 		g2d.setColor(this.color);	
 		g2d.fill(this.getDisc());
 		g2d.setColor(Color.BLACK);	
-		g2d.drawString(Integer.toString((int)Math.round(this.xspeed)),this.x,this.y+this.getDiameter());
+		g2d.drawString(Integer.toString((int)Math.round(this.xspeed)),this.getX(),this.getY()+this.getDiameter());
 	}
 
 	public void action(){
-		this.move((int)(this.x+Math.round(this.xspeed)),(int)(this.y+Math.round(this.yspeed)));
-		if(this.x<50){
+		this.move((int)(this.getX()+Math.round(this.xspeed)),(int)(this.getY()+Math.round(this.yspeed)));
+		if(this.getX()<50){
 			this.color = Color.RED;
 		}
-		if(this.x>50){
+		if(this.getX()>50){
 			this.color = Color.GREEN;
 		}
 	}

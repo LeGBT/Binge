@@ -27,7 +27,7 @@ public abstract class Ball extends MovableItem{
  * Trace this ball in graphics g
  */
 	public void traceMe(Binge game){
-		theball.setFrame(x,y,diameter,diameter);
+		theball.setFrame(this.getX(),this.getY(),diameter,diameter);
 		((Graphics2D)game.getGraphics()).fill(theball);
 	}
 
@@ -38,7 +38,7 @@ public abstract class Ball extends MovableItem{
  * Return the actual graphic disc.
  */
 	protected Ellipse2D.Double getDisc(){
-		theball.setFrame(x,y,diameter,diameter);
+		theball.setFrame(this.getX(),this.getY(),diameter,diameter);
 		return this.theball;
 	}
 
@@ -59,10 +59,10 @@ public abstract class Ball extends MovableItem{
 			theball.setFrame(xnext,ynext,diameter,diameter);
 			Ellipse2D.Double circle = this.theball;
 			if (circle.intersects(it.xnext, it.ynext, it.width, it.height)){
-				theball.setFrame(x,y,diameter,diameter);
+				theball.setFrame(this.getX(),this.getY(),diameter,diameter);
 				return true;
 			}
-			theball.setFrame(x,y,diameter,diameter);
+			theball.setFrame(this.getX(),this.getY(),diameter,diameter);
 			return false;
 		}
 		return false;

@@ -2,8 +2,10 @@ package fr.legbt.binge.thread;
 
 import fr.legbt.binge.*;
 import fr.legbt.binge.graphics.*;
+import javax.swing.*;
+import java.util.List;
 
-public class DrawThread implements Runnable{
+public class DrawThread extends SwingWorker<Void,Integer> {
 	private BingePanel bpanel; 
 	private int framerate;
 	private Binge game;
@@ -14,14 +16,40 @@ public class DrawThread implements Runnable{
 		this.game = game;
 	}
 
-	public void run(){  
-		this.bpanel.getFrame().repaint();
-		try{
-		Thread.sleep(20);
-		}catch(Exception e){
-			e.printStackTrace();
+	public Void doInBackground(){
+		int framenb=0;
+		while(true){
+			try{
+				//			System.out.println(framenb);
+				framenb++;
+				game.actionThemAll();
+				game.testCollisions();
+				publish(framenb);
+				Thread.currentThread().sleep(framerate);
+			}catch(Exception e){
+				System.out.println("interruption !");
+				e.printStackTrace();
+			}
 		}
 	}
+
+
+	protected void process(List<Integer> ints){
+		//		System.out.println("repaint ?");
+		//game.traceThemAll();
+	//	System.out.println(ints);
+		this.bpanel.getFrame().repaint();
+	//	this.bpanel.getFrame().validate();
+	}
+
+	//public void run(){  
+	//	this.bpanel.getFrame().repaint();
+	//	try{
+	//		Thread.sleep(20);
+	//	}catch(Exception e){
+	//		e.printStackTrace();
+	//	}
+	//}
 
 	public BingePanel getPanel(){return this.bpanel;}
 	public void traceThemAll(){game.traceThemAll();}

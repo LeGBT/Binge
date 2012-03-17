@@ -26,9 +26,9 @@ public class CollisionsManager extends Manager {
 						itemi.collided = true;
 						itemj.collided = true;
 						if(!canmove){
-							itemi.ynext = itemi.y;
-							itemj.xnext = itemj.x;
-							itemj.ynext = itemj.y;
+						//	itemi.ynext = itemi.getY();
+							itemj.xnext = itemj.getX();
+							itemj.ynext = itemj.getY();
 						}
 					}
 				}
@@ -37,8 +37,8 @@ public class CollisionsManager extends Manager {
 					FixedItem itemj = fixeditemlist.get(j);
 					if (itemj.collideWith(itemi)){
 						itemi.onCollide(itemj);
-						itemi.xnext = itemi.x;
-						itemi.ynext = itemi.y;
+						itemi.xnext = itemi.getX();
+						itemi.ynext = itemi.getY();
 					}
 				}
 				itemi.setPosition(itemi.xnext,itemi.ynext);

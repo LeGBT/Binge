@@ -32,7 +32,7 @@ public class Pad extends Rect{
 	public void onCollide(FixedItem fitem){}
 	public void onCollide(MovableItem mitem){}
 	public void action(){
-		this.move(x,y+(int)yspeed);
+		this.move(this.getX(),this.getY()+(int)yspeed);
 	}
 }
 

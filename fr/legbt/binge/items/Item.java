@@ -3,6 +3,8 @@ package fr.legbt.binge.items;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.Serializable;
+import java.util.UUID;
+import java.util.concurrent.locks.*;
 import fr.legbt.binge.Binge;
 import fr.legbt.binge.data.*;
 
@@ -10,30 +12,64 @@ import fr.legbt.binge.data.*;
  * Item is representing any drawable object with collisions capability.
  */
 public abstract class Item implements Serializable {
-	protected int x;
-	protected int y;
-	private transient int uniqueid;
+	private int x;
+	private int y;
+	private transient UUID uniqueid;
+	private ReentrantLock lock;
 
 	/** Init an Item with coordinates x,y.*/
 	protected Item(int x, int y){
+		lock = new ReentrantLock();
 		this.x = x;
 		this.y = y;
+		this.uniqueid = UUID.randomUUID();
 	}
 
 	/** Init an Item with coordinates x,y and registered for paint and collisions.*/
 	protected Item(Binge game, int x, int y){
+		lock = new ReentrantLock();
 		this.x = x;
 		this.y = y;
-		this.uniqueid = 0;
+		this.uniqueid = UUID.randomUUID();
 		this.setGame(game);
 		game.getLvl().addItem(this);	
 	}
 
-	public void setID(int i){ this.uniqueid = i;}
-	public int getID(){return uniqueid;}
-	public int getX(){return this.x;}
-	public int getY(){return this.y;}
+	public void newID(){ this.uniqueid = UUID.randomUUID();}
+	public UUID getID(){return uniqueid;}
+	public int getX(){
+		lock.lock();	
+		try{
+			return this.x;
+		}finally{
+			lock.unlock();
+		}
+	}
+	public int getY(){
+		lock.lock();	
+		try{
+			return this.y;
+		}finally{
+			lock.unlock();
+		}
+	}
 
+	public void setX(int x){
+		lock.lock();	
+		try{
+			 this.x = x;
+		}finally{
+			lock.unlock();
+		}
+	}
+	public void setY(int y){
+		lock.lock();	
+		try{
+			this.y = y;
+		}finally{
+			lock.unlock();
+		}
+	}
 
 	public void printNFO(){
 		System.out.println("Item n°"+ uniqueid + " is a" + this.getClass().getName());

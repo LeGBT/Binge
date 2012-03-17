@@ -2,6 +2,8 @@ package fr.legbt.binge;
 
 import java.awt.*;
 import javax.swing.*;
+//import java.beans.PropertyChangeListener;
+//import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import fr.legbt.binge.ui.*;
 import fr.legbt.binge.items.*;
@@ -27,20 +29,22 @@ public class Binge  extends Manager{
 		this.paintmanager = new PaintManager(this);
 		this.framerate = framerate;
 		//		this.bpanel = new BingePanel(this,name,width,height);
-		SwingUtilities.invokeLater(this.dt =)
-			//	this.dt = new DrawThread(this,name,width,height,framerate);
-			this.lvl = new Level(0,0);
+		dt = new DrawThread(this,name,width,height,framerate);
+		//	this.dt = new DrawThread(this,name,width,height,framerate);
+		this.lvl = new Level(0,0);
 	}
 
 	/**This load method is used to launch the game with saved lvl.*/
 	public void load(String lvlfile){
 		this.lvl = Level.loadLvl(lvlfile,this);
 		//run thread !
+		dt.execute();
 	}
 
 	/**This load method is used to launch the game, all the items must have been already initilized.*/
 	public void load(){
 		//run thread !
+		dt.execute();
 	}
 
 	/** 

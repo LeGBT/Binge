@@ -37,8 +37,8 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public void unRegister(Binge game){
 		game.unRegisterItem(this);
 	}
-	public int getX(){return this.x;}
-	public int getY(){return this.y;}
+	public int getX(){return super.getX();}
+	public int getY(){return super.getY();}
 	public double getXSpeed(){return this.xspeed;}
 	public double getYSpeed(){return this.yspeed;}
 	public void setXSpeed(double nxs){ this.xspeed = nxs;}
@@ -60,8 +60,8 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public void keyTyped(KeyEvent key){}
 
 	void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
+		this.setX(x);
+		this.setY(y);
 	}
 
 	protected abstract void onCollide(MovableItem mitem);

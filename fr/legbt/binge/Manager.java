@@ -41,5 +41,7 @@ abstract class Manager{
 	public void registerUI(StaticInfo sti){paintmanager.register(sti);}
 	public void unRegisterUI(StaticInfo sti){paintmanager.unRegister(sti);}
 	public void traceThemAll(){this.paintmanager.traceThemAll();}
+	public void actionThemAll(){this.actionsmanager.actionThemAll();}
+	public void testCollisions(){this.collisionsmanager.testCollisions();}
 }
 

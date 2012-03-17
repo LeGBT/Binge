@@ -24,8 +24,8 @@ public abstract class Rect extends MovableItem{
 	}
 
 	public void traceMe(Binge game){
-		therect.setFrame(x,y,width,height);
-		game.getGraphics().fillRect(x,y,width,height);
+		therect.setFrame(this.getX(),this.getY(),width,height);
+		game.getGraphics().fillRect(this.getX(),this.getY(),width,height);
 	}
 
 	public Rectangle2D.Double getRect(){
