@@ -5,6 +5,26 @@ def options
 	" -g -Xlint:all"
 end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 desc "defaut task"
 task :default => ["modified"] 
 desc "build EVERYTHING"
@@ -21,7 +41,7 @@ end
 
 
 task :modified do
-	verbose(false){
+	verbose(true){
 		`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
 		puts line
 		sh %{javac #{options} #{line}}
