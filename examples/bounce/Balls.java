@@ -85,7 +85,7 @@ public class Balls extends Ball{
 
 	public void action(){
 		this.move((int)(this.getX()+Math.round(this.xspeed)),(int)(this.getY()+Math.round(this.yspeed)));
-		this.setRenderZone(new Rectangle(this.getX(),this.getY(),diameter,diameter));
+		this.setRenderZone(new Rectangle(this.getX(),this.getY(),diameter+4,diameter+4));
 		if(this.getX()<50){
 			this.color = Color.RED;
 		}

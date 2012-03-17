@@ -20,14 +20,15 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	}
 
 	public Void doInBackground(){
-	//	int framenb=0;
+		//	int framenb=0;
 		while(true){
 			try{
 				//			System.out.println(framenb);
-	//			framenb++;
+				//			framenb++;
+				this.bpanel.getDrawZone().resetRect();
 				game.actionThemAll();
 				game.testCollisions();
-	//			publish(framenb);
+				//			publish(framenb);
 				Thread.currentThread();
 				this.bpanel.getDrawZone().repaint(this.bpanel.getDrawZone().getRect());
 				this.bpanel.getUIShow().repaint(this.bpanel.getUIShow().getRect());
@@ -44,7 +45,7 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 		//		System.out.println("repaint ?");
 		//game.traceThemAll();
 		//	System.out.println(ints);
-	//	this.bpanel.getFrame().repaint();
+		//	this.bpanel.getFrame().repaint();
 		//	this.bpanel.getFrame().validate();
 	}
 

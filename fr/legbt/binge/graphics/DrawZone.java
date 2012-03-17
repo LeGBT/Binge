@@ -34,9 +34,8 @@ public class DrawZone extends JComponent{
 	}
 
 	protected void paintComponent(Graphics g){
-		System.out.println(this.bounds.getHeight() + " et w : " + bounds.getWidth());
+		//System.out.println(this.bounds.getHeight() + " et w : " + bounds.getWidth());
 		super.paintComponent(g);
-		this.resetRect();
 		this.bpanel.getDT().traceItems(g);
 	}
 }
