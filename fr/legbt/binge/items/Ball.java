@@ -28,9 +28,9 @@ public abstract class Ball extends MovableItem{
 /** 
  * Trace this ball in graphics g
  */
-	public void traceMe(Binge game){
+	public void traceMe(Graphics g){
 		theball.setFrame(this.getX(),this.getY(),diameter,diameter);
-		((Graphics2D)game.getGraphics()).fill(theball);
+		((Graphics2D)g).fill(theball);
 	}
 
 	public int getDiameter(){

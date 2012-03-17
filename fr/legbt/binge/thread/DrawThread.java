@@ -20,14 +20,14 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	}
 
 	public Void doInBackground(){
-		int framenb=0;
+	//	int framenb=0;
 		while(true){
 			try{
 				//			System.out.println(framenb);
-				framenb++;
+	//			framenb++;
 				game.actionThemAll();
 				game.testCollisions();
-				publish(framenb);
+	//			publish(framenb);
 				Thread.currentThread();
 				this.bpanel.getFrame().repaint();
 				Thread.sleep(framerate);
@@ -57,6 +57,7 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	//}
 
 	public BingePanel getPanel(){return this.bpanel;}
-	public void traceThemAll(Graphics g){game.traceThemAll(g);}
+	public void traceItems(Graphics g){game.traceItems(g);}
+	public void traceUI(Graphics g){game.traceUI(g);}
 
 }

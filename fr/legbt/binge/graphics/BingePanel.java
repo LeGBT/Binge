@@ -45,8 +45,8 @@ public class BingePanel extends JPanel{
 	}
 
 	public boolean isOpaque(){return true;}
-	public Graphics getItemDrawZoneGraphics(){return this.drawzone.getGraphics();}
-	public Graphics getUIGraphics(){return this.ui.getGraphics();}
+	//public Graphics getItemDrawZoneGraphics(){return this.drawzone.getGraphics();}
+	//public Graphics getUIGraphics(){return this.ui.getGraphics();}
 	public JFrame getFrame(){return this.frame;}
 	//	drawzone.setLocation(drawzone.zoneoff,0);
 

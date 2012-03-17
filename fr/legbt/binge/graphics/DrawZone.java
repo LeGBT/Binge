@@ -11,6 +11,7 @@ class DrawZone extends JComponent{
 
 	DrawZone(BingePanel bpanel,int width, int height){
 		this.bpanel = bpanel;
+		this.setDoubleBuffered(true);
 		//		this.screen = new Rectangle(0,0,width,height);
 	}
 
@@ -21,6 +22,6 @@ class DrawZone extends JComponent{
 	}
 
 	protected void paintComponent(Graphics g){
-		this.bpanel.getDT().traceThemAll(g);
+		this.bpanel.getDT().traceItems(g);
 	}
 }
