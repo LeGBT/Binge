@@ -1,4 +1,4 @@
-package examples.bouncing_balls;
+package examples.bounce;
 
 import java.awt.*;
 import fr.legbt.binge.ui.StaticInfo;

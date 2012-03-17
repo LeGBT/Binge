@@ -1,4 +1,4 @@
-package examples.bouncing_balls;
+package examples.bounce;
 
 import fr.legbt.binge.Binge;
 import fr.legbt.binge.LevelEditor;
@@ -11,7 +11,7 @@ public class BouncingGame extends Binge{
 		super(name,lvlfile,width,height,framerate);
 	}
 	public static void main(String arg[]){
-		BouncingGame jeux = new BouncingGame("jeux de boules","level",1280,720,3);
+		BouncingGame jeux = new BouncingGame("jeux de boules","level",1280,720,15);
 		score = new Counter(jeux,0,30,30);
 		if((arg.length != 0)){
 			System.out.println("reloaded");
