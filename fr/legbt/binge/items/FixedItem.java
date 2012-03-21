@@ -6,11 +6,10 @@ import fr.legbt.binge.Binge;
 /**
  * Implement a FixedItem to represent any non movable object with collisions and graphic gestion.
  */
-@SuppressWarnings("serial")
 public abstract class FixedItem  extends Item{
 
-	protected FixedItem(Binge game){
-		super(game,0,0);
+	protected FixedItem(Binge game, String nametype){
+		super(game,nametype,0,0);
 	}
 /**
  * This is a method to track the item on the go with the managers (collisions or paint)

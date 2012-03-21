@@ -8,16 +8,18 @@ import fr.legbt.binge.*;
  * Plan describe a right vertical half plan item for simple bounding collisions.
  */
 public class PlanYMax extends Plan{
-	private static final long serialVersionUID = 1l;
-
 	protected int y;
 
 	/**
 	 * Xmax Plan construction 
 	 */
 	public PlanYMax(Binge game, int y){
-		super(game);
+		super(game,"PlanYMax");
 		this.y = y;
+	}
+
+	public PlanYMax selfCreate(Binge game, DataItem data, int line, int column){
+		return new PlanYMax(game, column*80);
 	}
 
 	protected Boolean collideWith(MovableItem mitem){

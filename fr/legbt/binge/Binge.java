@@ -16,23 +16,25 @@ import fr.legbt.binge.timers.*;
  */ 
 public class Binge  extends Manager{
 	@SuppressWarnings("unused")
-	private BingeTask atimer;
+		private BingeTask atimer;
+	private int res;
 	private Level lvl;
+	private ItemFactory factory;
 	//	private BingePanel bpanel;
 	private DrawThread dt;
 	@SuppressWarnings("unused")
-	private int framerate;
+		private int framerate;
 	@SuppressWarnings("unused")
-	private java.util.Timer timer;
+		private java.util.Timer timer;
 
 	/**Create a new game.*/
-	public Binge(String name,String lvlfile, int width, int height, int framerate){
+	public Binge(ItemFactory factory, String name, String lvlfile, int width, int height, int framerate){
+		this.factory = factory;
+		this.res = 80;
 		this.paintmanager = new PaintManager(this);
 		this.framerate = framerate;
-		//		this.bpanel = new BingePanel(this,name,width,height);
 		dt = new DrawThread(this,name,width,height,framerate);
-		//	this.dt = new DrawThread(this,name,width,height,framerate);
-		this.lvl = new Level(0,0);
+		this.lvl = new Level(16,9);
 	}
 
 	/**This load method is used to launch the game with saved lvl.*/
@@ -57,12 +59,32 @@ public class Binge  extends Manager{
 		//	this.collisionsmanager.testCollisions();
 		//this.bpanel.getFrame().repaint();
 	}
-//	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
-//	@Deprecated
+	//	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
+	//	@Deprecated
 	//	public Graphics getItemDrawZoneGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
-//	public Graphics getGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
+	//	public Graphics getGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
 	public UIShow getUIShow(){return dt.getPanel().getUIShow();}
 	public DrawZone getDrawZone(){return dt.getPanel().getDrawZone();}
 	public JFrame getFrame(){return	dt.getPanel().getFrame();}
+	/**
+	 * Gets the res for this instance.
+	 *
+	 * @return The res.
+	 */
+	public int getRes()
+	{
+		return this.res;
+	}
+
 	public Level getLvl(){return this.lvl;}
+
+	/**
+	 * Gets the factory for this instance.
+	 *
+	 * @return The factory.
+	 */
+	public ItemFactory getFactory()
+	{
+		return this.factory;
+	}
 }

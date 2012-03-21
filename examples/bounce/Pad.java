@@ -6,15 +6,14 @@ import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
 
 public class Pad extends Rect{
-	private static final long serialVersionUID = 0l;
 	@SuppressWarnings("unused")
 	private int xpos;
 	private int speedi;
 
 
-	public Pad(Binge game,int x){
-		super(game,x,300,200,30);
-		this.xpos = x;
+	public Pad(Binge game,int column){
+		super(game,"Pad",3,column,240,30);
+		this.xpos = this.getX();
 		speedi = 15;
 		setListener(game);
 	}
@@ -25,6 +24,10 @@ public class Pad extends Rect{
 			case 87 : yspeed = -speedi;break;
 		}
 	}
+
+	public Pad selfCreate(Binge game, DataItem data, int line, int column){
+		return new Pad(game,column);
+	}	
 
 	public void onKeyUp(int key){
 		yspeed = 0;

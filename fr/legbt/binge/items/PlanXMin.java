@@ -9,15 +9,18 @@ import fr.legbt.binge.*;
  * Plan describe a right vertical half plan item for simple bounding collisions.
  */
 public class PlanXMin extends Plan{
-	private static final long serialVersionUID = 1l;
 	protected int x;
 
 	/**
 	 * Xmax Plan construction 
 	 */
 	public PlanXMin(Binge game, int x){
-		super(game);
+		super(game,"PlanXMin");
 		this.x = x;
+	}
+
+	public PlanXMin selfCreate(Binge game, DataItem data, int line, int column){
+		return new PlanXMin(game, line*80);
 	}
 
 	protected Boolean collideWith(MovableItem mitem){

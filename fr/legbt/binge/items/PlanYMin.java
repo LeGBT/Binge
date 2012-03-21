@@ -9,15 +9,18 @@ import fr.legbt.binge.*;
  * PlanYMin describe a top horizontal half plan item for simple bounding collisions.
  */
 public class PlanYMin extends Plan{
-	private static final long serialVersionUID = 1l;
 	protected int y;
 
 	/**
 	 * Ymay Plan construction 
 	 */
 	public PlanYMin(Binge game, int y){
-		super(game);
+		super(game,"PlanYMin");
 		this.y = y;
+	}
+
+	public static Item selfCreate(Binge game, DataItem data, int line, int column){
+		return new PlanYMin(game, column*80);
 	}
 
 	protected Boolean collideWith(MovableItem mitem){

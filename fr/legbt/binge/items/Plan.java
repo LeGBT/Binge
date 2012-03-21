@@ -8,7 +8,6 @@ import fr.legbt.binge.*;
 /**
  * Plan describe a half plan item for simple bounding collisions.
  */
-@SuppressWarnings("serial")
 public abstract class Plan extends FixedItem{
 	private Rectangle2D lerect;
 	//final static int XMAX = 3;
@@ -20,8 +19,8 @@ public abstract class Plan extends FixedItem{
 	/**
 	 * Simple Plan class
 	 */
-	public Plan(Binge game){
-		super(game);
+	public Plan(Binge game, String nametype){
+		super(game,nametype);
 		this.lerect = new Rectangle2D.Double(0,0,0,0);
 	}
 	public abstract void traceMe(Graphics g);

@@ -1,8 +1,6 @@
 package fr.legbt.binge.items;
 
 import java.awt.Graphics;
-import java.io.Serializable;
-import java.util.UUID;
 import java.util.concurrent.locks.*;
 import fr.legbt.binge.Binge;
 
@@ -10,35 +8,38 @@ import fr.legbt.binge.Binge;
 /**
  * Item is representing any drawable object with collisions capability.
  */
-@SuppressWarnings("serial")
-public abstract class Item implements Serializable {
+public abstract class Item {
 	private int x;
 	private int y;
-	private transient UUID uniqueid;
-	protected transient Binge game;
+	protected  Binge game;
 	private ReentrantLock lock;
+	protected DataItem data;
+	// for the moment only the resolution 1280 by 720 is supported.
+	// the lvl MUST be a 16 by 9 too.
+	private final int res = 80;
 
-	/** Init an Item with coordinates x,y.*/
-	protected Item(int x, int y){
+
+	/** Init an Item from the lvl file.*/
+	protected Item(DataItem data,int line, int column){
 		lock = new ReentrantLock();
-		this.x = x;
-		this.y = y;
-		this.uniqueid = UUID.randomUUID();
+		this.x = res*column;
+		this.y = res*line;
+		this.data = data;
 	}
+
 
 	/** Init an Item with coordinates x,y and registered for paint and collisions.*/
-	protected Item(Binge game, int x, int y){
+	protected Item(Binge game,String nameid, int line, int column){
 		lock = new ReentrantLock();
 		this.game = game;
-		this.x = x;
-		this.y = y;
-		this.uniqueid = UUID.randomUUID();
+		this.x = column*res;
+		this.y = line*res;
+		this.data = new DataItem(nameid);
+		game.getLvl().setTile(line,column,data);	
 		this.setGame(game);
-		game.getLvl().addItem(this);	
 	}
 
-	public void newID(){ this.uniqueid = UUID.randomUUID();}
-	public UUID getID(){return uniqueid;}
+
 	public int getX(){
 		lock.lock();	
 		try{
@@ -59,7 +60,7 @@ public abstract class Item implements Serializable {
 	public void setX(int x){
 		lock.lock();	
 		try{
-			 this.x = x;
+			this.x = x;
 		}finally{
 			lock.unlock();
 		}
@@ -74,7 +75,7 @@ public abstract class Item implements Serializable {
 	}
 
 	public void printNFO(){
-		System.out.println("Item n°"+ uniqueid + " is a" + this.getClass().getName());
+		System.out.println("Item n°"+ data.getNameType() + " is a" + this.getClass().getName());
 	}
 
 	/** This method is called whenever a collition betwin this item and mitem is detected.*/

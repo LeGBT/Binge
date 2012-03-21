@@ -8,7 +8,6 @@ import fr.legbt.binge.Binge;
 /**
  * Ball is a simple disc item.
  */
-@SuppressWarnings("serial")
 public abstract class Ball extends MovableItem{
 	protected int xcenter;
 	protected int ycenter;
@@ -18,12 +17,19 @@ public abstract class Ball extends MovableItem{
 	/**
 	 * Constructor for Ball defined by the top left coordinate point of the smallest square containing the ball. 
 	 */
-	public Ball(Binge game, int x, int y, int diameter){
-		super(game,x,y);
+	public Ball(Binge game,String nameid, int x, int y, int diameter){
+		super(game,nameid,x,y);
 		this.xcenter = x + diameter/2;
 		this.ycenter = y + diameter/2;
 		this.diameter = diameter;
 		this.theball = new Ellipse2D.Double(x,y,diameter,diameter);
+	}
+	public Ball(DataItem data, int line, int column, int diameter){
+		super(data,line,column);
+		this.xcenter = column*data.getRes() + diameter/2;
+		this.ycenter = line*data.getRes() + diameter/2;
+		this.diameter = diameter;
+		this.theball = new Ellipse2D.Double(column*data.getRes(),line*data.getRes(),diameter,diameter);
 	}
 /** 
  * Trace this ball in graphics g

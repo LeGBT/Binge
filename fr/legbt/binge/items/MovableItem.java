@@ -6,7 +6,6 @@ import fr.legbt.binge.Binge;
 
 
 
-@SuppressWarnings("serial")
 public abstract class MovableItem extends Item implements KeyListener {
 	public Boolean collided;
 	public Boolean collide;
@@ -16,12 +15,22 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public int xnext;
 	public int ynext;
 
-	protected MovableItem(Binge game, int x, int y){
-		super(game,x,y);
+	protected MovableItem(Binge game, String nameid, int line, int column){
+		super(game,nameid,line,column);
 		this.xspeed = 0d;
 		this.yspeed = 0d;
-		this.xnext = x;
-		this.ynext = y;
+		this.xnext = this.getX();
+		this.ynext = this.getY();
+		this.wasneverfree = true;
+		this.collided = false;
+		this.collide = false;
+	}
+	protected MovableItem(DataItem data, int line, int column){
+		super(data,line,column);
+		this.xspeed = 0d;
+		this.yspeed = 0d;
+		this.xnext = this.getX();
+		this.ynext = this.getY();
 		this.wasneverfree = true;
 		this.collided = false;
 		this.collide = false;

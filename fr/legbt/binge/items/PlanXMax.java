@@ -9,14 +9,13 @@ import fr.legbt.binge.*;
  * PlanXMax describe a right vertical half plan item for simple bounding collisions.
  */
 public class PlanXMax extends Plan{
-	private static final long serialVersionUID = 1l; //serialisation warnings
 	protected int x;
 
 	/**
 	 * Xmax Plan construction 
 	 */
 	public PlanXMax(Binge game, int x){
-		super(game);
+		super(game,"PlanXMax");
 		this.x = x;
 	}
 
@@ -31,6 +30,10 @@ public class PlanXMax extends Plan{
 		}	
 		return false;
 	}
+
+	public PlanXMax selfCreate(Binge game, DataItem data, int line, int column){
+		return new PlanXMax(game,column*80);
+	}	
 
 	public void traceMe(Graphics g){
 		g.fillRect(x,0,(int)g.getClipBounds().getWidth()-x,(int)g.getClipBounds().getHeight());

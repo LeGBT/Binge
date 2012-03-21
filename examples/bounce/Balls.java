@@ -6,16 +6,22 @@ import java.awt.*;
 
 
 public class Balls extends Ball{
-	private static final long serialVersionUID = 1l;
 	@SuppressWarnings("unused")
-	private double speed;
+		private double speed;
 	private transient BouncingGame game;
 	private Color color;
 
 
 	public Balls(BouncingGame game, int x, int y, int diameter, double speed){
-		super(game,x,y,diameter);	
+		super(game,"Balls",x,y,diameter);	
 		this.game = game;
+		xspeed = speed;
+		yspeed = speed + 3;
+		this.speed = speed;
+		this.color = Color.GREEN;
+	}
+	public Balls(DataItem data, int column, int line, int diameter, double speed){
+		super(data,column*data.getRes(),line*data.getRes(), diameter);	
 		xspeed = speed;
 		yspeed = speed + 3;
 		this.speed = speed;

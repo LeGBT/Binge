@@ -9,7 +9,6 @@ import fr.legbt.binge.Binge;
 /**
  * Rect is a simple rectangular item
  */
-@SuppressWarnings("serial")
 public abstract class Rect extends MovableItem{
 	private Rectangle2D.Double therect;
 	protected int height;
@@ -18,11 +17,11 @@ public abstract class Rect extends MovableItem{
 	/**
 	 * Constructor for Rect defined by the top left point
 	 */
-	public Rect(Binge game, int x, int y, int height, int width){
-		super(game,x,y);
+	public Rect(Binge game,String nameid, int line, int column, int height, int width){
+		super(game,nameid,line,column);
 		this.height = height;
 		this.width = width;
-		this.therect = new Rectangle2D.Double(x,y,width,height);
+		this.therect = new Rectangle2D.Double(this.getX(),this.getY(),width,height);
 	}
 
 	public void traceMe(Graphics g){
