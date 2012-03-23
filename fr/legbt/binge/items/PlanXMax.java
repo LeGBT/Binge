@@ -14,9 +14,13 @@ public class PlanXMax extends Plan{
 	/**
 	 * Xmax Plan construction 
 	 */
-	public PlanXMax(Binge game, int x){
-		super(game,"PlanXMax");
-		this.x = x;
+	public PlanXMax(Binge game, int column){
+		super(game,"PlanXMax",0,column,null);
+		this.x = column*game.getRes();
+	}
+	public PlanXMax(DataItem data, int column){
+		super(data,0,column);
+		this.x = column*data.getRes();
 	}
 
 	protected Boolean collideWith(MovableItem mitem){
@@ -30,10 +34,6 @@ public class PlanXMax extends Plan{
 		}	
 		return false;
 	}
-
-	public PlanXMax selfCreate(Binge game, DataItem data, int line, int column){
-		return new PlanXMax(game,column*80);
-	}	
 
 	public void traceMe(Graphics g){
 		g.fillRect(x,0,(int)g.getClipBounds().getWidth()-x,(int)g.getClipBounds().getHeight());

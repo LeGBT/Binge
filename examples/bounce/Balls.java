@@ -3,6 +3,7 @@ package examples.bounce;
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
 import java.awt.*;
+import java.util.HashMap;
 
 
 public class Balls extends Ball{
@@ -11,9 +12,14 @@ public class Balls extends Ball{
 	//private BouncingGame game;
 	private Color color;
 
+//	private static HashMap<String,Object> getRaw(double speed){
+//		HashMap<String,Object> map = new HashMap<String,Object>();
+//		map.put("speed",speed);
+//		return map;
+//	}
 
 	public Balls(BouncingGame game, int column, int line, int diameter, double speed){
-		super(game,"Balls",column,line,diameter);	
+		super(game,"Balls",column,line,diameter,getRaw("speed",new Double(speed)));	
 		this.game = game;
 		xspeed = speed;
 		yspeed = speed + 3;
@@ -49,7 +55,6 @@ public class Balls extends Ball{
 		// calcul de la distance entre les centres :
 		if (mitem instanceof Balls){
 			double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
-			//System.out.println("dist = " + dist);
 			//vecteurs normaux à la collision :
 			double nx = (mitem.getX() - this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
 			double ny = (mitem.getY() - this.getY() + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;

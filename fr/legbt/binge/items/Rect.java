@@ -3,6 +3,8 @@ package fr.legbt.binge.items;
 import java.awt.Graphics;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
+
 import fr.legbt.binge.Binge;
 
 
@@ -17,8 +19,8 @@ public abstract class Rect extends MovableItem{
 	/**
 	 * Constructor for Rect defined by the top left point
 	 */
-	public Rect(Binge game,String nameid, int line, int column, int height, int width){
-		super(game,nameid,line,column);
+	public Rect(Binge game,String nameid, int line, int column, int height, int width,HashMap<String,Object> raw){
+		super(game,nameid,line,column,raw);
 		this.height = height;
 		this.width = width;
 		this.therect = new Rectangle2D.Double(this.getX(),this.getY(),width,height);

@@ -2,6 +2,8 @@ package fr.legbt.binge.items;
 
 import java.awt.Rectangle;
 import java.awt.event.*;
+import java.util.HashMap;
+
 import fr.legbt.binge.Binge;
 
 
@@ -15,8 +17,8 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public int xnext;
 	public int ynext;
 
-	protected MovableItem(Binge game, String nameid, int line, int column){
-		super(game,nameid,line,column);
+	protected MovableItem(Binge game, String nameid, int line, int column, HashMap<String,Object> raw){
+		super(game,nameid,line,column,raw);
 		this.xspeed = 0d;
 		this.yspeed = 0d;
 		this.xnext = this.getX();

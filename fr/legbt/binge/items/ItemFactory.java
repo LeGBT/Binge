@@ -6,15 +6,23 @@ import fr.legbt.binge.Binge;
 public class ItemFactory {
 
 	public PlanXMax createPlanXMax(Binge game,DataItem data, int line, int column){
-		return new PlanXMax(game, line*game.getRes());
+		PlanXMax p = new PlanXMax(data,column);
+		p.setGame(game);
+		return p;
 	}	
 	public PlanXMin createPlanXMin(Binge game,DataItem data, int line, int column){
-		return new PlanXMin(game, line*game.getRes());
+		PlanXMin p = new PlanXMin(data, column);
+		p.setGame(game);
+		return p;
 	}	
 	public PlanYMax createPlanYMax(Binge game,DataItem data, int line, int column){
-		return new PlanYMax(game, column*game.getRes());
+		PlanYMax p = new PlanYMax(data, line);
+		p.setGame(game);
+		return p;
 	}	
 	public PlanYMin createPlanYMin(Binge game,DataItem data, int line, int column){
-		return new PlanYMin(game, column*game.getRes());
+		PlanYMin p = new PlanYMin(data, line);
+		p.setGame(game);
+		return p;
 	}	
 }

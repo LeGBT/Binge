@@ -12,7 +12,7 @@ public class Pad extends Rect{
 
 
 	public Pad(Binge game,int column){
-		super(game,"Pad",3,column,240,30);
+		super(game,"Pad",3,column,240,30,null);
 		this.xpos = this.getX();
 		speedi = 15;
 		setListener(game);

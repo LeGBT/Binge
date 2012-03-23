@@ -14,9 +14,13 @@ public class PlanXMin extends Plan{
 	/**
 	 * Xmax Plan construction 
 	 */
-	public PlanXMin(Binge game, int x){
-		super(game,"PlanXMin");
-		this.x = x;
+	public PlanXMin(Binge game, int column){
+		super(game,"PlanXMin",0,column,null);
+		this.x = column*game.getRes();
+	}
+	public PlanXMin(DataItem data, int column){
+		super(data,0,column);
+		this.x = column*data.getRes();
 	}
 
 	public PlanXMin selfCreate(Binge game, DataItem data, int line, int column){

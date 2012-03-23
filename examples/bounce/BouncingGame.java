@@ -21,19 +21,19 @@ public class BouncingGame extends Binge{
 			new Balls(jeux,6,6,30,4);
 			new Balls(jeux,5,6,30,2);
 			new Balls(jeux,6,5,30,4);
-			new Balls(jeux,8,4,30,2);
-			new Balls(jeux,4,1,30,3);
-			new Balls(jeux,2,5,30,1);
+			new Balls(jeux,4,4,30,2);
+			new Balls(jeux,5,5,30,2);
+			new Balls(jeux,4,5,30,3);
+			new Balls(jeux,3,5,30,1);
 			new Balls(jeux,6,4,30,2);
 			new Balls(jeux,5,3,30,2);
 			new Balls(jeux,5,2,30,2);
-			new Balls(jeux,5,1,30,2);
 			new Balls(jeux,5,7,30,2);
 			new Balls(jeux,6,8,30,2);
 			new Balls(jeux,6,9,30,2);
 			new Balls(jeux,7,10,30,2);
-			new Balls(jeux,8,11,30,2);
-			new Borders(jeux, 1200,0,700,50);
+			new Balls(jeux,6,11,30,2);
+			new Borders(jeux,15,0,8,1);
 			new LevelEditor(jeux,"level");
 			//	jeux.load();
 		}else{

@@ -8,20 +8,20 @@ import fr.legbt.binge.Binge;
  */
 public class Borders {
 	@SuppressWarnings("unused")
-	private PlanXMax xmax;
+	private PlanXMax xmaxline;
 	@SuppressWarnings("unused")
-	private PlanXMin xmin;
+	private PlanXMin xminline;
 	@SuppressWarnings("unused")
-	private PlanYMax ymax;
+	private PlanYMax ymaxline;
 	@SuppressWarnings("unused")
-	private PlanYMin ymin;
+	private PlanYMin yminline;
 /**
  * The game instance is mandatory to register correctly the border to collisions and repaints.
  */
-	public Borders(Binge game,int xmax, int xmin, int ymax, int ymin){
-		this.xmax = new PlanXMax(game,xmax);
-		this.xmin = new PlanXMin(game,xmin);
-		this.ymax = new PlanYMax(game,ymax);
-		this.ymin = new PlanYMin(game,ymin);
+	public Borders(Binge game,int xmaxline, int xminline, int ymaxline, int yminline){
+		this.xmaxline = new PlanXMax(game,xmaxline);
+		this.xminline = new PlanXMin(game,xminline);
+		this.ymaxline = new PlanYMax(game,ymaxline);
+		this.yminline = new PlanYMin(game,yminline);
 	}
 }

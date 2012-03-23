@@ -7,11 +7,11 @@ import fr.legbt.binge.ui.*;
 
 
 public class PaintManager extends Manager {
-//	private Binge game;
+	//	private Binge game;
 
 	public PaintManager(Binge agame){
 		super();
-//		this.game = agame;
+		//		this.game = agame;
 	}
 
 	public void traceItems(Graphics g){

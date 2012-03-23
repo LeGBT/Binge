@@ -14,13 +14,13 @@ public class PlanYMin extends Plan{
 	/**
 	 * Ymay Plan construction 
 	 */
-	public PlanYMin(Binge game, int y){
-		super(game,"PlanYMin");
-		this.y = y;
+	public PlanYMin(Binge game, int line){
+		super(game,"PlanYMin",line,0,null);
+		this.y = line*game.getRes();
 	}
-
-	public static Item selfCreate(Binge game, DataItem data, int line, int column){
-		return new PlanYMin(game, column*80);
+	public PlanYMin(DataItem data, int line){
+		super(data,line,0);
+		this.y = line*data.getRes();
 	}
 
 	protected Boolean collideWith(MovableItem mitem){

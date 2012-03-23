@@ -13,9 +13,13 @@ public class PlanYMax extends Plan{
 	/**
 	 * Xmax Plan construction 
 	 */
-	public PlanYMax(Binge game, int y){
-		super(game,"PlanYMax");
-		this.y = y;
+	public PlanYMax(Binge game, int line){
+		super(game,"PlanYMax",line,0,null);
+		this.y = line*game.getRes();
+	}
+	public PlanYMax(DataItem data, int line){
+		super(data,line,0);
+		this.y = line*data.getRes();
 	}
 
 	public PlanYMax selfCreate(Binge game, DataItem data, int line, int column){

@@ -1,6 +1,7 @@
 package fr.legbt.binge.items;
 
 import java.awt.Graphics;
+import java.util.HashMap;
 import java.util.concurrent.locks.*;
 import fr.legbt.binge.Binge;
 
@@ -27,17 +28,23 @@ public abstract class Item {
 		this.data = data;
 	}
 
-
 	/** Init an Item with coordinates x,y and registered for paint and collisions.*/
-	protected Item(Binge game,String nameid, int line, int column){
+	protected Item(Binge game,String nameid, int line, int column, HashMap<String,Object> raw){
 		lock = new ReentrantLock();
 		this.game = game;
 		this.x = column*res;
 		this.y = line*res;
-		this.data = new DataItem(nameid);
+		this.data = new DataItem(nameid,raw);
 		game.getLvl().setTile(line,column,data);	
 		this.setGame(game);
 	}
+
+	protected static  HashMap<String,Object> getRaw(String s,Object object){
+		HashMap<String,Object> map = new HashMap<String,Object>();
+		map.put(s,object);
+		return map;
+	}
+
 
 
 	public int getX(){

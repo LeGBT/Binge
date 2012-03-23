@@ -12,13 +12,12 @@ public class ItemShop {
 			java.lang.reflect.Method meth =	factory.getClass().getMethod("create"+data.getNameType(),Binge.class,DataItem.class,int.class,int.class);
 			Item item = (Item) meth.invoke(factory,game,data,line,column);
 			item.onLoaded(game);
-			item.setGame(game);
+			//item.setGame(game);
 			return item;
 		}catch(Exception e){
 			//System.out.println(e);
 			e.printStackTrace();
 		}
-	//	System.out.println("oups ! ");
 		return null;
 	}
 

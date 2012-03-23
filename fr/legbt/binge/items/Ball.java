@@ -2,6 +2,8 @@ package fr.legbt.binge.items;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.*;
+import java.util.HashMap;
+
 import fr.legbt.binge.Binge;
 
 
@@ -17,8 +19,8 @@ public abstract class Ball extends MovableItem{
 	/**
 	 * Constructor for Ball defined by the top left coordinate point of the smallest square containing the ball. 
 	 */
-	public Ball(Binge game,String nameid, int line, int column, int diameter){
-		super(game,nameid,line,column);
+	public Ball(Binge game,String nameid, int line, int column, int diameter,HashMap<String,Object> raw){
+		super(game,nameid,line,column,raw);
 		int x = column*game.getRes();
 		int y = line*game.getRes();
 		this.xcenter = x + diameter/2;
