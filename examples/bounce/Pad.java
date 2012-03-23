@@ -25,10 +25,6 @@ public class Pad extends Rect{
 		}
 	}
 
-	public Pad selfCreate(Binge game, DataItem data, int line, int column){
-		return new Pad(game,column);
-	}	
-
 	public void onKeyUp(int key){
 		yspeed = 0;
 	}

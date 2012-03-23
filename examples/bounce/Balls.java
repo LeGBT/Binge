@@ -8,12 +8,12 @@ import java.awt.*;
 public class Balls extends Ball{
 	@SuppressWarnings("unused")
 		private double speed;
-	private transient BouncingGame game;
+	//private BouncingGame game;
 	private Color color;
 
 
-	public Balls(BouncingGame game, int x, int y, int diameter, double speed){
-		super(game,"Balls",x,y,diameter);	
+	public Balls(BouncingGame game, int column, int line, int diameter, double speed){
+		super(game,"Balls",column,line,diameter);	
 		this.game = game;
 		xspeed = speed;
 		yspeed = speed + 3;
@@ -21,7 +21,7 @@ public class Balls extends Ball{
 		this.color = Color.GREEN;
 	}
 	public Balls(DataItem data, int column, int line, int diameter, double speed){
-		super(data,column*data.getRes(),line*data.getRes(), diameter);	
+		super(data,column,line, diameter);	
 		xspeed = speed;
 		yspeed = speed + 3;
 		this.speed = speed;
@@ -36,7 +36,7 @@ public class Balls extends Ball{
 	}
 
 	protected void onCollide(FixedItem fitem){
-		game.upScore();
+		((BouncingGame)game).upScore();
 		if (fitem instanceof PlanYMax){yspeed = -yspeed;}
 		if (fitem instanceof PlanYMin){yspeed = -yspeed;}
 		if (fitem instanceof PlanXMax){xspeed = -xspeed;}
@@ -44,7 +44,7 @@ public class Balls extends Ball{
 	}
 
 	protected void onCollide(MovableItem mitem){
-		game.upScore();
+		((BouncingGame)game).upScore();
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons autre que leurs distances !
 		// calcul de la distance entre les centres :
 		if (mitem instanceof Balls){

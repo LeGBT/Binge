@@ -70,7 +70,7 @@ public abstract class MovableItem extends Item implements KeyListener {
 	public void keyTyped(KeyEvent key){}
 
 	public void setRenderZone(Rectangle rect){
-		super.game.getDrawZone().addRect(rect);
+		game.getDrawZone().addRect(rect);
 	}
 
 	void setPosition(int x, int y){

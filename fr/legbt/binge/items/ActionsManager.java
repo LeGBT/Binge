@@ -18,7 +18,8 @@ public class ActionsManager extends Manager {
 			}
 
 		}catch(Exception e){
-			System.out.println("ActionManager segfault ? " + e);
+			//System.out.println("ActionManager segfault ? " + e);
+			e.printStackTrace();
 		}
 	}
 }

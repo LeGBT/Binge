@@ -17,8 +17,10 @@ public abstract class Ball extends MovableItem{
 	/**
 	 * Constructor for Ball defined by the top left coordinate point of the smallest square containing the ball. 
 	 */
-	public Ball(Binge game,String nameid, int x, int y, int diameter){
-		super(game,nameid,x,y);
+	public Ball(Binge game,String nameid, int line, int column, int diameter){
+		super(game,nameid,line,column);
+		int x = column*game.getRes();
+		int y = line*game.getRes();
 		this.xcenter = x + diameter/2;
 		this.ycenter = y + diameter/2;
 		this.diameter = diameter;
