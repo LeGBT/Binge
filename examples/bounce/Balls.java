@@ -3,34 +3,25 @@ package examples.bounce;
 import fr.legbt.binge.items.*;
 import fr.legbt.binge.*;
 import java.awt.*;
-import java.util.HashMap;
 
 
 public class Balls extends Ball{
-	@SuppressWarnings("unused")
-		private double speed;
-	//private BouncingGame game;
 	private Color color;
 
-//	private static HashMap<String,Object> getRaw(double speed){
-//		HashMap<String,Object> map = new HashMap<String,Object>();
-//		map.put("speed",speed);
-//		return map;
-//	}
-
 	public Balls(BouncingGame game, int column, int line, int diameter, double speed){
-		super(game,"Balls",column,line,diameter,getRaw("speed",new Double(speed)));	
+		super(game,"Balls",column,line,diameter,putRaw("speed",new Double(speed)));	
+		System.out.println("line="+line+" column="+column);
 		this.game = game;
 		xspeed = speed;
 		yspeed = speed + 3;
-		this.speed = speed;
 		this.color = Color.GREEN;
 	}
-	public Balls(DataItem data, int column, int line, int diameter, double speed){
-		super(data,column,line, diameter);	
-		xspeed = speed;
-		yspeed = speed + 3;
-		this.speed = speed;
+	public Balls(DataItem data, int column, int line, int diameter){
+		super(data,line,column,diameter);	
+		//debug
+		System.out.println("line="+line+" column="+column);
+		xspeed = (Double) data.getRaw().get("speed");
+		yspeed = (Double) data.getRaw().get("speed") + 3;
 		this.color = Color.GREEN;
 	}
 

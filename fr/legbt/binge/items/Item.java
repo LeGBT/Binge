@@ -39,7 +39,7 @@ public abstract class Item {
 		this.setGame(game);
 	}
 
-	protected static  HashMap<String,Object> getRaw(String s,Object object){
+	protected static  HashMap<String,Object> putRaw(String s,Object object){
 		HashMap<String,Object> map = new HashMap<String,Object>();
 		map.put(s,object);
 		return map;

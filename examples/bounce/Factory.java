@@ -12,7 +12,7 @@ public class Factory extends ItemFactory {
 	}
 
 	public Balls createBalls(Binge game, DataItem data, int line, int column){
-		Balls b = new Balls(data,column,line,30,5d);
+		Balls b = new Balls(data,column,line,30);
 		b.setGame(game);
 		return b;
 	}
