@@ -14,6 +14,7 @@ public class DataItem implements Serializable {
 	private int res;
 	private HashMap<String,Object> raw;
 
+
 	protected DataItem(String nametype, int groupid, int lookid, int res, HashMap<String,Object> raw){
 		this.nametype = nametype;
 		this.groupid = groupid;

@@ -18,8 +18,6 @@ public class Balls extends Ball{
 	}
 	public Balls(DataItem data, int column, int line, int diameter){
 		super(data,line,column,diameter);	
-		//debug
-		System.out.println("line="+line+" column="+column);
 		xspeed = (Double) data.getRaw().get("speed");
 		yspeed = (Double) data.getRaw().get("speed") + 3;
 		this.color = Color.GREEN;
