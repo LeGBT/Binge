@@ -10,6 +10,7 @@ import fr.legbt.binge.thread.*;
 import fr.legbt.binge.timers.*;
 
 
+
 /** 
  * Main class of binge;
  * Just instantiate one and let the magic free !
@@ -20,12 +21,9 @@ public class Binge  extends Manager{
 	private int res;
 	private Level lvl;
 	private ItemFactory factory;
-	//	private BingePanel bpanel;
 	private DrawThread dt;
 	@SuppressWarnings("unused")
 		private int framerate;
-	@SuppressWarnings("unused")
-		private java.util.Timer timer;
 
 	/**Create a new game.*/
 	public Binge(ItemFactory factory, String name, String lvlfile, int width, int height, int framerate){
@@ -36,7 +34,22 @@ public class Binge  extends Manager{
 		dt = new DrawThread(this,name,width,height,framerate);
 		this.lvl = new Level(16,9);
 	}
-
+	public Binge(ItemFactory factory, String lvlfile){
+		this.factory = factory;
+		this.res = 80;
+		this.paintmanager = new PaintManager(this);
+		this.framerate = 20;
+		dt = new DrawThread(this,"A Simple Game",1280,720,20);
+		this.lvl = new Level(16,9);
+	}
+	public Binge(String lvlfile){
+		this.factory = new ItemFactory();
+		this.res = 80;
+		this.paintmanager = new PaintManager(this);
+		this.framerate = 20;
+		dt = new DrawThread(this,"A Simple Game",1280,720,20);
+		this.lvl = new Level(16,9);
+	}
 	/**This load method is used to launch the game with saved lvl.*/
 	public void load(String lvlfile){
 		this.lvl = Level.loadLvl(lvlfile,this);
@@ -54,22 +67,16 @@ public class Binge  extends Manager{
 	 * This method is called at each ticks
 	 * It's not advised to override it.
 	 */
-	public void timedActions(){
-		//	this.actionsmanager.actionThemAll();
-		//	this.collisionsmanager.testCollisions();
-		//this.bpanel.getFrame().repaint();
-	}
-	//	/**@deprecated Will soon be replaced by {@link #getGraphics}*/
-	//	@Deprecated
-	//	public Graphics getItemDrawZoneGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
-	//	public Graphics getGraphics(){return dt.getPanel().getItemDrawZoneGraphics();}
+	public void timedActions(){}
+
+
 	public UIShow getUIShow(){return dt.getPanel().getUIShow();}
 	public DrawZone getDrawZone(){return dt.getPanel().getDrawZone();}
 	public JFrame getFrame(){return	dt.getPanel().getFrame();}
 	/**
 	 * Gets the res for this instance.
 	 *
-	 * @return The res.
+	 * @return The resolution of the game.
 	 */
 	public int getRes()
 	{

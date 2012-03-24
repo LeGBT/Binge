@@ -12,25 +12,43 @@ end
 CLEAN.include(".DS_Store","*.tmp","**/*.class")
 CLOBBER.include("**/*.css", "**/*.html")
 desc "defaut task"
-task :default => ["modified"] 
+task :default => :binge
 SRC = FileList['**/*.java']
 OBJ = SRC.ext('class')
+JVA = SRC.ext('java')
 desc "build main classes"
-task :binge => ["#{prfx}/Binge.class"]
+task :binge => ["#{prfx}/Binge"]
 desc "build examples"
 task :examples => ["examples/bounce/BouncingGame.class"]
 
 def build(file)
-	#puts file
+	puts file
 	verbose(false) do
 		sh %{javac #{options} #{file}}
 	end
 end
 
-
 rule '.class' => '.java' do |t|
 	build(t.source)
 end
+
+file "#{prfx}/Binge" =>  "examples/bounce/BouncingGame.class"
+file "#{prfx}/Manager.class" => ["#{prfx}/Manager.java","#{prfx}/items/PaintManager.class","#{prfx}/items/ActionsManager.class","#{prfx}/items/CollisionsManager.class"]
+file "#{prfx}/ui/StaticInfo.class" => ["#{prfx}/ui/StaticInfo.java"]
+file "#{prfx}/items/Manager.class" => ["#{prfx}/items/Manager.java","#{prfx}/ui/StaticInfo.class"]
+file "#{prfx}/items/PaintManager.class" => ["#{prfx}/items/PaintManager.java","#{prfx}/items/Manager.class"]
+file "#{prfx}/items/ActionsManager.class" => ["#{prfx}/items/ActionsManager.java","#{prfx}/items/Manager.class"]
+file "#{prfx}/items/CollisionsManager.class" => ["#{prfx}/items/CollisionsManager.java","#{prfx}/items/Manager.class"]
+file "#{prfx}/items/Ball.class" => ["#{prfx}/items/Ball.java","#{prfx}/items/MovableItem.class"]
+file "#{prfx}/items/Borders.class" => ["#{prfx}/items/PlanXMax.java","#{prfx}/items/PlanXMin.java","#{prfx}/items/PlanYMax.java","#{prfx}/items/PlanYMin.java"]
+file "#{prfx}/items/DataItem.class" => ["#{prfx}/items/DataItem.java"]
+file "#{prfx}/items/FixedItem.class" => ["#{prfx}/items/FixedItem.java","#{prfx}/items/Item.class"]
+file "#{prfx}/items/MovableItem.class" => ["#{prfx}/items/MovableItem.java","#{prfx}/items/Item.class","#{prfx}/Binge.class"]
+file "#{prfx}/items/Binge.class" => ["#{prfx}/Binge.java"]
+
+
+file "examples/bounce/Balls.class" => ["examples/bounce/Balls.java","#{prfx}/items/ball.class"]
+file "examples/bounce/BouncingGame.class" => ["examples/bounce/BouncingGame.java","#{prfx}/Binge.class","examples/bounce/Balls.class"]
 
 
 
@@ -44,9 +62,9 @@ desc "build modified files"
 task :modified do
 	verbose(false){
 			`git status --porcelain | grep -E -o "[^\ ]*java$"`.each_line{|line|  
-		sh %{rm #{line.gsub(/\.java\Z/, '.class')}} do |ok,res|
-		end
-		build(line);
+		#sh %{rm #{line.gsub(/\.java\Z/, '.class')}} do |ok,res|
+		#end
+		[line];
 	}
 	}
 	build("#{prfx}/Binge.java")
