@@ -14,7 +14,7 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	private Binge game;
 
 	public DrawThread(Binge game,String name, int width, int height, int framerate){
-		this.bpanel = new BingePanel(this,name,width,height);
+		this.bpanel = new BingePanel(this,name,width,height,"backgroundlight.jpg");
 		this.framerate = framerate;
 		this.game = game;
 	}

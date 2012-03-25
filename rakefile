@@ -45,6 +45,9 @@ file "#{prfx}/items/DataItem.class" => ["#{prfx}/items/DataItem.java"]
 file "#{prfx}/items/FixedItem.class" => ["#{prfx}/items/FixedItem.java","#{prfx}/items/Item.class"]
 file "#{prfx}/items/MovableItem.class" => ["#{prfx}/items/MovableItem.java","#{prfx}/items/Item.class","#{prfx}/Binge.class"]
 file "#{prfx}/items/Binge.class" => ["#{prfx}/Binge.java"]
+file "#{prfx}/graphics/BingePanel.class" => ["#{prfx}/graphics/BingePanel.java","#{prfx}/graphics/BGComp.class","#{prfx}/graphics/DrawZone.class"]
+file "#{prfx}/graphics/BGComp.class" => ["#{prfx}/graphics/BGComp.java"];
+file "#{prfx}/graphics/DrawZone.class" => ["#{prfx}/graphics/DrawZone.java"];
 
 
 file "examples/bounce/Balls.class" => ["examples/bounce/Balls.java","#{prfx}/items/Disc.class"]
@@ -66,7 +69,7 @@ task :runr do
 end
 
 desc "doc task"
-task :doc => ["build_docs"] do
+task :doc => :documentation do
 	verbose(false){sh %{open index.html}}
 end
 
@@ -91,7 +94,7 @@ task :rebuild => :clean do
 end
 
 desc "Docs generation..."
-task :doc  do
+task :documentation  do
 	#	puts "Docs generation..."
 	verbose(false){	sh %{javadoc fr.legbt.binge -subpackages fr.legbt.binge.items:fr.legbt.binge.timers:fr.legbt.binge.data:fr.legbt.binge.graphics:fr.legbt.binge.ui > doclog.tmp}}
 end

@@ -12,6 +12,7 @@ public abstract class SimpleGravityPlayer extends Rect{
 	private int leftkey;
 	private int rightkey;
 	private int walkspeed;
+	private int jumpheight;
 
 	public SimpleGravityPlayer(Binge game,int column,int height,int width){
 		super(game,"Player",1,column,height,width,null);
@@ -24,6 +25,7 @@ public abstract class SimpleGravityPlayer extends Rect{
 		this.leftkey = 65;
 		this.rightkey = 73;
 		this.jumpkey = 87;
+		this.jumpheight = 20;
 		setListener(game);
 	}
 
@@ -59,7 +61,7 @@ public abstract class SimpleGravityPlayer extends Rect{
 			}
 		}
 		if ((jump == true)&&(this.getY() >= 537)){
-			this.yspeed = -25;
+			this.yspeed = -this.jumpheight;
 		}else if(this.getY() != 539){
 			this.yspeed += 1;
 		}
@@ -138,4 +140,24 @@ public abstract class SimpleGravityPlayer extends Rect{
 	 * @param walkspeed The walkspeed.
 	 */
 	public void setWalkspeed(int walkspeed){this.walkspeed = walkspeed;}
+
+	/**
+	 * Gets the jumpheight for this instance.
+	 *
+	 * @return The jumpheight.
+	 */
+	public int getJumpheight()
+	{
+		return this.jumpheight;
+	}
+
+	/**
+	 * Sets the jumpheight for this instance.
+	 *
+	 * @param jumpheight The jumpheight.
+	 */
+	public void setJumpheight(int jumpheight)
+	{
+		this.jumpheight = jumpheight;
+	}
 }

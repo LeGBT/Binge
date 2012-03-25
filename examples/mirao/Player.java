@@ -11,6 +11,8 @@ public class Player extends SimpleGravityPlayer{
 
 	public Player(Binge game,int column){
 		super(game,column,100,40);
+		this.setTexture("player.png");
+		this.setJumpheight(18);
 	}
 
 	public void action(){

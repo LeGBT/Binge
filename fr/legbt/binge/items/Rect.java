@@ -1,8 +1,11 @@
 package fr.legbt.binge.items;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.TexturePaint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import fr.legbt.binge.Binge;
@@ -13,6 +16,7 @@ import fr.legbt.binge.Binge;
  */
 public abstract class Rect extends MovableItem{
 	private Rectangle2D.Double therect;
+	private BufferedImage texture;
 
 	/**
 	 * Constructor for Rect defined by the top left point
@@ -22,12 +26,25 @@ public abstract class Rect extends MovableItem{
 		this.height = height;
 		this.width = width;
 		this.therect = new Rectangle2D.Double(this.getX(),this.getY(),width,height);
+		this.texture = null;
+	}
+
+
+	public void setTexture(String image){
+		this.texture = Binge.getTexture(image);
 	}
 
 
 	public void traceMe(Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
 		therect.setFrame(this.getX(),this.getY(),width,height);
-		g.fillRect(this.getX(),this.getY(),width,height);
+		if(texture == null){
+			//g.fillRect(this.getX(),this.getY(),width,height);
+			g2.fill(therect);
+		}else{
+			g2.drawImage(texture,this.getX(),this.getY(),null);
+			//g2.fill(therect);
+		}
 	}
 
 	public Rectangle2D.Double getRect(){

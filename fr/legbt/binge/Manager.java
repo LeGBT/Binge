@@ -1,6 +1,9 @@
 package fr.legbt.binge;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import fr.legbt.binge.graphics.TexturesLoader;
 import fr.legbt.binge.items.ActionsManager;
 import fr.legbt.binge.items.CollisionsManager;
 import fr.legbt.binge.items.FixedItem;
@@ -13,12 +16,20 @@ abstract class Manager{
 	private CollisionsManager collisionsmanager;
 	protected PaintManager paintmanager;
 	private ActionsManager actionsmanager;
+	static private TexturesLoader texturesloader;
 
 	Manager(){
 		this.collisionsmanager = new CollisionsManager();
 		this.actionsmanager = new ActionsManager();
+		texturesloader = new TexturesLoader();	
 	}
-	
+
+
+	/** Retrieve the buffered image for texturing by it's name */
+	static public BufferedImage getTexture(String image){
+		return texturesloader.get(image);
+	}
+
 	/**Each movable item can be correctly initialized on the go for trace and collisions with this method.*/
 	public void registerItem(MovableItem item){
 		collisionsmanager.register(item);
