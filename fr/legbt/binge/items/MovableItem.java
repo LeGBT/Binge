@@ -70,7 +70,10 @@ public abstract class MovableItem extends Item implements KeyListener {
 	protected abstract void action();
 
 	void preAction(){
-		this.setRenderZone(new Rectangle(this.getX(),this.getY(),this.width+(int)Math.abs(this.xspeed),this.height+Math.abs((int)this.yspeed)));
+		int xs = (int)this.xspeed;
+		int ys = (int)this.yspeed;
+		// à changer ici !!!!!!!
+		this.setRenderZone(new Rectangle(this.getX()-xs,this.getY()-ys,this.width+2*xs,this.height));
 		this.action();
 	}
 

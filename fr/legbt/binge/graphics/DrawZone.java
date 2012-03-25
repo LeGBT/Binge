@@ -12,7 +12,7 @@ public class DrawZone extends JComponent{
 	public	DrawZone(BingePanel bpanel,int width, int height){
 		this.bpanel = bpanel;
 		this.setDoubleBuffered(true);
-		this.bounds = new Rectangle(0,0,0,0);
+		this.bounds = null;
 	}
 
 	void moveZone(){
@@ -26,11 +26,15 @@ public class DrawZone extends JComponent{
 	}
 
 	public void resetRect(){
-		this.bounds = new Rectangle(0,0,0,0);
+		this.bounds = null;
 	}
 
 	public void addRect(Rectangle rect){
-		this.bounds = bounds.union(rect);
+		if(this.bounds == null){
+			this.bounds = rect;
+		}else{
+			this.bounds = bounds.union(rect);
+		}
 	}
 
 	protected void paintComponent(Graphics g){

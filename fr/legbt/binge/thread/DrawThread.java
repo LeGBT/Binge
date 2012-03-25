@@ -32,6 +32,8 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 				Thread.currentThread();
 				this.bpanel.getDrawZone().repaint(this.bpanel.getDrawZone().getRect());
 				this.bpanel.getUIShow().repaint(this.bpanel.getUIShow().getRect());
+				// !!!!!!!!!!!!  tests !!!!!!!!!!!!!!
+				this.bpanel.getBGComp().setXshift(this.bpanel.getBGComp().getXshift()-10);
 				Thread.sleep(framerate);
 			}catch(Exception e){
 				System.out.println("interruption !");

@@ -48,7 +48,7 @@ public class BingePanel extends JPanel{
 
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		bgcomp.setLocation(bgcomp.getXShift(),0);
+		bgcomp.setLocation(bgcomp.getXshift(),0);
 	}
 
 	public boolean isOpaque(){return true;}
