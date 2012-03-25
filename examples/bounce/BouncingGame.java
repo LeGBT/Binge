@@ -18,7 +18,7 @@ public class BouncingGame extends Binge{
 		if((arg.length != 0)){
 			System.out.println("reloaded");
 			new Pad(jeux,1);
-			new Balls(jeux,6,6,30,4);
+			new Balls(jeux,6,6,30,9);
 			new Balls(jeux,5,6,30,2);
 			new Balls(jeux,6,5,30,4);
 			new Balls(jeux,4,4,30,2);
@@ -35,7 +35,6 @@ public class BouncingGame extends Binge{
 			new Balls(jeux,6,11,30,2);
 			new Borders(jeux,15,0,8,1);
 			new LevelEditor(jeux,"level");
-			//	jeux.load();
 		}else{
 			jeux.load("level");
 		}

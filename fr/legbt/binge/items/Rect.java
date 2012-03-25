@@ -13,8 +13,6 @@ import fr.legbt.binge.Binge;
  */
 public abstract class Rect extends MovableItem{
 	private Rectangle2D.Double therect;
-	protected int height;
-	protected int width;
 
 	/**
 	 * Constructor for Rect defined by the top left point
@@ -25,6 +23,7 @@ public abstract class Rect extends MovableItem{
 		this.width = width;
 		this.therect = new Rectangle2D.Double(this.getX(),this.getY(),width,height);
 	}
+
 
 	public void traceMe(Graphics g){
 		therect.setFrame(this.getX(),this.getY(),width,height);
@@ -37,9 +36,9 @@ public abstract class Rect extends MovableItem{
 
 
 	protected Boolean collideWith(MovableItem mitem){
-		if (mitem instanceof Ball){
-				Ellipse2D.Double circle = new Ellipse2D.Double(mitem.xnext, mitem.ynext, ((Ball)mitem).diameter, ((Ball)mitem).diameter);
-		//	Ellipse2D.Double circle = ((Ball)mitem).getDisc();
+		if (mitem instanceof Disc){
+			Ellipse2D.Double circle = new Ellipse2D.Double(mitem.xnext, mitem.ynext, ((Disc)mitem).diameter, ((Disc)mitem).diameter);
+			//	Ellipse2D.Double circle = ((Disc)mitem).getDisc();
 			if (circle.intersects(this.xnext, this.ynext, this.width, this.height)){
 				return true;
 			}

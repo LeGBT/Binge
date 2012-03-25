@@ -5,12 +5,11 @@ import fr.legbt.binge.*;
 import java.awt.*;
 
 
-public class Balls extends Ball{
+public class Balls extends Disc{
 	private Color color;
 
 	public Balls(BouncingGame game, int column, int line, int diameter, double speed){
 		super(game,"Balls",column,line,diameter,putRaw("speed",new Double(speed)));	
-		System.out.println("line="+line+" column="+column);
 		this.game = game;
 		xspeed = speed;
 		yspeed = speed + 3;
@@ -43,10 +42,10 @@ public class Balls extends Ball{
 		//angle du vecteur entre les deux milieux !!!! ici pas de gestion des rayons autre que leurs distances !
 		// calcul de la distance entre les centres :
 		if (mitem instanceof Balls){
-			double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Ball)mitem).getDiameter() - this.getDiameter(),2));
+			double dist = Math.sqrt(Math.pow(mitem.getX()-this.getX() + ((Disc)mitem).getDiameter() - this.getDiameter(),2) + Math.pow(mitem.getY()-this.getY()+((Disc)mitem).getDiameter() - this.getDiameter(),2));
 			//vecteurs normaux à la collision :
-			double nx = (mitem.getX() - this.getX() + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
-			double ny = (mitem.getY() - this.getY() + ((Ball)mitem).getDiameter() - this.getDiameter())/dist;
+			double nx = (mitem.getX() - this.getX() + ((Disc)mitem).getDiameter() - this.getDiameter())/dist;
+			double ny = (mitem.getY() - this.getY() + ((Disc)mitem).getDiameter() - this.getDiameter())/dist;
 			//vecteurs tangents :
 			double gx = -ny;
 			double gy = nx;
@@ -61,7 +60,7 @@ public class Balls extends Ball{
 			mitem.setXSpeed(nx*v1n + gx*v2g);
 			mitem.setYSpeed(ny*v1n + gy*v2g);
 		}else{
-			if (!mitem.collided){
+			if (!mitem.getCollided()){
 				if(this.getX()>40){
 					this.xspeed = -xspeed;
 
@@ -85,7 +84,6 @@ public class Balls extends Ball{
 
 	public void action(){
 		this.move((int)(this.getX()+Math.round(this.xspeed)),(int)(this.getY()+Math.round(this.yspeed)));
-		this.setRenderZone(new Rectangle(this.getX(),this.getY(),diameter+4,diameter+4));
 		if(this.getX()<50){
 			this.color = Color.RED;
 		}

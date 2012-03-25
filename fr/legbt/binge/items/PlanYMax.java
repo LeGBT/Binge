@@ -31,8 +31,8 @@ public class PlanYMax extends Plan{
 			if (mitem.ynext + ((Rect)mitem).height >= y){ return true;} else {
 				return false;}
 		}
-		if (mitem instanceof Ball){
-			if (mitem.ynext+((Ball)mitem).diameter >= y){ return true;} else {
+		if (mitem instanceof Disc){
+			if (mitem.ynext+((Disc)mitem).diameter >= y){ return true;} else {
 				return false;}
 		}	
 		return false;

@@ -14,7 +14,7 @@ public class ActionsManager extends Manager {
 		try{
 			for(int i=0;i<movableitemlist.size();i++){
 				MovableItem mitem = movableitemlist.get(i);
-				mitem.action();
+				mitem.preAction();
 			}
 
 		}catch(Exception e){

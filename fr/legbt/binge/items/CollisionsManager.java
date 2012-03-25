@@ -37,7 +37,8 @@ public class CollisionsManager extends Manager {
 						itemi.ynext = itemi.getY();
 					}
 				}
-				itemi.setPosition(itemi.xnext,itemi.ynext);
+				itemi.setX(itemi.xnext);
+				itemi.setY(itemi.ynext);
 			}
 		} catch(Exception e){
 			System.out.println("collisionmanager segfault ?" );

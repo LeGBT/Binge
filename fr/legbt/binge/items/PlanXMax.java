@@ -28,8 +28,8 @@ public class PlanXMax extends Plan{
 			if (mitem.xnext+((Rect)mitem).width >= x){ return true;} else {
 				return false;}
 		}
-		if (mitem instanceof Ball){
-			if (mitem.xnext+((Ball)mitem).diameter >= x){ return true;} else {
+		if (mitem instanceof Disc){
+			if (mitem.xnext+((Disc)mitem).diameter >= x){ return true;} else {
 				return false;}
 		}	
 		return false;

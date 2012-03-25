@@ -32,7 +32,7 @@ public class PlanXMin extends Plan{
 			if (mitem.xnext <= x){ return true;} else {
 				return false;}
 		}
-		if (mitem instanceof Ball){
+		if (mitem instanceof Disc){
 			if (mitem.xnext <= x){ return true;} else {
 				return false;}
 		}	

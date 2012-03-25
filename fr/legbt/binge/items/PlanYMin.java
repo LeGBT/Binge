@@ -28,7 +28,7 @@ public class PlanYMin extends Plan{
 			if (mitem.ynext <= y){ return true;} else {
 				return false;}
 		}
-		if (mitem instanceof Ball){
+		if (mitem instanceof Disc){
 			if (mitem.ynext <= y){ return true;} else {
 				return false;}
 		}	

@@ -9,11 +9,13 @@ import fr.legbt.binge.Binge;
 
 
 public abstract class MovableItem extends Item implements KeyListener {
-	public Boolean collided;
-	public Boolean collide;
+	Boolean collided;
+	Boolean collide;
 	public Boolean wasneverfree;
 	protected double xspeed;
 	protected double yspeed;
+	protected int width;
+	protected int height;
 	public int xnext;
 	public int ynext;
 
@@ -43,45 +45,52 @@ public abstract class MovableItem extends Item implements KeyListener {
 		this.ynext = newy;
 	}
 
-	public void setGame(Binge game){
-		game.registerItem(this);
-	}
-	public void unRegister(Binge game){
-		game.unRegisterItem(this);
-	}
-	public int getX(){return super.getX();}
-	public int getY(){return super.getY();}
-	public double getXSpeed(){return this.xspeed;}
-	public double getYSpeed(){return this.yspeed;}
-	public void setXSpeed(double nxs){ this.xspeed = nxs;}
-	public void setYSpeed(double nys){ this.yspeed = nys;}
-
-	protected void setListener(Binge game){
-		game.getFrame().addKeyListener(this);
-	}
-	protected void unSetListener(Binge game){
-		game.getFrame().removeKeyListener(this);
-	}
-
-	public void keyPressed(KeyEvent key){
-		this.onKeyDown(key.getKeyCode());
-	}
-	public void keyReleased(KeyEvent key){
-		this.onKeyUp(key.getKeyCode());
-	}
+	final public void setGame(Binge game){game.registerItem(this);}
+	final public void unRegister(Binge game){game.unRegisterItem(this);}
+	final public int getX(){return super.getX();}
+	final public int getY(){return super.getY();}
+	final public double getXSpeed(){return this.xspeed;}
+	final public double getYSpeed(){return this.yspeed;}
+	final public void setXSpeed(double nxs){ this.xspeed = nxs;}
+	final public void setYSpeed(double nys){ this.yspeed = nys;}
+	protected void setListener(Binge game){game.getFrame().addKeyListener(this);}
+	protected void unSetListener(Binge game){game.getFrame().removeKeyListener(this);}
+	final public void keyPressed(KeyEvent key){this.onKeyDown(key.getKeyCode());}
+	final public void keyReleased(KeyEvent key){this.onKeyUp(key.getKeyCode());}
 	public void keyTyped(KeyEvent key){}
 
-	public void setRenderZone(Rectangle rect){
+	protected void setRenderZone(Rectangle rect){
 		game.getDrawZone().addRect(rect);
-	}
-
-	void setPosition(int x, int y){
-		this.setX(x);
-		this.setY(y);
 	}
 
 	protected abstract void onCollide(MovableItem mitem);
 	protected abstract void onCollide(FixedItem fitem);
 	protected abstract void onKeyUp(int keycode);
 	protected abstract void onKeyDown(int keycode);
+	protected abstract void action();
+
+	void preAction(){
+		this.setRenderZone(new Rectangle(this.getX(),this.getY(),this.width+(int)Math.abs(this.xspeed),this.height+Math.abs((int)this.yspeed)));
+		this.action();
+	}
+
+
+	/**
+	 * Gets the collided for this instance.
+	 *
+	 * @return The collided.
+	 */
+	public Boolean getCollided()
+	{
+		return this.collided;
+	}
+	/**
+	 * Gets the collide for this instance.
+	 *
+	 * @return The collide.
+	 */
+	public Boolean getCollide()
+	{
+		return this.collide;
+	}
 }

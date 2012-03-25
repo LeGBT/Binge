@@ -85,12 +85,12 @@ public abstract class Item {
 		System.out.println("Item n°"+ data.getNameType() + " is a" + this.getClass().getName());
 	}
 
-	/** This method is called whenever a collition betwin this item and mitem is detected.*/
+	/** This method is called whenever a collition between this item and mitem is detected.*/
 	protected abstract Boolean collideWith(MovableItem mitem);
 	/** traceMe must define the way the item is drawn.*/
 	protected abstract void traceMe(Graphics g);
 	/** action is called at each frame ticks, use it to define the way you want your item to move.*/
-	protected abstract void action();
+	//protected abstract void action();
 	public abstract void onLoaded(Binge game);
 	public abstract void setGame(Binge game);
 

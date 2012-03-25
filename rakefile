@@ -32,14 +32,14 @@ rule '.class' => '.java' do |t|
 	build(t.source)
 end
 
-file "#{prfx}/Binge" =>  "examples/bounce/BouncingGame.class"
+file "#{prfx}/Binge" =>  ["examples/bounce/BouncingGame.class","examples/mirao/Mirao.class"]
 file "#{prfx}/Manager.class" => ["#{prfx}/Manager.java","#{prfx}/items/PaintManager.class","#{prfx}/items/ActionsManager.class","#{prfx}/items/CollisionsManager.class"]
 file "#{prfx}/ui/StaticInfo.class" => ["#{prfx}/ui/StaticInfo.java"]
 file "#{prfx}/items/Manager.class" => ["#{prfx}/items/Manager.java","#{prfx}/ui/StaticInfo.class"]
 file "#{prfx}/items/PaintManager.class" => ["#{prfx}/items/PaintManager.java","#{prfx}/items/Manager.class"]
 file "#{prfx}/items/ActionsManager.class" => ["#{prfx}/items/ActionsManager.java","#{prfx}/items/Manager.class"]
 file "#{prfx}/items/CollisionsManager.class" => ["#{prfx}/items/CollisionsManager.java","#{prfx}/items/Manager.class"]
-file "#{prfx}/items/Ball.class" => ["#{prfx}/items/Ball.java","#{prfx}/items/MovableItem.class"]
+file "#{prfx}/items/Disc.class" => ["#{prfx}/items/Disc.java","#{prfx}/items/MovableItem.class"]
 file "#{prfx}/items/Borders.class" => ["#{prfx}/items/PlanXMax.java","#{prfx}/items/PlanXMin.java","#{prfx}/items/PlanYMax.java","#{prfx}/items/PlanYMin.java"]
 file "#{prfx}/items/DataItem.class" => ["#{prfx}/items/DataItem.java"]
 file "#{prfx}/items/FixedItem.class" => ["#{prfx}/items/FixedItem.java","#{prfx}/items/Item.class"]
@@ -47,13 +47,25 @@ file "#{prfx}/items/MovableItem.class" => ["#{prfx}/items/MovableItem.java","#{p
 file "#{prfx}/items/Binge.class" => ["#{prfx}/Binge.java"]
 
 
-file "examples/bounce/Balls.class" => ["examples/bounce/Balls.java","#{prfx}/items/ball.class"]
+file "examples/bounce/Balls.class" => ["examples/bounce/Balls.java","#{prfx}/items/Disc.class"]
 file "examples/bounce/BouncingGame.class" => ["examples/bounce/BouncingGame.java","#{prfx}/Binge.class","examples/bounce/Balls.class"]
+file "examples/mirao/Mirao.class" => ["examples/mirao/Mirao.java","#{prfx}/Binge.class","examples/mirao/Player.class"]
+file "examples/mirao/Player.class" => ["examples/mirao/Player.java","#{prfx}/items/Rect.class"]
 
 
 
-desc "defaut task"
-task :default => :modified 
+
+desc "run examples" 
+task :run do
+	#sh "java examples.bounce.BouncingGame"
+	sh "java examples.mirao.Mirao"
+end
+desc "run examples reloaded" 
+task :runr do
+	sh "java examples.bounce.BouncingGame e"
+end
+
+desc "doc task"
 task :doc => ["build_docs"] do
 	verbose(false){sh %{open index.html}}
 end
