@@ -17,6 +17,10 @@ import fr.legbt.binge.Binge;
 public abstract class Rect extends MovableItem{
 	private Rectangle2D.Double therect;
 	private BufferedImage texture;
+	private boolean topcollide;
+	private boolean botomcollide;
+	private boolean leftcollide;
+	private boolean rightcollide;
 
 	/**
 	 * Constructor for Rect defined by the top left point
@@ -27,6 +31,10 @@ public abstract class Rect extends MovableItem{
 		this.width = width;
 		this.therect = new Rectangle2D.Double(this.getX(),this.getY(),width,height);
 		this.texture = null;
+		this.leftcollide = false;
+		this.rightcollide = false;
+		this.topcollide = false;
+		this.botomcollide = false;
 	}
 
 
@@ -89,6 +97,50 @@ public abstract class Rect extends MovableItem{
 	public int getWidth()
 	{
 		return this.width;
+	}
+
+
+	/**
+	 * Determines if this instance is topcollision.
+	 *
+	 * @return The topcollision.
+	 */
+	public boolean topCollide()
+	{
+		return this.topcollide;
+	}
+
+
+	/**
+	 * Determines if this instance is botomcollision.
+	 *
+	 * @return The botomcollision.
+	 */
+	public boolean botomCollide()
+	{
+		return this.botomcollide;
+	}
+
+
+	/**
+	 * Determines if this instance is leftcollision.
+	 *
+	 * @return The leftcollision.
+	 */
+	public boolean leftCollide()
+	{
+		return this.leftcollide;
+	}
+
+
+	/**
+	 * Determines if this instance is rightcollision.
+	 *
+	 * @return The rightcollision.
+	 */
+	public boolean rightCollide()
+	{
+		return this.rightcollide;
 	}
 
 }

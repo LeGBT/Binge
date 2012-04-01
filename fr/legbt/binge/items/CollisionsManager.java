@@ -9,8 +9,8 @@ public class CollisionsManager extends Manager {
 		// Test only once each possible collisions	
 		// Boolean test = false;
 		try{
+			collisions = false;
 			for (int i=0;i<movableitemlist.size();i++){
-				collisions = false;
 				canmove = true;
 				MovableItem itemi = movableitemlist.get(i);
 				for (int j=i+1;j<movableitemlist.size();j++){
@@ -22,21 +22,23 @@ public class CollisionsManager extends Manager {
 						itemi.collided = true;
 						itemj.collided = true;
 						if(!canmove){
-						//	itemi.ynext = itemi.getY();
+							//	itemi.ynext = itemi.getY();
 							itemj.xnext = itemj.getX();
 							itemj.ynext = itemj.getY();
 						}
 					}
 				}
-				if (!collisions){itemi.collided = false;}
 				for (int j=0;j<fixeditemlist.size();j++){
 					FixedItem itemj = fixeditemlist.get(j);
 					if (itemj.collideWith(itemi)){
 						itemi.onCollide(itemj);
+				//		collisions = true;
+				//		itemi.collided = true;
 						itemi.xnext = itemi.getX();
 						itemi.ynext = itemi.getY();
 					}
 				}
+				if (!collisions){itemi.collided = false;}
 				itemi.setX(itemi.xnext);
 				itemi.setY(itemi.ynext);
 			}

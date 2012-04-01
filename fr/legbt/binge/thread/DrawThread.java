@@ -13,8 +13,8 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 	private int framerate;
 	private Binge game;
 
-	public DrawThread(Binge game,String name, int width, int height, int framerate){
-		this.bpanel = new BingePanel(this,name,width,height,"backgroundlight.jpg");
+	public DrawThread(Binge game,String name, int width, int height, int framerate, BackgroundsStruct bg){
+		this.bpanel = new BingePanel(this,name,width,height,bg);
 		this.framerate = framerate;
 		this.game = game;
 	}
@@ -25,15 +25,14 @@ public class DrawThread extends SwingWorker<Void,Integer> {
 			try{
 				//			System.out.println(framenb);
 				//			framenb++;
-				this.bpanel.getDrawZone().resetRect();
 				game.actionThemAll();
 				game.testCollisions();
 				//			publish(framenb);
 				Thread.currentThread();
-				this.bpanel.getDrawZone().repaint(this.bpanel.getDrawZone().getRect());
+				this.bpanel.getDrawZone().repaint();
 				this.bpanel.getUIShow().repaint(this.bpanel.getUIShow().getRect());
 				// !!!!!!!!!!!!  tests !!!!!!!!!!!!!!
-				this.bpanel.getBGComp().setXshift(this.bpanel.getBGComp().getXshift()-10);
+				//				this.bpanel.getBGComp().setXshift(this.bpanel.getBGComp().getXshift()-10);
 				Thread.sleep(framerate);
 			}catch(Exception e){
 				System.out.println("interruption !");

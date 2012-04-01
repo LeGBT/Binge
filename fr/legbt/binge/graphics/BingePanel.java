@@ -13,13 +13,13 @@ public class BingePanel extends JPanel{
 	//	private Rectangle bounds;
 	private JFrame frame;
 	private DrawZone drawzone;
-	private BGComp bgcomp;
+	private BGComp[] bgcomps;
 	private UIShow ui;
 	//Binge game;
 	private DrawThread dt;
 
 
-	public BingePanel(DrawThread dt,String name, int width, int height, String backgroundimagename){
+	public BingePanel(DrawThread dt,String name, int width, int height, BackgroundsStruct bg){
 		super();
 		this.setLayout(null);
 		//this.game = game;
@@ -27,13 +27,20 @@ public class BingePanel extends JPanel{
 		//		this.screen = new Rectangle(0,0,width,height);
 		//		this.bounds = new Rectangle(0,0,width,height);
 		this.drawzone = new DrawZone(this,width,height);
-		this.bgcomp = new BGComp(this,width*2,height,backgroundimagename);
+		bgcomps = new BGComp[bg.getBGLvl()];
+		for(int i=0;i<bgcomps.length;i++){
+			this.bgcomps[i] = new BGComp(this,width*2,height,bg.getTilenbs(i),i,bg.getBgyoff()[i]);
+		}
 		this.ui = new UIShow(this,width,height);
 		this.add(drawzone);
-		this.add(bgcomp);
+		for(int i=0;i<bgcomps.length;i++){
+			this.add(bgcomps[bgcomps.length-1-i]);
+		}
 		this.add(ui);
-		bgcomp.setSize(width*2,height);
-		bgcomp.setOpaque(true);
+		for(int i=0;i<bgcomps.length;i++){
+			bgcomps[i].setSize(width*2,height);
+		//	bgcomps[i].setOpaque(false);
+		}
 		drawzone.setSize(width,height);
 		drawzone.setOpaque(false);
 		ui.setSize(width,height);
@@ -48,7 +55,7 @@ public class BingePanel extends JPanel{
 
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
-		bgcomp.setLocation(bgcomp.getXshift(),0);
+		//bgcomp.setLocation(bgcomp.getXshift(),0);
 	}
 
 	public boolean isOpaque(){return true;}
@@ -56,7 +63,7 @@ public class BingePanel extends JPanel{
 	//public Graphics getUIGraphics(){return this.ui.getGraphics();}
 	public JFrame getFrame(){return this.frame;}
 	public DrawZone getDrawZone(){return this.drawzone;}
-	public BGComp getBGComp(){return this.bgcomp;}
+	public BGComp[] getBGComps(){return this.bgcomps;}
 	public UIShow getUIShow(){return this.ui;}
 	//	drawzone.setLocation(drawzone.zoneoff,0);
 
