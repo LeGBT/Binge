@@ -50,6 +50,8 @@ public abstract class SimpleGravityPlayer extends Rect{
 	 * }
 	 */
 	public void action(){
+
+
 		if(keyleftdown){this.xspeed=-walkspeed;
 		}else if(keyrightdown){
 			this.xspeed=walkspeed;
@@ -60,10 +62,17 @@ public abstract class SimpleGravityPlayer extends Rect{
 				this.xspeed+=-(int)this.xspeed/Math.abs(this.xspeed);
 			}
 		}
+
 		if ((jump == true)&&(this.getY() >= 537)){
 			this.yspeed = -this.jumpheight;
 		}else if(this.getY() != 539){
 			this.yspeed += 1;
+		}
+
+		if(this.getCollided()){
+			// FIXME debug
+			System.out.println("collion !");
+			jump = true;
 		}
 	}
 
@@ -72,7 +81,10 @@ public abstract class SimpleGravityPlayer extends Rect{
 	/**
 	 * auto move method
 	 */
-	public void moveMe(){this.move(this.getX()+(int)xspeed,this.getY()+(int)yspeed);}
+	public void moveMe(){
+		this.game.backgroundMove((int)xspeed);
+		this.move(this.getX()+(int)xspeed,this.getY()+(int)yspeed);
+	}
 
 
 	/**

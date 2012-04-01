@@ -49,6 +49,8 @@ public abstract class MovableItem extends Item implements KeyListener {
 	final public void unRegister(Binge game){game.unRegisterItem(this);}
 	final public int getX(){return super.getX();}
 	final public int getY(){return super.getY();}
+	final public int getNextX(){return this.xnext;}
+	final public int getNextY(){return this.ynext;}
 	final public double getXSpeed(){return this.xspeed;}
 	final public double getYSpeed(){return this.yspeed;}
 	final public void setXSpeed(double nxs){ this.xspeed = nxs;}
@@ -59,9 +61,6 @@ public abstract class MovableItem extends Item implements KeyListener {
 	final public void keyReleased(KeyEvent key){this.onKeyUp(key.getKeyCode());}
 	public void keyTyped(KeyEvent key){}
 
-	protected void setRenderZone(Rectangle rect){
-		game.getDrawZone().addRect(rect);
-	}
 
 	protected abstract void onCollide(MovableItem mitem);
 	protected abstract void onCollide(FixedItem fitem);
@@ -70,10 +69,6 @@ public abstract class MovableItem extends Item implements KeyListener {
 	protected abstract void action();
 
 	void preAction(){
-		int xs = (int)this.xspeed;
-		int ys = (int)this.yspeed;
-		// à changer ici !!!!!!!
-		this.setRenderZone(new Rectangle(this.getX()-xs,this.getY()-ys,this.width+2*xs,this.height));
 		this.action();
 	}
 
